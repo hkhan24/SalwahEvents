@@ -1,0 +1,94 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Test coverage
+coverage/
+
+# Misc
+*.local
+*.log
+*.tgz
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Parcel-bundler cache
+.cache
+
+# SvelteKit build
+.svelte-kit
+
+# Next.js build
+.next
+
+# Vite cache
+.vite
+
+# Storybook build
+.out
+storybook-static/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Yarn Integrity file
+yarn.lock
+
+# Pnpm lock file
+pnpm-lock.yaml
+
+# Mac Quick Look
+*.qlgenerator
+
+# VS Code settings
+.history/
+
+# JetBrains IDEs
+*.iml
+.idea/
+
+# npm package distribution
+yarn-error.log
+
+# Prettier
+.prettierignore
+
+# Tailwind JIT cache
+.tailwindcss*
+
+# Local env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

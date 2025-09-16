@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Award, Heart, UserCheck, Users } from 'lucide-react';
+import PageHeader from '@/components/PageHeader';
 
 const About = () => {
   const values = [
@@ -25,29 +26,18 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Salwah Events | Halal Wedding & Catering Specialists UK</title>
+        <title>About Salwah Events | Asian Wedding Catering & Event Specialists UK</title>
         <meta name="description" content="Learn about Salwah Events & Catering — UK specialists in halal weddings, catering, and event management. Our story, values, and commitment to excellence." />
       </Helmet>
 
-      <div className="pt-20 bg-black">
-        <section className="py-16 bg-gray-900/50 hero-pattern">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center p-8 md:p-12 rounded-xl glass-effect border border-gold/30"
-            >
-              <h1 className="text-4xl md:text-6xl font-serif font-bold text-white text-shadow">
-                Your Trusted Asian <br /><span className="gradient-text">Event Partner</span>
-              </h1>
-              <p className="mt-4 text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto font-sans text-shadow">
-                Passionately creating premium, unforgettable events across London and surrounding areas.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
+      <div className="bg-black">
+        <PageHeader 
+          title="Your Trusted Asian" 
+          gradientText="Event Partner" 
+          subtitle="Passionately creating premium, unforgettable events across London and surrounding areas." 
+          imageUrl="https://horizons-cdn.hostinger.com/f8034716-902c-4f05-a25e-2c26f4bc9157/b445c5ad2f354581bfee6f2202b85fe1.png"
+        />
+        
         <section className="py-20 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -121,7 +111,7 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="relative h-96"
               >
-                <img  class="w-full h-full object-cover rounded-lg shadow-2xl" alt="A team of professional event caterers working together in a kitchen." src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800" />
+                <img  class="w-full h-full object-cover rounded-lg shadow-2xl" alt="A team of professional event caterers working together in a kitchen." src="https://horizons-cdn.hostinger.com/f8034716-902c-4f05-a25e-2c26f4bc9157/43258d92ed41e3ffc802c7923ad39074.jpg" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 30 }}

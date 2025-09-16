@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -18,21 +17,21 @@ const TrustpilotIcon = (props) => (
 const Footer = ({ companyNumber }) => {
   const quickLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Packages', path: '/packages' },
-    { name: 'Menu', path: '/menu' },
-    { name: 'Gallery', path: '/gallery' },
     { name: 'About', path: '/about' },
+    { name: 'Menu', path: '/menu' },
+    { name: 'Packages', path: '/packages' },
+    { name: 'Services', path: '/services' },
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Resources', path: '/resources' },
     { name: 'Contact', path: '/contact' },
   ];
 
   const services = [
-    'Asian Wedding Catering',
-    'Vegetarian Wedding Catering',
-    'Event Catering UK',
-    'Asian Wedding Planner',
-    'Wedding Stage Decoration',
-    'Full Event Management'
+    { name: 'Asian Wedding Catering', path: '/services/asian-wedding-catering' },
+    { name: 'Wedding Stage Decoration', path: '/services/wedding-stage-decoration' },
+    { name: 'Event Management & Planning', path: '/services/event-management-planning' },
+    { name: 'Venues & Locations', path: '/services/venues-locations' },
   ];
 
   const socialLinks = [
@@ -40,6 +39,10 @@ const Footer = ({ companyNumber }) => {
     { icon: Instagram, href: 'https://www.instagram.com/salwah.events/', label: 'Instagram' },
     { icon: TrustpilotIcon, href: 'https://uk.trustpilot.com/review/salwahevents.com', label: 'Trustpilot' },
   ];
+  
+  const address = "Number 19 Unit 7 Landmark, Commercial Road, Edmonton, London, N18 1UB";
+  const mapUrl = `https://www.google.com/maps/place/Salwah+Events+%26+Catering/@51.6118056,-0.0553889,17z/data=!3m1!4b1!4m6!3m5!1s0x48761e0969562635:0xed43594fb3763f6!8m2!3d51.6118056!4d-0.052814!16s%2Fg%2F11vnlx3j7x?entry=ttu`;
+  const vatNumber = '497422947';
 
   return (
     <footer className="bg-black border-t border-gold/20">
@@ -59,7 +62,13 @@ const Footer = ({ companyNumber }) => {
               />
             </Link>
             <p className="text-gray-300 font-sans text-sm leading-relaxed">
-              Your trusted partner for premium Asian wedding catering and event services in London and surrounding areas. Companies House No: {companyNumber}.
+              Your trusted partner for premium Asian wedding catering and event services in London and surrounding areas.
+            </p>
+            <p className="text-gray-300 font-sans text-sm leading-relaxed">
+              Companies House No: {companyNumber}
+            </p>
+            <p className="text-gray-300 font-sans text-sm leading-relaxed">
+              VAT Registration No: {vatNumber}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -107,8 +116,13 @@ const Footer = ({ companyNumber }) => {
             <span className="text-xl font-serif font-semibold text-gold">Our Services</span>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service} className="text-gray-300 font-sans text-sm">
-                  {service}
+                <li key={service.name}>
+                   <Link
+                    to={service.path}
+                    className="text-gray-300 hover:text-gold transition-colors duration-300 font-sans text-sm"
+                  >
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -122,20 +136,20 @@ const Footer = ({ companyNumber }) => {
           >
             <span className="text-xl font-serif font-semibold text-gold">Contact Us</span>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <MapPin className="text-gold mt-1 flex-shrink-0" size={18} />
-                <span className="text-gray-300 font-sans text-sm">
-                  Number 19 Unit 7 Landmark, Commercial Road, Edmonton, London, N18 1UB
+              <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="flex items-start space-x-3 group">
+                <MapPin className="text-gold mt-1 flex-shrink-0 group-hover:animate-pulse" size={18} />
+                <span className="text-gray-300 font-sans text-sm group-hover:text-gold transition-colors">
+                  {address}
                 </span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="text-gold flex-shrink-0" size={18} />
-                <span className="text-gray-300 font-sans text-sm">07359 337887</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="text-gold flex-shrink-0" size={18} />
-                <span className="text-gray-300 font-sans text-sm">info@salwahevents.com</span>
-              </div>
+              </a>
+              <a href="tel:07359337887" className="flex items-center space-x-3 group">
+                <Phone className="text-gold flex-shrink-0 group-hover:animate-pulse" size={18} />
+                <span className="text-gray-300 font-sans text-sm group-hover:text-gold transition-colors">07359 337887</span>
+              </a>
+              <a href="mailto:info@salwahevents.com" className="flex items-center space-x-3 group">
+                <Mail className="text-gold flex-shrink-0 group-hover:animate-pulse" size={18} />
+                <span className="text-gray-300 font-sans text-sm group-hover:text-gold transition-colors">info@salwahevents.com</span>
+              </a>
             </div>
           </motion.div>
         </div>
