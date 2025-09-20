@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 export const initialQuotationState = () => ({
   meta: {
@@ -39,6 +39,11 @@ const formatCurrency = (value) => new Intl.NumberFormat('en-GB', {
   style: 'currency',
   currency: 'GBP',
 }).format(Number(value) || 0);
+
+const runAutoTable = (doc, options) => {
+  autoTable(doc, options);
+  return doc.lastAutoTable?.finalY ?? autoTable.previous?.finalY ?? options.startY ?? 0;
+};
 
 export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
   try {
@@ -104,7 +109,7 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
       ['', ''],
     ];
 
-    doc.autoTable({
+    runAutoTable(doc, {
         startY: 95,
         body: metaContent,
         theme: 'plain',
@@ -112,8 +117,8 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
         columnStyles: { 0: { fontStyle: 'bold', cellWidth: 30, textColor: GOLD } },
         tableWidth: (pageWidth / 2) - 14 - 2,
     });
-    
-    doc.autoTable({
+
+    runAutoTable(doc, {
         startY: 95,
         body: metaContent2,
         theme: 'plain',
@@ -123,7 +128,7 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
         margin: { left: pageWidth / 2 + 2 },
     });
 
-    let lastY = doc.autoTable.previous.finalY;
+    let lastY = doc.lastAutoTable?.finalY ?? 95;
 
     for (const section of quotation.sections) {
       doc.setFont('helvetica', 'bold');
@@ -147,7 +152,7 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
           ? section.items.map(item => [item.name, item.notes, item.price ? formatCurrency(Number(item.price)) : formatCurrency(0)])
           : section.items.map(item => [item.name, item.notes, '']);
       
-      doc.autoTable({
+      const sectionFinalY = runAutoTable(doc, {
         startY: lastY + 18,
         head: [['Item', 'Notes', 'Price']],
         body: bodyData,
@@ -163,7 +168,7 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
           }
         },
       });
-      lastY = doc.autoTable.previous.finalY + 10;
+      lastY = sectionFinalY + 10;
     }
 
     const startYForTotals = lastY + 10;
@@ -195,7 +200,7 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
       [{ content: 'Total Cost', styles: { halign: 'right', fontStyle: 'bold', textColor: NAVY, fontSize: 14 } }, { content: formatCurrency(calculatedTotals.grandTotal), styles: { fontStyle: 'bold', fontSize: 14, textColor: NAVY } }],
     ];
 
-    doc.autoTable({
+    lastY = runAutoTable(doc, {
       startY: lastY,
       head: [[{content:'Quotation Summary', colSpan: 2, styles:{halign:'center', fontStyle:'bold', fillColor:GOLD, textColor:NAVY}}]],
       body: totalsData,
@@ -210,10 +215,8 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
         }
       },
     });
-    
-    lastY = doc.autoTable.previous.finalY;
 
-    doc.autoTable({
+    lastY = runAutoTable(doc, {
         startY: lastY,
         body: finalTotals,
         theme: 'grid',
@@ -232,13 +235,11 @@ export const exportQuotationToPDF = async (quotation, calculatedTotals) => {
         },
     });
     
-    lastY = doc.autoTable.previous.finalY;
-    
     if (quotation.totals.showCostPerHead && calculatedTotals.costPerHead > 0) {
       const costPerHeadData = [
         [{ content: 'Cost Per Head', styles: { fontStyle: 'bold', textColor: NAVY } }, { content: formatCurrency(calculatedTotals.costPerHead), styles: { textColor: NAVY } }]
       ];
-      doc.autoTable({
+      lastY = runAutoTable(doc, {
         startY: lastY + 5,
         body: costPerHeadData,
         theme: 'grid',

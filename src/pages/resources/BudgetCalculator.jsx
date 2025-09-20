@@ -8,6 +8,7 @@ import { useToast } from '@/components/ui/use-toast';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PageHeader from '@/components/PageHeader';
 import { generatePdfWithHeaderFooter } from '@/lib/pdfUtils';
+import autoTable from 'jspdf-autotable';
 
 const BudgetCalculator = () => {
   const { toast } = useToast();
@@ -90,7 +91,7 @@ const BudgetCalculator = () => {
       doc.text(`Guest Count: ${guestCount}`, 14, 38);
 
       const perHeadData = perHeadItems.map(item => [item.name, formatCurrency(item.cost), item.enabled ? 'Yes' : 'No', formatCurrency(item.enabled ? item.cost * guestCount : 0)]);
-      doc.autoTable({
+      autoTable(doc, {
         startY: 45,
         head: [['Per Head Items', 'Cost/Head', 'Enabled', 'Total']],
         body: perHeadData,
@@ -99,8 +100,8 @@ const BudgetCalculator = () => {
       });
 
       const fixedData = fixedItems.map(item => [item.name, formatCurrency(item.cost), item.enabled ? 'Yes' : 'No', formatCurrency(item.enabled ? item.cost : 0)]);
-      doc.autoTable({
-        startY: doc.autoTable.previous.finalY + 10,
+      autoTable(doc, {
+        startY: (doc.lastAutoTable?.finalY || 45) + 10,
         head: [['Fixed Cost Items', 'Cost', 'Enabled', 'Total']],
         body: fixedData,
         theme: 'striped',
@@ -113,8 +114,8 @@ const BudgetCalculator = () => {
         [`Service Charge (${serviceCharge}%)`, formatCurrency(totals.serviceChargeAmount)],
         ['Grand Total', formatCurrency(totals.grandTotal)],
       ];
-      doc.autoTable({
-        startY: doc.autoTable.previous.finalY + 10,
+      autoTable(doc, {
+        startY: (doc.lastAutoTable?.finalY || 45) + 10,
         body: summaryData,
         theme: 'plain',
         styles: { fontSize: 12 },
