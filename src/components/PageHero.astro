@@ -40,7 +40,7 @@ const {
 const isExternalSecondary = secondaryCtaHref.startsWith('http');
 ---
 
-<section class="relative overflow-hidden bg-salwah-black border-b border-salwah-gold/20">
+<section class="relative overflow-hidden bg-salwah-black border-b border-salwah-gold/25">
   {
     image && (
       <div class="absolute inset-0 z-0">
@@ -49,18 +49,22 @@ const isExternalSecondary = secondaryCtaHref.startsWith('http');
           alt={imageAlt}
           widths={[640, 1280]}
           sizes="100vw"
-          formats={['webp']} fallbackFormat="webp" quality={78}
+          formats={['webp']}
+          fallbackFormat="webp"
+          quality={82}
           loading="eager"
           fetchpriority="high"
           decoding="sync"
-          class="h-full w-full object-cover object-center opacity-45"
+          class="h-full w-full object-cover object-center opacity-60 scale-[1.01]"
         />
-        <div class="absolute inset-0 bg-gradient-to-b from-salwah-black/80 via-salwah-black/75 to-salwah-black" />
+        <!-- Directional cinema scrim keeps photography rich on the right while preserving crisp text contrast on the left -->
+        <div class="absolute inset-0 bg-gradient-to-r from-salwah-black/92 via-salwah-black/72 to-salwah-black/35" />
+        <div class="absolute inset-0 bg-gradient-to-t from-salwah-black via-transparent to-salwah-black/45" />
       </div>
     )
   }
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-14 sm:pt-14 sm:pb-20">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:pt-16 sm:pb-22">
     {breadcrumbs && breadcrumbs.length > 0 && (
       <div class="mb-6">
         <Breadcrumbs items={breadcrumbs} />
@@ -69,17 +73,18 @@ const isExternalSecondary = secondaryCtaHref.startsWith('http');
 
     <div class="max-w-4xl">
       {eyebrow && (
-        <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-3">
+        <p class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-3.5">
+          <span class="h-px w-6 bg-salwah-gold/70" aria-hidden="true" />
           {eyebrow}
         </p>
       )}
 
-      <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+      <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08]">
         {title}{' '}
-        {highlight && <span class="gold-gradient-text">{highlight}</span>}
+        {highlight && <span class="gold-gradient-text italic font-semibold">{highlight}</span>}
       </h1>
 
-      <p class="mt-4 sm:mt-5 text-base sm:text-lg lg:text-xl text-gray-200 max-w-3xl leading-relaxed">
+      <p class="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl text-gray-100/90 max-w-3xl leading-relaxed">
         {subtitle}
       </p>
 
@@ -90,10 +95,10 @@ const isExternalSecondary = secondaryCtaHref.startsWith('http');
       )}
 
       {showCtas && (
-        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+        <div class="mt-8 flex flex-col sm:flex-row gap-3.5">
           <a
             href={primaryCtaHref}
-            class="inline-flex items-center justify-center rounded-xl bg-salwah-gold px-6 py-3.5 text-base font-bold text-black hover:bg-salwah-gold-light transition shadow-lg shadow-salwah-gold/20"
+            class="btn-luxury-gold inline-flex items-center justify-center rounded-xl px-7 py-4 text-base font-bold"
           >
             {primaryCtaLabel}
           </a>
@@ -101,13 +106,13 @@ const isExternalSecondary = secondaryCtaHref.startsWith('http');
             href={secondaryCtaHref}
             target={isExternalSecondary ? '_blank' : undefined}
             rel={isExternalSecondary ? 'noopener noreferrer' : undefined}
-            class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/50 bg-black/60 px-6 py-3.5 text-base font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+            class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/55 bg-black/55 backdrop-blur-md px-6 py-4 text-base font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
           >
             {secondaryCtaLabel}
           </a>
           <a
             href={SITE.phoneHref}
-            class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-black/60 px-5 py-3.5 text-base font-semibold text-white hover:border-salwah-gold hover:text-salwah-gold transition"
+            class="inline-flex items-center justify-center rounded-xl border border-white/25 bg-black/50 backdrop-blur-md px-5 py-4 text-base font-semibold text-white hover:border-salwah-gold hover:text-salwah-gold transition"
           >
             Call {SITE.phoneDisplay}
           </a>

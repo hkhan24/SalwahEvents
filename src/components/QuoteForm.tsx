@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { CheckCircle2, Loader2, Send, ShieldCheck } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { CheckCircle2, Clock, Loader2, Send, ShieldCheck, Sparkles } from 'lucide-react';
 import { SITE } from '@/data/site';
 
 declare global {
@@ -7,6 +7,13 @@ declare global {
     gtag?: (...args: unknown[]) => void;
     dataLayer?: Record<string, unknown>[];
   }
+}
+
+export interface PrefillQuoteDetail {
+  guestCount?: string;
+  servicesNeeded?: string;
+  message?: string;
+  label?: string;
 }
 
 export interface QuoteFormProps {
@@ -61,8 +68,30 @@ export default function QuoteForm({
   const [location, setLocation] = useState('');
   const [message, setMessage] = useState('');
   const [honeypot, setHoneypot] = useState('');
+  const [prefillBadge, setPrefillBadge] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const custom = event as CustomEvent<PrefillQuoteDetail>;
+      const detail = custom.detail;
+      if (!detail) return;
+      if (detail.guestCount && GUEST_RANGES.includes(detail.guestCount)) {
+        setGuestCount(detail.guestCount);
+      }
+      if (detail.servicesNeeded && SERVICE_OPTIONS.includes(detail.servicesNeeded)) {
+        setServicesNeeded(detail.servicesNeeded);
+      }
+      if (detail.message) {
+        setMessage(detail.message);
+      }
+      setPrefillBadge(detail.label || 'Selection loaded — enter your name & number to lock in availability');
+      setStatus('idle');
+    };
+    window.addEventListener('salwah:prefill-quote', handler);
+    return () => window.removeEventListener('salwah:prefill-quote', handler);
+  }, []);
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -121,6 +150,7 @@ export default function QuoteForm({
       setEventDate('');
       setLocation('');
       setMessage('');
+      setPrefillBadge('');
     } catch (err) {
       setStatus('error');
       setErrorMsg(
@@ -134,7 +164,7 @@ export default function QuoteForm({
   if (status === 'success') {
     return (
       <div
-        className="rounded-2xl border border-salwah-gold/40 bg-[#11131a] p-6 sm:p-8 text-center"
+        className="glass-quote-card rounded-2xl p-6 sm:p-8 text-center"
         role="status"
         aria-live="polite"
       >
@@ -167,7 +197,7 @@ export default function QuoteForm({
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-5 text-xs text-gray-400 underline hover:text-salwah-gold"
+          className="mt-5 text-xs text-gray-400 underline hover:text-salwah-gold cursor-pointer"
         >
           Send another enquiry
         </button>
@@ -176,11 +206,27 @@ export default function QuoteForm({
   }
 
   return (
-    <div className="rounded-2xl border border-salwah-gold/30 bg-[#11131a]/95 p-6 sm:p-8 shadow-2xl">
-      <div className="mb-6">
+    <div className="glass-quote-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-salwah-gold to-transparent"
+        aria-hidden="true"
+      />
+
+      <div className="mb-5">
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-salwah-gold/35 bg-salwah-gold/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-salwah-gold mb-3">
+          <Clock className="h-3.5 w-3.5" />
+          Fast Reply • Free Menu Consultation
+        </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">{heading}</h2>
         <p className="mt-1.5 text-sm text-gray-300">{subheading}</p>
       </div>
+
+      {prefillBadge && (
+        <div className="mb-4 rounded-xl border border-salwah-gold/45 bg-salwah-gold/12 px-3.5 py-2.5 text-xs font-medium text-salwah-gold flex items-center gap-2">
+          <Sparkles className="h-4 w-4 shrink-0" />
+          <span>{prefillBadge}</span>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -208,7 +254,7 @@ export default function QuoteForm({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Aisha Khan"
-              className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
+              className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
             />
           </div>
 
@@ -225,7 +271,7 @@ export default function QuoteForm({
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="07XXX XXXXXX"
-              className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
+              className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
             />
           </div>
         </div>
@@ -241,7 +287,7 @@ export default function QuoteForm({
               type="date"
               value={eventDate}
               onChange={(e) => setEventDate(e.target.value)}
-              className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-3 text-sm text-white focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold [color-scheme:dark]"
+              className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-3 text-sm text-white focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold [color-scheme:dark]"
             />
           </div>
 
@@ -255,7 +301,7 @@ export default function QuoteForm({
               required
               value={guestCount}
               onChange={(e) => setGuestCount(e.target.value)}
-              className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-3 text-sm text-white focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
+              className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-3 text-sm text-white focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
             >
               {GUEST_RANGES.map((range) => (
                 <option key={range} value={range} className="bg-[#11131a]">
@@ -279,9 +325,9 @@ export default function QuoteForm({
                   type="button"
                   onClick={() => setServicesNeeded(option)}
                   aria-pressed={selected}
-                  className={`rounded-lg border px-3 py-2.5 text-left text-xs sm:text-sm font-medium transition ${
+                  className={`rounded-lg border px-3 py-2.5 text-left text-xs sm:text-sm font-medium transition cursor-pointer ${
                     selected
-                      ? 'border-salwah-gold bg-salwah-gold/15 text-salwah-gold'
+                      ? 'border-salwah-gold bg-salwah-gold/18 text-salwah-gold shadow-sm shadow-salwah-gold/15'
                       : 'border-white/15 bg-black/50 text-gray-300 hover:border-salwah-gold/40'
                   }`}
                 >
@@ -308,7 +354,7 @@ export default function QuoteForm({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
+                  className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
                 />
               </div>
 
@@ -323,7 +369,7 @@ export default function QuoteForm({
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="e.g. City Pavilion, Ilford, Essex"
-                  className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
+                  className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
                 />
               </div>
             </div>
@@ -337,7 +383,7 @@ export default function QuoteForm({
                 name="eventType"
                 value={eventType}
                 onChange={(e) => setEventType(e.target.value)}
-                className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-3 text-sm text-white focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
+                className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-3 text-sm text-white focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold"
               >
                 {EVENT_TYPES.map((type) => (
                   <option key={type} value={type} className="bg-[#11131a]">
@@ -356,11 +402,11 @@ export default function QuoteForm({
           <textarea
             id={`qf-msg-${variant}`}
             name="message"
-            rows={variant === 'full' ? 4 : 2}
+            rows={variant === 'full' ? 4 : 3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="e.g. Bengali kacchi biryani, Pakistani walima menu, floral stage, venue name..."
-            className="w-full rounded-lg border border-salwah-gold/25 bg-black/70 px-3.5 py-2.5 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold resize-none"
+            className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-2.5 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold resize-none"
           />
         </div>
 
@@ -373,7 +419,7 @@ export default function QuoteForm({
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-salwah-gold px-6 py-4 text-base font-bold text-black shadow-lg shadow-salwah-gold/20 hover:bg-salwah-gold-light transition disabled:opacity-60 cursor-pointer"
+          className="btn-luxury-gold w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold disabled:opacity-60 cursor-pointer"
         >
           {status === 'submitting' ? (
             <>
@@ -388,10 +434,20 @@ export default function QuoteForm({
           )}
         </button>
 
-        <p className="flex items-center justify-center gap-1.5 text-center text-xs text-gray-400">
-          <ShieldCheck className="h-4 w-4 text-salwah-gold shrink-0" />
-          <span>100% HMC Certified Halal • Packages from £30pp • No obligation quote</span>
-        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-1 text-xs text-gray-400">
+          <p className="flex items-center gap-1.5">
+            <ShieldCheck className="h-4 w-4 text-salwah-gold shrink-0" />
+            <span>100% HMC Halal • No obligation</span>
+          </p>
+          <a
+            href={SITE.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#25D366] font-semibold hover:underline"
+          >
+            Or WhatsApp {SITE.phoneDisplay} &rarr;
+          </a>
+        </div>
       </form>
     </div>
   );

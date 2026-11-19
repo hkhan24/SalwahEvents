@@ -1,0 +1,256 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import heroCouple from '@/assets/images/hero-couple.jpg';
+import menuBiryani from '@/assets/images/menu-biryani.png';
+import galleryStage from '@/assets/images/gallery-stage-floral.jpg';
+import galleryTable from '@/assets/images/gallery-wedding-table.jpg';
+
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Asian Wedding Catering', href: '/services/asian-wedding-catering' },
+  { name: 'Nikah & Walima Catering London' },
+];
+
+const quickFacts = [
+  { label: 'Starting Price', value: 'From £30pp (Silver) • £45pp (Gold) • Platinum All-Inclusive from £17,500' },
+  { label: 'Guest Capacity', value: 'Intimate 50-guest Nikah lunches to 1,000+ guest grand Walima banquets' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen (Edmonton N18)' },
+  { label: 'Ceremony Styling', value: 'Floral Nikah partitions, velvet backdrops, sweetheart sofas & walkways' },
+  { label: 'Sunnah Hospitality', value: 'Medjool dates, milk/rose welcome drinks, borhani, mocktails & karak chai' },
+  { label: 'Areas Covered', value: 'Greater London (East, North, West & South), Essex & Kent' },
+];
+
+const ceremonyPackages = [
+  {
+    name: 'Intimate Nikah Catering (50–150 Guests)',
+    subtitle: 'Mosque halls, private venues, gardens & family homes',
+    points: [
+      'Traditional dates, spiced borhani & refreshing welcome mocktails after the Nikah contract',
+      'Choice of 2 starters, 3 HMC Halal mains (e.g. Lamb Kacchi Biryani, Chicken Roast, Lamb Karahi), naan & dessert',
+      'Optional floral Nikah divider/partition with matching couple seating for respectful ceremony photography',
+      'Complete crockery, chafing stations, uniformed staff, and full clear-down included',
+    ],
+  },
+  {
+    name: 'Same-Day Nikah & Walima Dual Service',
+    subtitle: 'Seamless transition from ceremony lunch to evening reception',
+    points: [
+      'Light afternoon tea, samosas, chaat & karak chai during the Nikah signing',
+      'Room turnaround coordination while guests mingle for family portraits',
+      'Grand multi-course Walima dinner with chargrilled starters, slow-cooked mains & warm desserts',
+      'One dedicated Salwah event manager orchestrating timings with your Imam, venue & photographer',
+    ],
+  },
+  {
+    name: 'Grand Walima Banquets (250–1,000+ Guests)',
+    subtitle: 'Landmark London & Essex ballrooms',
+    points: [
+      'Coordinated table-service or multi-line buffet flow engineered so 500+ guests eat piping hot simultaneously',
+      'Authentic Bengali, Pakistani, or Indian menus — or blended heritage menus for mixed-culture families',
+      'Optional Platinum bundle combining full Gold catering with luxury Walima floral stage decor',
+      'Zero compromise on HMC Halal certification from sourcing through to final table service',
+    ],
+  },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Do you cater for small Nikah ceremonies of 50 to 100 guests in London?',
+    answer:
+      'Yes! We regularly cater intimate Nikah lunches and dinners starting from 50 guests at London mosques, boutique halls, community venues, and marquees, with packages starting from £30 per person including crockery and uniformed staff.',
+  },
+  {
+    question: 'Can Salwah Events provide both a floral Nikah partition and Halal catering?',
+    answer:
+      'Yes. Our in-house decor team designs bespoke floral Nikah partitions, ivory and gold ceremony backdrops, sweetheart sofas, and table centrepieces alongside our 100% HMC Halal catering — giving you one cohesive team and single load-in schedule.',
+  },
+  {
+    question: 'Can you cater for segregated male and female dining halls?',
+    answer:
+      'Absolutely. We have extensive experience managing segregated Nikah and Walima celebrations across London, Essex, and Kent — providing separate buffet lines or table-service teams with dedicated male and female waiting staff on request.',
+  },
+  {
+    question: 'What dishes are most popular for a London Walima banquet?',
+    answer:
+      'Favourite Walima menus combine Chicken Malai Tikka and Lamb Seekh Kebabs with Dhakai Lamb Kacchi Biryani or Lamb Pilau, Beef Kala Bhuna or Lamb Karahi, Chicken Roast, fresh tandoori naan, spiced borhani, warm gulab jamun with vanilla ice cream, and roshmalai.',
+  },
+  {
+    question: 'How far ahead should we book Nikah or Walima catering?',
+    answer:
+      'Weekend Walima dates during spring and summer often book 6–12 months in advance, while intimate weekday or daytime Nikah bookings can often be accommodated at shorter notice. Contact us via WhatsApp or our quote form to check live date availability.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Nikah & Walima Catering London (100% HMC Halal)',
+    serviceType: 'Nikah & Walima Halal Wedding Catering',
+    description:
+      '100% HMC Certified Halal Nikah and Walima wedding catering & floral partition decor in London, Essex, and Kent. From £30pp for 50 to 1,000+ guests.',
+    url: '/nikah-walima-catering-london',
+    areaServed: ['Greater London', 'East London', 'North London', 'West London', 'South London', 'Essex', 'Kent'],
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Nikah & Walima Catering London | 100% HMC Halal From £30pp | Salwah Events"
+  description="Trusted 100% HMC Certified Halal Nikah & Walima catering in London, Essex & Kent from £30pp. Intimate 50-guest Nikah lunches to 1,000+ guest Walima banquets + floral Nikah stages."
+  canonicalPath="/nikah-walima-catering-london"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="100% HMC Certified Halal • Sunnah Hospitality & Grand Banquets"
+    title="Nikah & Walima"
+    highlight="Catering London"
+    subtitle="From serene 50-guest Nikah lunches with floral ceremony partitions to chandelier-lit 1,000+ guest Walima banquets — authentic Bengali, Pakistani, and Indian cuisine prepared fresh in our dedicated London Halal kitchen."
+    image={heroCouple}
+    imageAlt="Muslim bride and groom celebrating their Nikah and Walima reception in London"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Check Nikah / Walima Availability"
+  />
+
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-10">
+          <QuickFactsBox
+            heading="London Nikah & Walima Catering — At a Glance"
+            summary="Salwah Events delivers dignified, 100% HMC Certified Halal Nikah and Walima catering across Greater London, Essex, and Kent — including optional segregated staff, floral Nikah partitions, and full Walima stage decor."
+            facts={quickFacts}
+          />
+
+          <div class="space-y-5">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+              Tailored Formats for <span class="gold-gradient-text italic font-semibold">Nikah &amp; Walima</span>
+            </h2>
+            <div class="space-y-5">
+              {
+                ceremonyPackages.map((item) => (
+                  <div class="luxury-card rounded-2xl p-6 space-y-3">
+                    <div>
+                      <h3 class="font-serif text-2xl font-bold text-salwah-gold">{item.name}</h3>
+                      <p class="text-xs uppercase tracking-wider text-gray-400 mt-0.5">{item.subtitle}</p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                      {item.points.map((pt) => (
+                        <li class="flex items-start gap-2.5">
+                          <span class="text-salwah-gold font-bold mt-0.5 shrink-0">&#10003;</span>
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="rounded-xl overflow-hidden border border-salwah-gold/25">
+              <Picture
+                src={menuBiryani}
+                alt="100% HMC Halal Lamb Kacchi Biryani for London Walima banquets"
+                widths={[480, 800]}
+                formats={['webp']}
+                fallbackFormat="webp"
+                quality={80}
+                loading="lazy"
+                class="h-48 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-salwah-gold/25">
+              <Picture
+                src={galleryStage}
+                alt="Bespoke floral Walima and Nikah wedding stage decoration"
+                widths={[480, 800]}
+                formats={['webp']}
+                fallbackFormat="webp"
+                quality={80}
+                loading="lazy"
+                class="h-48 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-salwah-gold/25">
+              <Picture
+                src={galleryTable}
+                alt="Candlelit Nikah and Walima reception table styling in London"
+                widths={[480, 800]}
+                formats={['webp']}
+                fallbackFormat="webp"
+                quality={80}
+                loading="lazy"
+                class="h-48 w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Honouring Every Islamic Wedding Tradition</h2>
+            <p>
+              A Nikah and Walima carry deep spiritual and family significance. Every guest deserves complete
+              peace of mind regarding Halal integrity, warm hospitality from arrival to dua, and punctual food
+              service that never disrupts prayer times or family portraits.
+            </p>
+            <p>
+              Whether you are planning a blended <a href="/bengali-wedding-catering-london">Bengali</a> and{' '}
+              <a href="/pakistani-wedding-catering-london">Pakistani</a> marriage, an intimate mosque-hall Nikah,
+              or a 700-guest Walima in <a href="/halal-wedding-catering-east-london">East London</a> or{' '}
+              <a href="/halal-wedding-catering-north-west-london">North London</a>, our chefs and coordinators
+              handle every detail with quiet grace. Need help planning your schedule? Download our free{' '}
+              <a href="/resources/timeline-templates">Same-Day Nikah &amp; Walima Timeline PDF</a> or read our{' '}
+              <a href="/blog/how-to-plan-a-pakistani-nikah-ceremony-a-checklist">Nikah Ceremony Checklist</a>.
+            </p>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-5 lg:sticky lg:top-28 space-y-6" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Nikah & Walima LP"
+            defaultService="Both Catering & Stage Decor"
+            heading="Plan Your Nikah or Walima"
+            subheading="Tell us your date, venue & guest count — we'll reply with custom HMC Halal menus and stage options."
+          />
+
+          <div class="mt-6 rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-3 text-sm text-gray-300">
+            <h3 class="font-serif text-lg font-bold text-salwah-gold">Helpful Planning Links</h3>
+            <ul class="space-y-2">
+              <li><a href="/menu" class="hover:text-salwah-gold transition">&rarr; Full 100% HMC Halal Menu</a></li>
+              <li><a href="/packages" class="hover:text-salwah-gold transition">&rarr; Silver (£30pp), Gold (£45pp) &amp; Platinum</a></li>
+              <li><a href="/services/wedding-stage-decoration" class="hover:text-salwah-gold transition">&rarr; Floral Nikah Partitions &amp; Walima Stages</a></li>
+              <li><a href="/resources/gold-calculator" class="hover:text-salwah-gold transition">&rarr; Free Bridal Gold &amp; Zakat Calculator</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} heading="Nikah &amp; Walima Catering FAQs" />
+  <CtaBanner
+    title="Honour Your Nikah &amp; Walima"
+    highlight="With Unforgettable Hospitality"
+    primaryHref="#quote-form"
+    primaryLabel="Request Your Free Quote"
+  />
+</BaseLayout>

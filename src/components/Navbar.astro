@@ -42,13 +42,15 @@ const normalized = currentPath === '/' ? '/' : currentPath.replace(/\/$/, '');
         <Image
           src={salwahLogo}
           alt="Salwah Events and Catering gold calligraphy logo"
-          width={180}
-          height={56}
-          format="webp"
-          quality={90}
+          widths={[540, 1080, 1499]}
+          sizes="(max-width: 640px) 198px, 234px"
+          width={234}
+          height={52}
+          format="png"
           loading="eager"
+          fetchpriority="high"
           decoding="sync"
-          class="h-11 sm:h-13 w-auto"
+          class="h-11 sm:h-12 w-auto select-none drop-shadow-[0_1px_10px_rgba(246,223,145,0.18)]"
         />
       </a>
 

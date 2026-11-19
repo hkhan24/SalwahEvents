@@ -5,12 +5,14 @@ import QuickFactsBox from '@/components/QuickFactsBox.astro';
 import FaqSection from '@/components/FaqSection.astro';
 import CtaBanner from '@/components/CtaBanner.astro';
 import QuoteForm from '@/components/QuoteForm';
+import InstantQuoteEstimator from '@/components/InstantQuoteEstimator';
 
 import headerPackages from '@/assets/images/header-packages.png';
 import { PACKAGES, PACKAGE_COMPARISON } from '@/data/packages';
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
+  buildOfferCatalogSchema,
   buildServiceSchema,
   type BreadcrumbItem,
   type FaqItem,
@@ -55,6 +57,7 @@ const quickFacts = [
 
 const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
+  buildOfferCatalogSchema(),
   buildServiceSchema({
     name: 'Asian Wedding Catering Packages London',
     serviceType: 'Halal Wedding Catering Packages',
@@ -85,15 +88,33 @@ const schemas = [
   />
 
   <section class="py-12 sm:py-16 bg-salwah-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       <QuickFactsBox
         heading="Package Pricing at a Glance"
         summary="All Salwah Events catering packages include 100% HMC Certified Halal cuisine, fresh preparation, and uniformed hospitality staff."
         facts={quickFacts}
       />
 
+      <!-- Interactive Instant Price Estimator (wrapped in block div so Astro island display:contents never collapses vertical spacing) -->
+      <div class="block">
+        <InstantQuoteEstimator client:visible />
+      </div>
+
       <!-- 3 Tier Cards -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      <div class="pt-4 space-y-10">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-2">
+            Clear Per-Head &amp; All-Inclusive Tiers
+          </p>
+          <div class="ornamental-divider mb-4" aria-hidden="true">
+            <span class="ornamental-diamond" />
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+            Compare Our <span class="gold-gradient-text italic font-semibold">Signature Packages</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
         {
           PACKAGES.map((pkg) => (
             <div
@@ -106,13 +127,13 @@ const schemas = [
               }`}
             >
               {pkg.popular && (
-                <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-salwah-gold px-4 py-1 text-xs font-bold uppercase tracking-wider text-black shadow">
+                <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-salwah-gold px-4 py-1 text-xs font-bold uppercase tracking-wider text-black shadow">
                   Most Popular Choice
                 </span>
               )}
 
               <div class="text-center pb-6 border-b border-white/10">
-                <h2 class="font-serif text-3xl font-bold text-white">{pkg.name}</h2>
+                <h3 class="font-serif text-3xl font-bold text-white">{pkg.name}</h3>
                 <div class="mt-3 flex items-baseline justify-center gap-1.5">
                   <span class="font-serif text-4xl sm:text-5xl font-bold text-salwah-gold">{pkg.price}</span>
                   <span class="text-sm text-gray-300">{pkg.unit}</span>
@@ -135,7 +156,7 @@ const schemas = [
                 href="#quote-form"
                 class={`mt-6 inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-bold transition ${
                   pkg.popular
-                    ? 'bg-salwah-gold text-black hover:bg-salwah-gold-light'
+                    ? 'btn-luxury-gold'
                     : 'border border-salwah-gold/50 text-salwah-gold hover:bg-salwah-gold hover:text-black'
                 }`}
               >
@@ -144,6 +165,7 @@ const schemas = [
             </div>
           ))
         }
+        </div>
       </div>
 
       <!-- Comparison Table -->

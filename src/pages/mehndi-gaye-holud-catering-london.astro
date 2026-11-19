@@ -1,0 +1,243 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import galleryMocktails from '@/assets/images/gallery-catering-platters.png';
+import menuStarters from '@/assets/images/menu-starters.png';
+import galleryDessertDisplay from '@/assets/images/gallery-dessert-display.png';
+import menuVegetables from '@/assets/images/menu-vegetables.jpg';
+
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Asian Wedding Catering', href: '/services/asian-wedding-catering' },
+  { name: 'Mehndi & Gaye Holud Catering London' },
+];
+
+const quickFacts = [
+  { label: 'Starting Price', value: 'From £30pp (Silver) • £45pp (Gold) • Custom Live Street-Food Bundles' },
+  { label: 'Guest Capacity', value: '50 to 800+ guests (Garden Marquees, Halls & Community Centres)' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen' },
+  { label: 'Live Stations', value: 'Papri Chaat, Puchka/Golgappa, Live Charcoal Grills, Karak Chai & Jalebi' },
+  { label: 'Holud & Mehndi Decor', value: 'Marigold arches, colourful draping, jhoola swings & festive uplighting' },
+  { label: 'Areas Covered', value: 'East London, North London, West London, South London, Essex & Kent' },
+];
+
+const stations = [
+  {
+    name: 'Live Chaat & Puchka Street-Food Cart',
+    items: [
+      'Crispy Bengali Puchka / Golgappa with spiced tamarind & mint water',
+      'Chana & Papri Chaat assembled fresh to order with pomegranate & yoghurt',
+      'Punjabi Vegetable Samosas & Aloo Tikki Chaat',
+      'Tangy house tamarind, coriander-mint & chilli chutneys',
+    ],
+  },
+  {
+    name: 'Charcoal Tandoor & Kebab Grills',
+    items: [
+      'Sizzling HMC Halal Lamb Seekh Kebabs & Peshawari Chapli Kebabs',
+      'Smoky Chicken Tikka, Creamy Malai Tikka & Spiced Wings',
+      'Masala Fried Fish & Crispy Chilli Paneer for vegetarian guests',
+      'Served hot with freshly grilled tandoori naan & pickled red onions',
+    ],
+  },
+  {
+    name: 'Festive Mains, Biryani & Bengali Borthas',
+    items: [
+      'Dhakai Lamb Kacchi Biryani or Chicken Biryani cooked on dum',
+      'Chittagong Beef Kala Bhuna, Chicken Karahi & Lamb Bhuna',
+      'Traditional Bengali Borthas (Aloo, Begun) & slow-simmered Tarka Daal',
+      'Ideal for vibrant family-style buffet dining between dances',
+    ],
+  },
+  {
+    name: 'Karak Chai, Spiced Borhani & Sweet Finale',
+    items: [
+      'Pouring Cardamom Karak Chai & Kashmiri Pink Chai live station',
+      'Chilled Bengali Spiced Borhani, Mango Lassi & colourful Fruit Mocktails',
+      'Warm Gulab Jamun, Roshmalai, Gajar Halwa & Pistachio Baklava',
+      'Artisan tiered mithai displays styled to match your Mehndi palette',
+    ],
+  },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Do you cater traditional Bengali Gaye Holud nights in East London and Essex?',
+    answer:
+      'Yes! We specialise in Bengali Gaye Holud catering across East London (Tower Hamlets, Newham, Redbridge, Ilford, Romford) and Essex — offering puchka/chaat counters, kebabs, kacchi biryani, beef kala bhuna, traditional borthas, spiced borhani, and mishti/roshmalai.',
+  },
+  {
+    question: 'Can we book Mehndi catering for a marquee or home garden event?',
+    answer:
+      'Yes. We deliver complete mobile setups for marquee and home Mehndi or Sangeet nights starting from 50 guests — bringing insulated hot-boxes, chafing dishes, live chaat/chai stations, crockery, and uniformed staff.',
+  },
+  {
+    question: 'Can you style our Mehndi or Gaye Holud stage as well as provide food?',
+    answer:
+      'Absolutely! Combine catering with vibrant Mehndi / Gaye Holud stage decoration featuring marigold florals, rich jewel-toned draping, brass lanterns, cushions, and focal couple seating.',
+  },
+  {
+    question: 'Do you offer multi-event discounts if we book Mehndi AND Walima together?',
+    answer:
+      'Yes — families who book multiple wedding events (such as Mehndi / Gaye Holud plus Nikah or Walima) receive streamlined coordination and preferential bundled pricing. Mention all your event dates in the quote form.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Mehndi & Gaye Holud Catering London (100% HMC Halal)',
+    serviceType: 'Mehndi & Gaye Holud Catering & Live Street-Food Stations',
+    description:
+      'Vibrant 100% HMC Certified Halal Mehndi & Gaye Holud catering in London, Essex, and Kent with live chaat, puchka, charcoal grills, karak chai, mocktails & stage decor from £30pp.',
+    url: '/mehndi-gaye-holud-catering-london',
+    areaServed: ['Greater London', 'East London', 'North London', 'West London', 'Essex', 'Kent'],
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Mehndi & Gaye Holud Catering London | Live Chaat & Chai | Salwah Events"
+  description="Vibrant 100% HMC Certified Halal Mehndi & Gaye Holud catering in London, Essex & Kent from £30pp. Live chaat & puchka stalls, charcoal kebabs, karak chai, mocktails & festive stages."
+  canonicalPath="/mehndi-gaye-holud-catering-london"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Live Chaat • Charcoal Grills • Karak Chai • Festive Stages"
+    title="Mehndi & Gaye Holud"
+    highlight="Catering London"
+    subtitle="Bring irresistible street-food theatre, sizzling 100% HMC Halal kebabs, fragrant biryani, spiced borhani, and pouring karak chai to your Mehndi, Sangeet, or Gaye Holud celebration across London, Essex & Kent."
+    image={galleryMocktails}
+    imageAlt="Festive Mehndi and Gaye Holud catering with fruit mocktails, spiced borhani and pouring karak chai"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Plan My Mehndi / Holud Menu"
+  />
+
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-10">
+          <QuickFactsBox
+            heading="Mehndi & Gaye Holud Catering — Quick Facts"
+            summary="Designed for joyful, high-energy pre-wedding nights — combining theatrical live street-food counters, abundant Halal buffets, colourful mocktails, and festive stage decor."
+            facts={quickFacts}
+          />
+
+          <div class="space-y-5">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+              Signature <span class="gold-gradient-text italic font-semibold">Mehndi &amp; Holud Stations</span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {
+                stations.map((st) => (
+                  <div class="luxury-card rounded-2xl p-6 space-y-3">
+                    <h3 class="font-serif text-xl font-bold text-salwah-gold">{st.name}</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                      {st.items.map((item) => (
+                        <li class="flex items-start gap-2">
+                          <span class="text-salwah-gold font-bold mt-0.5 shrink-0">&#10003;</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="rounded-xl overflow-hidden border border-salwah-gold/25">
+              <Picture
+                src={menuStarters}
+                alt="Chargrilled Halal seekh kebabs, chicken tikka and samosas for Mehndi nights"
+                widths={[480, 800]}
+                formats={['webp']}
+                fallbackFormat="webp"
+                quality={80}
+                loading="lazy"
+                class="h-48 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-salwah-gold/25">
+              <Picture
+                src={menuVegetables}
+                alt="Traditional Bengali borthas and vibrant vegetarian dishes for Gaye Holud"
+                widths={[480, 800]}
+                formats={['webp']}
+                fallbackFormat="webp"
+                quality={80}
+                loading="lazy"
+                class="h-48 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-salwah-gold/25">
+              <Picture
+                src={galleryDessertDisplay}
+                alt="Festive mithai and dessert display for London Mehndi and Gaye Holud"
+                widths={[480, 800]}
+                formats={['webp']}
+                fallbackFormat="webp"
+                quality={80}
+                loading="lazy"
+                class="h-48 w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Built for High-Energy Nights, Dances &amp; Grazing</h2>
+            <p>
+              Unlike a formal seated reception, a Mehndi or Gaye Holud thrives on movement — guests mingling,
+              henna artists working, choreography rehearsals, and family songs. Our flexible service timings
+              keep live chaat counters, sizzling kebabs, fruit mocktails, and piping-hot karak chai flowing
+              smoothly around your dance performances so nobody misses a moment or eats cold food.
+            </p>
+            <p>
+              Booking multiple events? Combine your Mehndi or Gaye Holud with our{' '}
+              <a href="/nikah-walima-catering-london">Nikah &amp; Walima Catering</a>,{' '}
+              <a href="/bengali-wedding-catering-london">Bengali Wedding Catering</a>, or{' '}
+              <a href="/pakistani-wedding-catering-london">Pakistani Wedding Catering</a> for cohesive menus and
+              preferred multi-day pricing.
+            </p>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-5 lg:sticky lg:top-28 space-y-6" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Mehndi & Gaye Holud LP"
+            defaultService="Both Catering & Stage Decor"
+            heading="Get a Mehndi / Holud Quote"
+            subheading="Share your guest count, venue & live station wishlist — we'll send clear pricing fast."
+          />
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} heading="Mehndi &amp; Gaye Holud Catering FAQs" />
+  <CtaBanner
+    title="Make Your Mehndi or Holud"
+    highlight="The Talk of the Family"
+    primaryHref="#quote-form"
+    primaryLabel="Request Your Free Quote"
+  />
+</BaseLayout>

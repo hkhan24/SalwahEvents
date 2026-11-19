@@ -1,0 +1,201 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import heroImg from '@/assets/images/header-asian-catering.png';
+import menuBiryani from '@/assets/images/menu-biryani.png';
+import {
+  buildBlogPostingSchema,
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const url = '/blog/asian-wedding-catering-cost-london-2026-guide';
+const title = 'Asian Wedding Catering Costs in London: Complete Price Guide (From £30pp)';
+const description =
+  'How much does 100% HMC Halal Asian wedding catering cost in London? Real per-person pricing for 100, 200, 350, 500 & 800 guests, Silver vs Gold vs Platinum inclusions, and money-saving tips.';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Asian Wedding Catering Cost Guide' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'What is the average cost per head for Halal Asian wedding catering in London?',
+    answer:
+      'In London, 100% HMC Certified Halal Asian wedding catering typically ranges from £30 per person for a classic Silver 3-course menu up to £45 per person for a Gold banquet with chargrilled starters, welcome mocktails, and floor supervision — or all-inclusive catering + luxury stage decor bundles starting from £17,500 for 200 guests.',
+  },
+  {
+    question: 'How much does catering cost for a 300-guest Asian wedding in London?',
+    answer:
+      'For 300 guests, expect approximately £9,000 on a £30pp Silver package or £13,500 on a £45pp Gold package (including grilled starters, welcome mocktails, crockery, glassware, and uniformed staff), before any optional stage decoration or live chaat/chai stations.',
+  },
+  {
+    question: 'Does Asian wedding catering price include crockery, cutlery, and waiting staff?',
+    answer:
+      'With Salwah Events, yes — our Silver, Gold, and Platinum packages all include crockery, cutlery, and professional uniformed waiting staff so there are no surprise last-minute hire bills.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildBlogPostingSchema({ title, description, url, publishedIso: '2026-02-10' }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Asian Wedding Catering Costs London | Price Guide From £30pp | Salwah Events"
+  description={description}
+  canonicalPath={url}
+  ogType="article"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Updated Pricing Guide • 6 Min Read"
+    title="Asian Wedding Catering Costs"
+    highlight="in London (From £30pp)"
+    subtitle="Real per-head figures, guest-count budgets from 100 to 800 guests, what's included in Silver, Gold & Platinum tiers, and how to avoid hidden venue catering costs."
+    image={heroImg}
+    imageAlt="Grand London Asian wedding banquet buffet with copper chafing dishes"
+    breadcrumbs={breadcrumbs}
+    showTrustBadges={false}
+    showCtas={false}
+  />
+
+  <article class="py-14 sm:py-20 bg-salwah-black">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-invert prose-lg prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold text-gray-300">
+      <p class="lead text-gray-200">
+        One of the very first questions couples and parents ask when planning a Bengali, Pakistani, or Indian
+        wedding is simple: <strong>how much does Halal Asian wedding catering actually cost in London?</strong>{' '}
+        Because many caterers hide pricing behind vague enquiries, we have laid out transparent, real-world UK
+        figures so you can budget confidently from day one.
+      </p>
+
+      <h2>Typical Per-Head Wedding Catering Prices in London</h2>
+      <ul>
+        <li>
+          <strong>Silver Tier (£30 per person):</strong> Ideal for Nikah lunches, Mehndi nights, and classic
+          family receptions — includes 2 starters, 3 HMC Halal mains, pilau rice, fresh naan, salad, 1 dessert,
+          crockery, cutlery, and uniformed waiting staff.
+        </li>
+        <li>
+          <strong>Gold Tier (£45 per person — Most Popular):</strong> Designed for full-scale Walimas and
+          receptions — upgrades to 3 starters with charcoal grills, 4 signature mains, dum biryani &amp; pilau,
+          2 desserts, welcome fruit mocktails, glassware, and an experienced floor supervisor.
+        </li>
+        <li>
+          <strong>Platinum All-Inclusive (From £17,500 for 200 guests):</strong> Combines complete Gold Halal
+          catering with bespoke <a href="/services/wedding-stage-decoration">luxury floral stage decoration</a>,
+          table centrepieces, lighting, a live dessert/chai station, and dedicated event management.
+        </li>
+      </ul>
+
+      <h2>Sample Budget Breakdown by Guest Count</h2>
+      <div class="not-prose my-6 overflow-x-auto rounded-2xl border border-salwah-gold/25 bg-[#0f1119] p-4">
+        <table class="w-full text-left text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-salwah-gold/30 text-salwah-gold font-serif">
+              <th class="py-3 px-3">Guest Count</th>
+              <th class="py-3 px-3">Silver (£30pp)</th>
+              <th class="py-3 px-3">Gold (£45pp)</th>
+              <th class="py-3 px-3">Best Suited Event</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/10 text-gray-200">
+            <tr>
+              <td class="py-3 px-3 font-semibold">100 Guests</td>
+              <td class="py-3 px-3">£3,000</td>
+              <td class="py-3 px-3">£4,500</td>
+              <td class="py-3 px-3 text-gray-400">Intimate Nikah / Mehndi</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold">200 Guests</td>
+              <td class="py-3 px-3">£6,000</td>
+              <td class="py-3 px-3">£9,000</td>
+              <td class="py-3 px-3 text-gray-400">Nikah &amp; Walima / Reception</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold">350 Guests</td>
+              <td class="py-3 px-3">£10,500</td>
+              <td class="py-3 px-3">£15,750</td>
+              <td class="py-3 px-3 text-gray-400">Classic East London Wedding</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold">500 Guests</td>
+              <td class="py-3 px-3">£15,000</td>
+              <td class="py-3 px-3">£22,500</td>
+              <td class="py-3 px-3 text-gray-400">Grand Ballroom Walima</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold">800 Guests</td>
+              <td class="py-3 px-3">£24,000</td>
+              <td class="py-3 px-3">£36,000</td>
+              <td class="py-3 px-3 text-gray-400">Landmark Venue Celebration</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="not-prose my-8 rounded-2xl overflow-hidden border border-salwah-gold/25">
+        <Picture
+          src={menuBiryani}
+          alt="Freshly cooked saffron Lamb Kacchi Biryani prepared for London Asian weddings"
+          widths={[480, 800]}
+          formats={['webp']}
+          fallbackFormat="webp"
+          quality={80}
+          loading="lazy"
+          class="w-full h-72 object-cover"
+        />
+      </div>
+
+      <h2>5 Hidden Costs to Watch Out For When Comparing Caterers</h2>
+      <ol>
+        <li>
+          <strong>Crockery, Cutlery &amp; Glassware Hire:</strong> Some low headline per-head quotes exclude
+          plates, forks, water glasses, and clearing staff — easily adding £5–£9 per guest later.
+        </li>
+        <li>
+          <strong>Venue Kitchen Access &amp; Corkage/Service Fees:</strong> Dry-hire hotels and country houses
+          sometimes charge external kitchen surcharges. See our{' '}
+          <a href="/dry-hire-asian-wedding-catering-london">Dry-Hire Wedding Catering Guide</a> for what to ask
+          before signing your hall contract.
+        </li>
+        <li>
+          <strong>Separate Stage Decor &amp; Table Styling Transport:</strong> Bundling catering and{' '}
+          <a href="/services/wedding-stage-decoration">stage decoration</a> with one team reduces double van
+          load-in fees and tight turnaround penalties.
+        </li>
+        <li>
+          <strong>Menu Upgrades:</strong> Whole roast lamb, king prawn dishes, live chaat stations, and pouring
+          karak chai counters add unforgettable theatre — always itemise them clearly upfront.
+        </li>
+        <li>
+          <strong>VAT &amp; Service Charge Transparency:</strong> Always ask whether a written quotation is
+          inclusive or exclusive of VAT before comparing two caterers side by side.
+        </li>
+      </ol>
+
+      <h2>Estimate Your Own Wedding Budget in Seconds</h2>
+      <p>
+        Ready to crunch your exact numbers? Compare our full <a href="/packages">Wedding Catering Packages</a>,
+        use our free <a href="/resources/budget-calculator">Wedding Budget Calculator</a>, or try our{' '}
+        <a href="/resources/quote-builder">Custom Quote Builder</a> to export a tailored PDF menu sheet.
+      </p>
+    </div>
+  </article>
+
+  <CtaBanner
+    title="Want an Exact Written Quote"
+    highlight="With Zero Hidden Fees?"
+    primaryHref="/contact#quote-form"
+    primaryLabel="Get My Free Quote"
+  />
+</BaseLayout>

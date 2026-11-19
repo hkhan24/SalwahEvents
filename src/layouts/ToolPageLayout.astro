@@ -58,9 +58,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 
   <section class="py-12 sm:py-16 bg-salwah-black">
     <div class={`${maxWidth === '7xl' ? 'max-w-7xl' : 'max-w-4xl'} mx-auto px-4 sm:px-6 lg:px-8 space-y-12`}>
-      <slot />
+      <div class="block space-y-12">
+        <slot />
+      </div>
 
-      <div class="rounded-2xl border border-salwah-gold/20 bg-[#10121a] p-6 sm:p-8">
+      <div class="mt-12 rounded-2xl border border-salwah-gold/20 bg-[#10121a] p-6 sm:p-8">
         <h2 class="font-serif text-2xl font-bold text-salwah-gold mb-4">How to Use This Tool</h2>
         <ul class="list-disc list-inside space-y-2 text-sm sm:text-base text-gray-300">
           {howToUse.map((tip) => <li>{tip}</li>)}

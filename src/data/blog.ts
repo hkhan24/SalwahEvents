@@ -1,6 +1,8 @@
 import blogIndianMenu from '@/assets/images/blog-indian-menu.png';
 import blogNikahChecklist from '@/assets/images/blog-nikah-checklist.png';
 import blogEastLondonVenues from '@/assets/images/blog-east-london-venues.png';
+import headerAsianCatering from '@/assets/images/header-asian-catering.png';
+import headerMenu from '@/assets/images/header-menu.png';
 
 export interface BlogPostMeta {
   slug: string;
@@ -16,6 +18,32 @@ export interface BlogPostMeta {
 }
 
 export const BLOG_POSTS: BlogPostMeta[] = [
+  {
+    slug: 'asian-wedding-catering-cost-london-2026-guide',
+    href: '/blog/asian-wedding-catering-cost-london-2026-guide',
+    title: 'Asian Wedding Catering Costs in London: Complete Price Guide (From £30pp)',
+    description:
+      'Real per-person pricing for 100, 200, 350, 500 & 800 guests in London, Silver vs Gold vs Platinum inclusions, and 5 hidden catering costs to avoid.',
+    publishedDate: 'February 10, 2026',
+    publishedIso: '2026-02-10',
+    tags: ['Pricing Guide', 'Budgeting'],
+    readTime: '6 min read',
+    image: headerAsianCatering,
+    imageAlt: 'Grand London Asian wedding banquet buffet with copper chafing dishes.',
+  },
+  {
+    slug: 'hmc-halal-wedding-catering-guide-london',
+    href: '/blog/hmc-halal-wedding-catering-guide-london',
+    title: 'Why 100% HMC Certified Halal Matters for Your London Asian Wedding',
+    description:
+      'What HMC Certification guarantees, dedicated Halal kitchen standards, and 6 essential questions every Muslim family should ask before booking.',
+    publishedDate: 'February 18, 2026',
+    publishedIso: '2026-02-18',
+    tags: ['HMC Halal', 'Catering Guide'],
+    readTime: '5 min read',
+    image: headerMenu,
+    imageAlt: 'Salwah Events chefs preparing 100% HMC Certified Halal wedding dishes in London.',
+  },
   {
     slug: 'top-5-menu-ideas-for-an-indian-wedding-in-london',
     href: '/blog/top-5-menu-ideas-for-an-indian-wedding-in-london',

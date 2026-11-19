@@ -27,13 +27,20 @@ const requiredFiles = [
   'contact.html',
   'about.html',
   'blog.html',
+  'blog/asian-wedding-catering-cost-london-2026-guide.html',
+  'blog/hmc-halal-wedding-catering-guide-london.html',
   'blog/top-5-menu-ideas-for-an-indian-wedding-in-london.html',
   'blog/how-to-plan-a-pakistani-nikah-ceremony-a-checklist.html',
   'blog/best-wedding-venues-in-east-london-for-asian-weddings.html',
   'bengali-wedding-catering-london.html',
   'pakistani-wedding-catering-london.html',
   'indian-wedding-catering-london.html',
+  'nikah-walima-catering-london.html',
+  'mehndi-gaye-holud-catering-london.html',
+  'halal-wedding-catering-east-london.html',
+  'halal-wedding-catering-north-west-london.html',
   'halal-wedding-catering-essex-kent.html',
+  'dry-hire-asian-wedding-catering-london.html',
   'wedding-stage-decor-london.html',
   'resources.html',
   'resources/quote-builder.html',
@@ -58,6 +65,7 @@ const requiredFiles = [
   '404.html',
   '.htaccess',
   'robots.txt',
+  'llms.txt',
   'sitemap.xml',
   'sitemap-index.xml',
   'favicon.png',
@@ -168,7 +176,12 @@ for (const file of htmlFiles) {
     'bengali-wedding-catering-london.html',
     'pakistani-wedding-catering-london.html',
     'indian-wedding-catering-london.html',
+    'nikah-walima-catering-london.html',
+    'mehndi-gaye-holud-catering-london.html',
+    'halal-wedding-catering-east-london.html',
+    'halal-wedding-catering-north-west-london.html',
     'halal-wedding-catering-essex-kent.html',
+    'dry-hire-asian-wedding-catering-london.html',
     'menu.html',
     'packages.html',
   ];
@@ -188,7 +201,7 @@ if (fs.existsSync(sitemapPath)) {
   const xml = fs.readFileSync(sitemapPath, 'utf-8');
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   console.log(`  INFO: sitemap.xml lists ${locs.length} public URLs`);
-  if (locs.length < 30) fail(`sitemap.xml expected >=30 URLs, found ${locs.length}`);
+  if (locs.length < 40) fail(`sitemap.xml expected >=40 URLs, found ${locs.length}`);
   for (const forbidden of ['/admin', '/privacy-policy', '/cookie-notice', '/404', '/wedding-stage-decor-london']) {
     if (locs.some((u) => u.endsWith(forbidden) || u.includes(`${forbidden}/`))) {
       fail(`sitemap.xml should not list ${forbidden}`);
@@ -205,7 +218,13 @@ if (fs.existsSync(sitemapPath)) {
     'https://www.salwahevents.com/bengali-wedding-catering-london',
     'https://www.salwahevents.com/pakistani-wedding-catering-london',
     'https://www.salwahevents.com/indian-wedding-catering-london',
+    'https://www.salwahevents.com/nikah-walima-catering-london',
+    'https://www.salwahevents.com/mehndi-gaye-holud-catering-london',
+    'https://www.salwahevents.com/halal-wedding-catering-east-london',
+    'https://www.salwahevents.com/halal-wedding-catering-north-west-london',
     'https://www.salwahevents.com/halal-wedding-catering-essex-kent',
+    'https://www.salwahevents.com/dry-hire-asian-wedding-catering-london',
+    'https://www.salwahevents.com/resources/gold-calculator',
   ]) {
     if (!locs.includes(mustHave)) {
       fail(`sitemap.xml missing required URL: ${mustHave}`);

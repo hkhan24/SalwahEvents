@@ -3,7 +3,9 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
+import '@fontsource/playfair-display/400-italic.css';
 import '@fontsource/playfair-display/600.css';
+import '@fontsource/playfair-display/600-italic.css';
 import '@fontsource/playfair-display/700.css';
 import '@/styles/global.css';
 
@@ -12,7 +14,7 @@ import Footer from '@/components/Footer.astro';
 import MobileStickyBar from '@/components/MobileStickyBar.astro';
 import CookieBanner from '@/components/CookieBanner.astro';
 import { SITE } from '@/data/site';
-import { buildLocalBusinessSchema } from '@/lib/schema';
+import { buildLocalBusinessSchema, buildWebSiteSchema } from '@/lib/schema';
 
 export interface Props {
   title: string;
@@ -39,7 +41,11 @@ const {
 const cleanPath = canonicalPath === '/' ? '' : canonicalPath.replace(/\/$/, '');
 const canonicalUrl = `${SITE.siteUrl}${cleanPath}`;
 const shouldNoIndex = SITE.isStaging || noindex;
-const allSchemas = [buildLocalBusinessSchema(), ...schemas];
+const allSchemas = [
+  buildLocalBusinessSchema(),
+  ...(cleanPath === '' ? [buildWebSiteSchema()] : []),
+  ...schemas,
+];
 const gtmId = SITE.tracking.gtmId;
 const adsId = SITE.tracking.googleAdsId;
 const callWhatsappSendTo = SITE.tracking.callWhatsappSendTo;
@@ -64,6 +70,7 @@ const callWhatsappSendTo = SITE.tracking.callWhatsappSendTo;
     <!-- Gold Salwah Calligraphy Medallion Favicon -->
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Salwah Events AI & Crawler Reference" />
 
     <!-- Open Graph -->
     <meta property="og:site_name" content={SITE.businessName} />
@@ -146,6 +153,36 @@ const callWhatsappSendTo = SITE.tracking.callWhatsappSendTo;
     {!hideChrome && <Footer />}
     {!hideChrome && <MobileStickyBar />}
     {!hideChrome && <CookieBanner />}
+
+    <!-- Progressive Scroll Reveal (Zero CLS, crawlers & no-JS always see full content) -->
+    <script is:inline>
+      (function () {
+        if (!('IntersectionObserver' in window)) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var nodes = document.querySelectorAll('[data-reveal]');
+        if (!nodes.length) return;
+        document.documentElement.classList.add('js-reveal');
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.setAttribute('data-reveal', 'visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -40px 0px', threshold: 0.08 }
+        );
+        nodes.forEach(function (el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.95) {
+            el.setAttribute('data-reveal', 'visible');
+          } else {
+            io.observe(el);
+          }
+        });
+      })();
+    </script>
 
     <!-- Global Conversion 2 Listener: Phone (tel:) & WhatsApp (wa.me / whatsapp.com) Clicks -->
     <script is:inline define:vars={{ callWhatsappSendTo }}>

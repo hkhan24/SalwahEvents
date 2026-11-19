@@ -12,6 +12,7 @@ import { MENU_CATEGORIES } from '@/data/menu';
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
+  buildMenuSchema,
   buildServiceSchema,
   type BreadcrumbItem,
   type FaqItem,
@@ -56,6 +57,7 @@ const quickFacts = [
 
 const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
+  buildMenuSchema(),
   buildServiceSchema({
     name: 'Halal Asian Wedding Catering Menus London',
     serviceType: 'Halal Wedding Catering Menu',

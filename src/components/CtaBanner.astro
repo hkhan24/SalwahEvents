@@ -11,28 +11,32 @@ interface Props {
 
 const {
   title = 'Sample Our Wedding Menus &',
-  highlight = 'Get a Custom Proposal',
-  subtitle = 'Book a no-obligation menu consultation with our chefs in London. 100% HMC Certified Halal catering from £30pp for 50 to 1,000+ guests.',
+  highlight = 'Reserve Your Date',
+  subtitle = 'Book a complimentary menu consultation with our culinary & decor specialists in London. 100% HMC Certified Halal catering from £30pp for 50 to 1,000+ guests.',
   primaryHref = '/contact#quote-form',
   primaryLabel = 'Book a Menu Consultation',
 } = Astro.props;
 ---
 
-<section class="py-16 sm:py-20 bg-gradient-to-br from-[#1d1709] via-[#0d0e14] to-salwah-black border-t border-salwah-gold/25">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-3">
-      London • Essex • Kent
+<section class="relative overflow-hidden py-18 sm:py-24 bg-gradient-to-br from-[#231b09] via-[#0c0d13] to-salwah-black border-t border-salwah-gold/30">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(246,223,145,0.14),transparent_70%)]" aria-hidden="true" />
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-salwah-gold mb-3">
+      Greater London • Essex • Kent • Peak Dates Fill Early
     </p>
-    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-      {title} <span class="text-salwah-gold">{highlight}</span>
+    <div class="ornamental-divider mb-5" aria-hidden="true">
+      <span class="ornamental-diamond" />
+    </div>
+    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+      {title} <span class="gold-gradient-text italic font-semibold">{highlight}</span>
     </h2>
-    <p class="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+    <p class="mt-4 text-base sm:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
       {subtitle}
     </p>
-    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+    <div class="mt-9 flex flex-col sm:flex-row justify-center gap-3.5">
       <a
         href={primaryHref}
-        class="inline-flex items-center justify-center rounded-xl bg-salwah-gold px-7 py-4 text-base font-bold text-black hover:bg-salwah-gold-light transition shadow-lg shadow-salwah-gold/20"
+        class="btn-luxury-gold inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-bold"
       >
         {primaryLabel}
       </a>
@@ -40,15 +44,15 @@ const {
         href={SITE.whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-xl bg-[#25D366] px-7 py-4 text-base font-bold text-black hover:brightness-105 transition"
+        class="inline-flex items-center justify-center rounded-xl bg-[#25D366] px-7 py-4 text-base font-bold text-black hover:brightness-105 transition shadow-lg shadow-[#25D366]/15"
       >
         WhatsApp {SITE.phoneDisplay}
       </a>
       <a
         href={SITE.phoneHref}
-        class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/40 px-7 py-4 text-base font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+        class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/45 bg-black/40 px-7 py-4 text-base font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
       >
-        Call Now
+        Call {SITE.phoneDisplay}
       </a>
     </div>
   </div>

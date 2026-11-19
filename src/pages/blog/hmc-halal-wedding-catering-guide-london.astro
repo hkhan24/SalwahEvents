@@ -1,0 +1,149 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import heroImg from '@/assets/images/header-menu.png';
+import menuStarters from '@/assets/images/menu-starters.png';
+import {
+  buildBlogPostingSchema,
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const url = '/blog/hmc-halal-wedding-catering-guide-london';
+const title = 'Why 100% HMC Certified Halal Matters for Your London Asian Wedding';
+const description =
+  'A clear guide for Muslim families booking wedding catering in London: what 100% HMC Certification means, dedicated Halal kitchen standards, and 6 essential questions to ask any caterer.';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: '100% HMC Halal Wedding Catering Guide' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'What does HMC Certified Halal mean for wedding catering?',
+    answer:
+      'HMC (Halal Monitoring Committee) is the UK\'s most widely trusted independent Halal certification body, inspecting non-stunned, hand-slaughtered meat and poultry from abattoir through processing and supply chain with full traceability.',
+  },
+  {
+    question: 'Is Salwah Events kitchen 100% dedicated Halal?',
+    answer:
+      'Yes. Salwah Events operates a dedicated 100% HMC Certified Halal production kitchen in Edmonton, London (N18 1UB) — guaranteeing zero cross-contamination across every starter, biryani, curry, and dessert we serve.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildBlogPostingSchema({ title, description, url, publishedIso: '2026-02-18' }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="100% HMC Certified Halal Wedding Catering London Guide | Salwah Events"
+  description={description}
+  canonicalPath={url}
+  ogType="article"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Halal Integrity Guide • 5 Min Read"
+    title="100% HMC Certified Halal"
+    highlight="Wedding Catering in London"
+    subtitle="What HMC certification guarantees, how to verify dedicated Halal kitchen standards, and six essential questions every family should ask before booking their wedding caterer."
+    image={heroImg}
+    imageAlt="Salwah Events chefs preparing 100% HMC Certified Halal wedding dishes in London"
+    breadcrumbs={breadcrumbs}
+    showTrustBadges={false}
+    showCtas={false}
+  />
+
+  <article class="py-14 sm:py-20 bg-salwah-black">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-invert prose-lg prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold text-gray-300">
+      <p class="lead text-gray-200">
+        When you invite 200 to 1,000+ cherished relatives, elders, and scholars to celebrate your{' '}
+        <a href="/nikah-walima-catering-london">Nikah or Walima</a>, serving food that every single guest can
+        eat with complete confidence is non-negotiable. Yet many couples discover late in planning that a generic
+        &ldquo;Halal available&rdquo; label on a venue brochure does not automatically mean 100% HMC Certified
+        ingredients or a dedicated Halal kitchen.
+      </p>
+
+      <h2>What Sets 100% HMC Certified Halal Apart?</h2>
+      <p>
+        The Halal Monitoring Committee (HMC) operates independent physical inspection and supply-chain
+        verification across UK abattoirs, wholesalers, and suppliers. For British Bangladeshi, Pakistani, and
+        Indian Muslim families, HMC certification is the gold standard because it verifies traditional hand
+        slaughter, non-stunned meat and poultry, and unbroken batch traceability.
+      </p>
+
+      <div class="not-prose my-8 rounded-2xl overflow-hidden border border-salwah-gold/25">
+        <Picture
+          src={menuStarters}
+          alt="100% HMC Certified Halal chargrilled seekh kebabs and chicken tikka platters"
+          widths={[480, 800]}
+          formats={['webp']}
+          fallbackFormat="webp"
+          quality={80}
+          loading="lazy"
+          class="w-full h-72 object-cover"
+        />
+      </div>
+
+      <h2>6 Questions to Ask Any London Wedding Caterer Before Booking</h2>
+      <ol>
+        <li>
+          <strong>Is ALL meat and poultry 100% HMC Certified?</strong> Confirm that starters (such as chicken
+          wings, samosas, and seekh kebabs) as well as main curries and biryanis are sourced strictly from HMC
+          suppliers — not just the hero lamb dish.
+        </li>
+        <li>
+          <strong>Do you cook in a dedicated Halal kitchen?</strong> Shared hotel kitchens can introduce
+          cross-contamination concerns on grills, fryers, and utensils. Dedicated Halal production kitchens
+          eliminate that worry entirely.
+        </li>
+        <li>
+          <strong>Are desserts, sauces, and pastries checked for gelatine?</strong> Always confirm cheesecakes,
+          mousses, and sweet-table items use strictly vegetarian/Halal-suitable ingredients.
+        </li>
+        <li>
+          <strong>How is food kept piping hot from kitchen to venue?</strong> Look for a caterer with rapid
+          transport across <a href="/halal-wedding-catering-east-london">East London</a>,{' '}
+          <a href="/halal-wedding-catering-north-west-london">North &amp; West London</a>, and{' '}
+          <a href="/halal-wedding-catering-essex-kent">Essex &amp; Kent</a> using commercial hot-holding units.
+        </li>
+        <li>
+          <strong>Can we book a menu consultation and food sampling first?</strong> Never commit to 400 plates
+          blindly — sample the kacchi biryani, grilled starters, and curries with your parents before locking
+          your menu.
+        </li>
+        <li>
+          <strong>Do you provide full crockery, glassware, and uniformed staff?</strong> Turnkey service lets
+          both families focus on hospitality and dua rather than chasing plates and chafing fuel.
+        </li>
+      </ol>
+
+      <h2>The Salwah Events 100% HMC Guarantee</h2>
+      <p>
+        From our dedicated Edmonton (N18) London kitchen, every single dish across our{' '}
+        <a href="/bengali-wedding-catering-london">Bengali</a>,{' '}
+        <a href="/pakistani-wedding-catering-london">Pakistani</a>, and{' '}
+        <a href="/indian-wedding-catering-london">Indian</a> wedding menus is prepared with 100% HMC Certified
+        Halal meat and poultry, paired with handcrafted fruit mocktails, spiced borhani, and pouring karak chai.
+        Browse our complete <a href="/menu">Halal Wedding Menu</a> or <a href="/contact#quote-form">book a complimentary menu consultation</a> today.
+      </p>
+    </div>
+  </article>
+
+  <CtaBanner
+    title="Plan Your Wedding With"
+    highlight="100% HMC Peace of Mind"
+    primaryHref="/contact#quote-form"
+    primaryLabel="Book a Menu Consultation"
+  />
+</BaseLayout>

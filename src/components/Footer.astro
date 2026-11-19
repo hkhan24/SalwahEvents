@@ -10,28 +10,28 @@ const cateringLinks = [
   { label: 'Bengali Wedding Catering London', href: '/bengali-wedding-catering-london' },
   { label: 'Pakistani Wedding Catering London', href: '/pakistani-wedding-catering-london' },
   { label: 'Indian Wedding Catering London', href: '/indian-wedding-catering-london' },
-  { label: 'Halal Catering Essex & Kent', href: '/halal-wedding-catering-essex-kent' },
+  { label: 'Nikah & Walima Catering London', href: '/nikah-walima-catering-london' },
+  { label: 'Mehndi & Gaye Holud Catering', href: '/mehndi-gaye-holud-catering-london' },
+  { label: 'Dry-Hire, Hotel & Marquee Catering', href: '/dry-hire-asian-wedding-catering-london' },
 ];
 
-const serviceLinks = [
+const areaAndServiceLinks = [
+  { label: 'East London Halal Catering', href: '/halal-wedding-catering-east-london' },
+  { label: 'North & West London Catering', href: '/halal-wedding-catering-north-west-london' },
+  { label: 'Essex & Kent Halal Catering', href: '/halal-wedding-catering-essex-kent' },
   { label: 'Wedding Stage Decoration', href: '/services/wedding-stage-decoration' },
   { label: 'Event Management & Planning', href: '/services/event-management-planning' },
   { label: 'Partner Venues & Locations', href: '/services/venues-locations' },
-  { label: 'Wedding Catering Menus', href: '/menu' },
+  { label: 'Full Halal Wedding Menu', href: '/menu' },
   { label: 'Packages (From £30pp)', href: '/packages' },
-  { label: 'Gallery', href: '/gallery' },
-];
-
-const resourceLinks = [
-  { label: 'About Salwah Events', href: '/about' },
-  { label: 'Free Wedding Planning Tools', href: '/resources' },
-  { label: 'Custom Quote Builder', href: '/resources/quote-builder' },
+  { label: 'Gallery & Portfolio', href: '/gallery' },
+  { label: '14 Free Planning Tools', href: '/resources' },
   { label: 'Wedding Planning Blog', href: '/blog' },
-  { label: 'Contact & Free Quote', href: '/contact' },
+  { label: 'About & Contact', href: '/about' },
 ];
 ---
 
-<footer class="border-t border-salwah-gold/20 bg-[#050507] text-gray-300">
+<footer class="border-t border-salwah-gold/25 bg-[#040406] text-gray-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
       <!-- Brand & NAP -->
@@ -40,16 +40,18 @@ const resourceLinks = [
           <Image
             src={salwahLogo}
             alt="Salwah Events and Catering Logo"
-            width={190}
-            height={60}
-            format="webp"
+            widths={[540, 1080, 1499]}
+            sizes="252px"
+            width={252}
+            height={56}
+            format="png"
             loading="lazy"
-            class="h-14 w-auto"
+            class="h-13 w-auto select-none drop-shadow-[0_1px_10px_rgba(246,223,145,0.16)]"
           />
         </a>
         <p class="text-sm text-gray-300 leading-relaxed">
           {SITE.businessName} — 100% HMC Certified Halal Asian wedding catering,
-          bespoke stage decoration, and full event management across Greater London, Essex, and Kent.
+          bespoke floral stage decoration, and full event management across Greater London, Essex, and Kent.
         </p>
         <div class="text-xs text-gray-400 space-y-1">
           <p>{SITE.legalName}</p>
@@ -93,9 +95,9 @@ const resourceLinks = [
         </div>
       </div>
 
-      <!-- Catering Specialties -->
+      <!-- Catering & Ceremonies -->
       <div>
-        <h3 class="font-serif text-lg font-semibold text-salwah-gold mb-4">Halal Catering</h3>
+        <h3 class="font-serif text-lg font-semibold text-salwah-gold mb-4">Cuisines &amp; Ceremonies</h3>
         <ul class="space-y-2.5 text-sm">
           {
             cateringLinks.map((link) => (
@@ -109,21 +111,12 @@ const resourceLinks = [
         </ul>
       </div>
 
-      <!-- Services & Explore -->
+      <!-- Areas, Services & Planning -->
       <div>
-        <h3 class="font-serif text-lg font-semibold text-salwah-gold mb-4">Services &amp; Planning</h3>
-        <ul class="space-y-2.5 text-sm">
+        <h3 class="font-serif text-lg font-semibold text-salwah-gold mb-4">Areas, Decor &amp; Planning</h3>
+        <ul class="space-y-2 text-sm">
           {
-            serviceLinks.map((link) => (
-              <li>
-                <a href={link.href} class="hover:text-salwah-gold transition">
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-          {
-            resourceLinks.map((link) => (
+            areaAndServiceLinks.map((link) => (
               <li>
                 <a href={link.href} class="hover:text-salwah-gold transition">
                   {link.label}
@@ -160,7 +153,13 @@ const resourceLinks = [
             </a>
           </p>
           <p class="text-xs text-gray-400">{SITE.openingHours.display}</p>
-          <div class="pt-2">
+          <div class="pt-2 flex flex-col gap-2.5">
+            <a
+              href="/contact#quote-form"
+              class="btn-luxury-gold inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-bold"
+            >
+              Request Free Quote
+            </a>
             <a
               href={SITE.whatsappHref}
               target="_blank"
@@ -176,10 +175,11 @@ const resourceLinks = [
 
     <div class="mt-12 pt-8 border-t border-salwah-gold/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
       <p>&copy; {currentYear} {SITE.businessName} ({SITE.legalName}). All rights reserved.</p>
-      <div class="flex items-center gap-6">
+      <div class="flex flex-wrap items-center gap-6">
         <a href="/privacy-policy" class="hover:text-salwah-gold transition">Privacy Policy</a>
         <a href="/cookie-notice" class="hover:text-salwah-gold transition">Cookie Notice</a>
         <a href="/sitemap.xml" class="hover:text-salwah-gold transition">Sitemap</a>
+        <a href="/llms.txt" class="hover:text-salwah-gold transition">AI Info</a>
       </div>
     </div>
   </div>
