@@ -1,7 +1,6 @@
 ---
 import { Picture, getImage } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import TrustBadges from '@/components/TrustBadges.astro';
 import QuickFactsBox from '@/components/QuickFactsBox.astro';
 import FaqSection from '@/components/FaqSection.astro';
 import CtaBanner from '@/components/CtaBanner.astro';
@@ -33,7 +32,6 @@ import {
   type FaqItem,
 } from '@/lib/schema';
 
-// Pre-optimize showcase imagery to crisp WebP so client island stays ultra-lightweight
 const [optFeast, optStage, optLounge, optDesserts] = await Promise.all([
   getImage({ src: headerAsianCatering, width: 1000, format: 'webp', quality: 80 }),
   getImage({ src: serviceStage, width: 1000, format: 'webp', quality: 80 }),
@@ -44,74 +42,74 @@ const [optFeast, optStage, optLounge, optDesserts] = await Promise.all([
 const showcaseSlides: ShowcaseSlide[] = [
   {
     id: 'royal-feast',
-    tabLabel: '01 • The Royal Feast',
-    eyebrow: '100% HMC Certified Halal Banquets',
-    title: 'Piping-Hot Heritage Cuisine Served With White-Glove Precision',
+    tabLabel: '01 • The Wedding Feast',
+    eyebrow: 'HMC-Certified Halal Banquets',
+    title: 'Authentic Flavours Served Piping Hot to Every Table',
     description:
-      'From fragrant Dhakai Lamb Kacchi Biryani sealed on dum to sizzling charcoal seekh kebabs, Beef Kala Bhuna, and slow-cooked Lamb Karahi — every dish is cooked fresh in our dedicated London Halal kitchen for 50 to 1,000+ guests.',
+      'At an Asian wedding, guests remember the food first. From fragrant Lamb Kacchi Biryani and slow-cooked Beef Kala Bhuna to chargrilled Chicken Malai Tikka and Lamb Karahi, every dish is cooked fresh in our London Halal kitchen using exclusively HMC-certified meat and poultry.',
     highlights: [
-      'Authentic Bengali, Pakistani & Indian regional spice mastery',
-      'Grand buffet, family-style table service, or plated fine dining',
-      'Uniformed brigade, fine crockery, glassware & full floor supervision',
+      'Authentic Bengali, Pakistani, and Indian regional recipes',
+      'Flexible grand buffet, family-style table service, or plated dining',
+      'Full crockery, cutlery, and uniformed waiting staff included',
     ],
     imageSrc: optFeast.src,
-    imageAlt: 'Grand candlelit London Asian wedding banquet buffet with copper chafing dishes',
-    serviceTarget: 'Halal Wedding Catering',
-    ctaLabel: 'Add Banquet Catering to Quote',
+    imageAlt: 'Grand London Asian wedding banquet buffet with copper chafing dishes',
+    serviceTarget: 'Wedding Catering',
+    ctaLabel: 'Build My Wedding Menu',
     href: '/menu',
   },
   {
     id: 'dream-stage',
-    tabLabel: '02 • Bespoke Floral Stages',
+    tabLabel: '02 • Bespoke Wedding Stages',
     eyebrow: 'Custom Ballroom & Ceremony Design',
-    title: 'Show-Stopping Wedding Stages Engineered for Unforgettable Photos',
+    title: 'Stages Styled Around Your Venue, Outfits, and Vision',
     description:
-      'Transform any London ballroom, hotel suite, or marquee with lush ivory and crimson florals, scalloped gold backdrops, crystal chandelier accents, serene Nikah partitions, and vibrant Mehndi or Gaye Holud setups.',
+      'Your stage frames every portrait and every entrance. Rather than rolling out recycled templates, our designers build custom floral walls, sculpted arches, serene Nikah backdrops, and vibrant Mehndi stages proportioned specifically to your hall.',
     highlights: [
-      'Measured and designed specifically for your venue proportions',
-      'Coordinated sweetheart seating, mirrored walkways & table centrepieces',
-      'Seamless one-team load-in alongside our catering crew',
+      'Fresh blooms, luxury silk florals, or bespoke hybrid installations',
+      'Coordinated sweetheart seating, walkways, table centrepieces & uplighting',
+      'One crew handling stage setup alongside your catering run-sheet',
     ],
     imageSrc: optStage.src,
     imageAlt: 'Bespoke ivory and gold floral Asian wedding stage decoration with baroque sofa',
-    serviceTarget: 'Wedding Stage Decor',
-    ctaLabel: 'Add Stage Decor to Quote',
+    serviceTarget: 'Stage Decoration',
+    ctaLabel: 'Design My Wedding Stage',
     href: '/services/wedding-stage-decoration',
   },
   {
-    id: 'mocktail-chai',
-    tabLabel: '03 • Mocktail & Karak Chai Lounge',
-    eyebrow: 'Elevated Welcome Hospitality',
-    title: 'Handcrafted Fruit Mocktails, Spiced Borhani & Pouring Karak Chai',
+    id: 'welcome-hospitality',
+    tabLabel: '03 • Welcome Drinks & Canapés',
+    eyebrow: 'Included in Gold & Platinum Packages',
+    title: 'Warm Hospitality From the Moment Guests Arrive',
     description:
-      'Delight guests from the moment they step through the doors with vibrant mango passionfruit coolers, mint-lime spritzers, authentic Bengali spiced borhani, and steaming brass kettles of cardamom karak chai.',
+      'Set the tone before dinner even begins. Greet your family and friends with refreshing fruit mocktails, handmade canapés, and optional spiced chai stations so guests feel welcomed while bridal portraits wrap up.',
     highlights: [
-      'Bespoke welcome drink receptions tailored to your wedding colours',
-      'Live Kashmiri pink chai & cardamom karak chai pouring stations',
-      'Ideal for Mehndi nights, Nikah receptions & grand Walimas',
+      'Refreshing welcome drinks and freshly prepared canapés on arrival',
+      'Optional traditional chai and refreshment stations for evening receptions',
+      'Ideal for Mehndis, Nikah receptions, Aqiqahs, and grand Walimas',
     ],
     imageSrc: optLounge.src,
-    imageAlt: 'Handcrafted fruit mocktails, spiced borhani, and freshly poured karak chai station',
-    serviceTarget: 'Both Catering & Stage Decor',
-    ctaLabel: 'Add Drinks & Chai Station',
-    href: '/menu#mocktails-chai',
+    imageAlt: 'Welcome mocktails and freshly poured spiced chai served at a London wedding',
+    serviceTarget: 'Catering & Stage',
+    ctaLabel: 'See Gold & Platinum Inclusions',
+    href: '/packages',
   },
   {
-    id: 'mithai-table',
-    tabLabel: '04 • Mithai & Dessert Display',
-    eyebrow: 'Grand Finale Sweet Tables',
-    title: 'Artisan South Asian Desserts That Keep Guests Talking Long After Rukhsati',
+    id: 'dessert-stalls',
+    tabLabel: '04 • Desserts & Paan Stalls',
+    eyebrow: 'The Finale Guests Crowd Around',
+    title: 'Warm Traditional Sweets & Live Dessert or Paan Stalls',
     description:
-      'Crown your feast with warm gulab jamun paired with vanilla bean ice cream, chilled saffron roshmalai, slow-caramelised gajar halwa, pistachio baklava, and opulent multi-tiered mithai grazing tables.',
+      'Close the evening on a high note with warm Gulab Jamun, Kalajam, Gajar Halwa, and Baklava served with creamy ice cream — or add a live Dessert or Paan Stall that keeps both children and elders coming back for seconds.',
     highlights: [
-      'Served warm to every table or styled as a dramatic live dessert display',
-      'Traditional Bengali mishti doi, firni, zarda & luxury milk cakes',
-      'Full allergen labelling and egg-free / nut-aware options available',
+      'Traditional Firni, Milk Cake, Strawberry Cheesecake & warm mithai',
+      'Live Dessert or Paan Stall included inside our Platinum Package',
+      'Dedicated vegetarian, vegan, and allergen-aware options available',
     ],
     imageSrc: optDesserts.src,
-    imageAlt: 'Luxury tiered Asian wedding dessert display featuring baklava, mithai and warm sweets',
-    serviceTarget: 'Halal Wedding Catering',
-    ctaLabel: 'Add Dessert Display to Quote',
+    imageAlt: 'Luxury tiered South Asian wedding dessert display featuring baklava and warm sweets',
+    serviceTarget: 'Wedding Catering',
+    ctaLabel: 'Add a Dessert or Paan Stall',
     href: '/menu#desserts',
   },
 ];
@@ -120,57 +118,57 @@ const homeFaqs: FaqItem[] = [
   {
     question: 'How much does Asian wedding catering cost per person in London?',
     answer:
-      'Salwah Events Halal Asian wedding catering packages start from £30 per person for our Silver Package (2 starters, 3 mains, pilau rice, naan, salad, dessert, crockery, and waiting staff), £45 per person for our popular Gold Package (with welcome mocktails and grilled starters), and from £17,500 all-inclusive for our Platinum catering, stage decor, and full event management package for 200 guests.',
+      'Our packages start from £25 per person for the Silver Package (3 starters, 4 mains, pilau rice, plain rice or naan, 1 dessert, crockery, cutlery, and waiting staff) and £40 per person for our most popular Gold Package (adding welcome drinks, canapés, 4 starters including fish, 4 premium mains, biryani or rice, 2 desserts, glassware, and a floor supervisor). Our all-inclusive Platinum Package starts from £17,500 for 200 guests.',
   },
   {
-    question: 'Is all food at Salwah Events 100% HMC Certified Halal?',
+    question: 'Is all of your food 100% HMC Certified Halal?',
     answer:
-      'Yes. Every single dish we serve is prepared with 100% HMC Certified Halal meat and poultry in our dedicated London Halal kitchens. We also provide gourmet welcome mocktails, traditional Bengali borhani, freshly brewed karak chai, and artisan coffee.',
+      'Yes. We are a dedicated Halal caterer and source all meat and poultry exclusively from HMC-certified suppliers. Our kitchens operate under strict Halal procedures so you and your guests can dine with complete peace of mind.',
   },
   {
     question: 'How many guests can Salwah Events cater for?',
     answer:
-      'We cater for intimate Nikah and Mehndi gatherings starting from 50 guests right up to grand Asian wedding banquets and Walimas for 1,000+ guests across Greater London, Essex, and Kent.',
+      'We cater smoothly for intimate Nikah lunches, Aqiqahs, and Mehndis starting from 50 guests right up to grand banqueting hall weddings and Walimas for 1,000+ guests across Greater London, Essex, and Kent.',
   },
   {
-    question: 'Which South Asian wedding cuisines do you specialise in?',
+    question: 'Which South Asian cuisines do you offer?',
     answer:
-      'Our culinary team prepares authentic Bengali (Bangladeshi), Pakistani, and Indian Halal wedding menus — including Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Lamb Karahi, Chapli Kebabs, Nihari, Live Chaat Stations, Roshmalai, and Warm Gulab Jamun.',
+      'Our chefs specialise in authentic Bengali (Bangladeshi), Pakistani, and Indian cuisine — from Lamb Kacchi Biryani, Beef Kala Bhuna, and Chicken Roast to Lamb Bhuna, Chicken Karahi, Chapli Kebabs, Papri Chaat, and warm Gulab Jamun. Mixed-heritage menus can also be tailored to suit both families.',
   },
   {
-    question: 'Can we arrange a menu consultation or food sampling before booking?',
+    question: 'Can we arrange a menu consultation and food sampling before booking?',
     answer:
-      'Yes! Contact our team by phone, WhatsApp, or our quick quote form to book a complimentary menu consultation and arrange food sampling of our signature wedding dishes tailored to your guest count and budget.',
+      'Yes. Get in touch by phone, WhatsApp, or our quote form to arrange a complimentary consultation and food sampling so you and your family can agree on spice levels, dishes, and presentation before confirming your date.',
   },
   {
     question: 'Do you cater at dry-hire venues, hotels, and marquees across London, Essex, and Kent?',
     answer:
-      'Yes. We bring full mobile finishing equipment, chafing stations, fine crockery, cutlery, glassware, and uniformed staff to dry-hire halls, 5-star hotels, estates, and marquees across East London, North London, West London, South London, Essex, and Kent.',
+      'Yes. Alongside preferred London banqueting halls such as The City Pavilion, Meridian Grand, The Willows, and Mayfair Venue, we bring full catering equipment, crockery, glassware, and uniformed staff to dry-hire estates, hotels, and marquees across London, Essex, and Kent.',
   },
 ];
 
 const cuisineAndCeremonyHubs = [
   {
     title: 'Bengali Wedding Catering',
-    tag: 'Sylheti & Dhakai Heritage',
+    tag: 'Bangladeshi & Sylheti Classics',
     href: '/bengali-wedding-catering-london',
-    blurb: 'Dhakai kacchi biryani, beef kala bhuna, chicken roast, traditional borthas, spiced borhani & roshmalai.',
+    blurb: 'Lamb Kacchi Biryani, Beef Kala Bhuna, Beef Rezala, Chicken Roast, Fish Masala, and warm Kalajam.',
     image: menuBiryani,
-    alt: 'Traditional Bengali kacchi biryani wedding catering in London',
+    alt: 'Traditional Bengali Lamb Kacchi Biryani wedding catering in London',
   },
   {
     title: 'Pakistani Wedding Catering',
-    tag: 'Nikah, Baraat & Walima',
+    tag: 'Nikah, Mehndi, Baraat & Walima',
     href: '/pakistani-wedding-catering-london',
-    blurb: 'Complete multi-day feasts featuring lamb karahi, slow-cooked nihari, chapli kebabs & live karak chai.',
+    blurb: 'Distinct menus for every function — Chapli Kebabs, Chicken Karahi, slow-cooked Nihari, Dum Biryani & Gajar Halwa.',
     image: menuMains,
     alt: 'Authentic Pakistani wedding catering curries and grills in London',
   },
   {
     title: 'Indian Wedding Catering',
-    tag: 'North & South Indian Halal',
+    tag: 'Halal & Dedicated Vegetarian',
     href: '/indian-wedding-catering-london',
-    blurb: 'Chargrilled tandoori platters, live chaat counters, royal curries, and vibrant vegetarian/vegan spreads.',
+    blurb: 'Tandoori starters, Papri Chaat, Chicken Butter Makhni, Paneer specialities, Daal Makhni & warm Gulab Jamun.',
     image: menuStarters,
     alt: 'Halal Indian wedding starters and tandoori catering in London',
   },
@@ -178,23 +176,23 @@ const cuisineAndCeremonyHubs = [
     title: 'Nikah & Walima Catering',
     tag: '50 to 1,000+ Guests',
     href: '/nikah-walima-catering-london',
-    blurb: 'Dignified Nikah backdrops, Sunnah hospitality, and grand chandelier-lit Walima banquets across London.',
+    blurb: 'Dignified Nikah lunches, floral partitions, segregated service on request, and grand Walima banquets.',
     image: heroCouple,
     alt: 'Nikah and Walima Asian wedding catering in London',
   },
   {
     title: 'Mehndi & Gaye Holud',
-    tag: 'Live Street-Food Counters',
+    tag: 'Vibrant Pre-Wedding Nights',
     href: '/mehndi-gaye-holud-catering-london',
-    blurb: 'Interactive papri chaat, golgappa, sizzling grill stations, fresh jalebi, karak chai & marigold decor.',
+    blurb: 'Street-style chaat, sizzling charcoal kebabs, colourful welcome drinks, spiced chai & festive stage styling.',
     image: galleryMocktails,
-    alt: 'Mehndi and Gaye Holud catering with live mocktails and chai in London',
+    alt: 'Mehndi and Gaye Holud catering with welcome drinks and spiced chai in London',
   },
   {
-    title: 'Dry-Hire, Hotel & Marquee',
-    tag: 'Full Mobile Kitchen Brigade',
+    title: 'Dry-Hire, Hotels & Marquees',
+    tag: 'Complete Mobile Service',
     href: '/dry-hire-asian-wedding-catering-london',
-    blurb: 'Turnkey catering, fine crockery, glassware & uniformed service for dry-hire estates, hotels & marquees.',
+    blurb: 'Full finishing equipment, fine crockery, glassware & uniformed waiting staff for dry-hire halls, hotels & estates.',
     image: servicePlanning,
     alt: 'Dry-hire Asian wedding banquet tablescape in London',
   },
@@ -205,19 +203,19 @@ const regionalHubs = [
     region: 'East London',
     towns: 'Ilford • Romford • Newham • Tower Hamlets • Redbridge • Barking • Wanstead • Stratford',
     href: '/halal-wedding-catering-east-london',
-    blurb: 'Trusted across The City Pavilion, The Willows, Mayfair Venue, The Royal Regency, Palm Tree & Oasis.',
+    blurb: 'Preferred caterers at The City Pavilion and experienced across The Willows, Mayfair Venue, The Royal Regency, Palm Tree & Oasis.',
   },
   {
     region: 'North & West London',
-    towns: 'Edmonton (HQ) • Enfield • Barnet • Finchley • Harrow • Wembley • Southall • Ealing',
+    towns: 'Edmonton (N18) • Enfield • Barnet • Finchley • Harrow • Wembley • Southall • Ealing',
     href: '/halal-wedding-catering-north-west-london',
-    blurb: 'Minutes from Meridian Grand & Ariana Banqueting Hall, plus Osterley Park & Syon Park dry-hire setups.',
+    blurb: 'Minutes from Meridian Grand and Ariana Banqueting Hall, with full dry-hire service for Osterley Park & Syon Park.',
   },
   {
     region: 'Essex & Kent',
     towns: 'Chigwell • Loughton • Brentwood • Chelmsford • Dartford • Gravesend • Sevenoaks • Maidstone',
     href: '/halal-wedding-catering-essex-kent',
-    blurb: 'Dedicated refrigerated fleets and mobile finishing kitchens for country houses, barns & garden marquees.',
+    blurb: 'Insulated fleets and mobile finishing kitchens bringing freshly cooked London Halal banquets to country houses and marquees.',
   },
 ];
 
@@ -225,24 +223,27 @@ const coreServices = [
   {
     title: 'Asian Wedding Catering',
     href: '/services/asian-wedding-catering',
+    ctaLabel: 'Explore Wedding Catering',
     description:
-      '100% HMC Certified Halal Bengali, Pakistani, and Indian wedding banquets with uniformed waiting staff and plated or buffet dining.',
+      'Authentic Bengali, Pakistani, and Indian cuisine prepared with HMC-certified Halal meat and poultry — with uniformed waiting staff, crockery, and cutlery included.',
     image: serviceCatering,
     alt: 'Halal Asian wedding catering table service in London',
   },
   {
     title: 'Wedding Stage Decoration',
     href: '/services/wedding-stage-decoration',
+    ctaLabel: 'See Stage Designs',
     description:
-      'Bespoke floral backdrops, Nikah & Mehndi stages, sweetheart seating, walkways, centrepieces, and architectural mood lighting.',
+      'Custom floral backdrops, Nikah partitions, vibrant Mehndi stages, Mandaps, couple seating, table centrepieces, and ambient lighting tailored to your room.',
     image: serviceStage,
     alt: 'Bespoke floral Asian wedding stage decoration in London',
   },
   {
-    title: 'Full Event Management',
+    title: 'Event Management & Planning',
     href: '/services/event-management-planning',
+    ctaLabel: 'See How We Plan',
     description:
-      'End-to-end timelines, venue sourcing, supplier coordination, and dedicated on-the-day management for a calm celebration.',
+      'Master run-sheets, supplier coordination, venue liaison, and dedicated on-the-day direction so you and your parents stay present with your guests.',
     image: servicePlanning,
     alt: 'Luxury Asian wedding planning and on-the-day event management',
   },
@@ -251,36 +252,36 @@ const coreServices = [
 const weddingJourney = [
   {
     step: '01',
-    title: 'Complimentary Menu Consultation',
+    title: 'Share Your Date & Vision',
     detail:
-      'Tell us your date, guest count, venue, and cultural traditions. We send clear transparent pricing from £30pp within hours.',
+      'Tell us your date, approximate guest count, and preferred cuisine. We reply promptly with clear per-head pricing from £25pp and honest advice.',
   },
   {
     step: '02',
-    title: 'Food Sampling & Stage Moodboard',
+    title: 'Menu Consultation & Sampling',
     detail:
-      'Sample our signature 100% HMC Halal dishes with your family, fine-tune spice levels, and preview your bespoke floral stage design.',
+      'Meet our team to fine-tune your menu, adjust spice levels for elders and younger guests, and review bespoke stage design concepts.',
   },
   {
     step: '03',
-    title: 'Venue Walkthrough & Run-Sheet Lock',
+    title: 'Venue Walkthrough & Run-Sheet',
     detail:
-      'Our event manager coordinates directly with your banqueting hall or dry-hire estate on load-in, kitchen prep, and exact serving timings.',
+      'We coordinate directly with your banqueting hall or dry-hire estate on kitchen access, load-in timings, and exact serving schedules.',
   },
   {
     step: '04',
-    title: 'White-Glove Wedding Execution',
+    title: 'Calm Execution on the Day',
     detail:
-      'Relax and celebrate with your loved ones while our chefs serve piping-hot dishes and our uniformed team manages every single detail.',
+      'Enjoy every moment with your family while our chefs serve hot, generous courses and our floor team keeps the entire evening running on time.',
   },
 ];
 
 const quickFacts = [
-  { label: 'Starting Price', value: 'From £30 per person (Silver), £45pp (Gold), £17,500 all-inclusive (Platinum)' },
-  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Nikah, Mehndi, Gaye Holud, Baraat, Walima & Corporate)' },
-  { label: 'Halal Certification', value: '100% HMC Certified Halal Dedicated London Kitchen (Edmonton N18)' },
-  { label: 'Cuisines Offered', value: 'Bengali / Bangladeshi, Pakistani, North & South Indian & Fusion' },
-  { label: 'Service Styles', value: 'Grand Buffet, Family-Style Table Service, Plated Fine Dining & Live Stations' },
+  { label: 'Starting Price', value: 'From £25 per person (Silver) • £40pp (Gold) • From £17,500 (Platinum, 200 guests)' },
+  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Weddings, Nikah, Walima, Mehndi, Aqiqahs & Galas)' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Meat & Poultry • Dedicated Halal Kitchen' },
+  { label: 'Cuisines Offered', value: 'Bengali (Bangladeshi), Pakistani & Indian — Plus Dedicated Vegetarian & Vegan' },
+  { label: 'Service Styles', value: 'Grand Buffet, Family-Style Table Service, Formal Plated Dining & Live Stalls' },
   { label: 'Areas Covered', value: 'Greater London (East, North, West & South), Essex & Kent' },
 ];
 
@@ -289,7 +290,7 @@ const schemas = [
     name: 'Halal Asian Wedding Catering & Event Services',
     serviceType: 'Halal Wedding Catering, Stage Decoration & Event Management',
     description:
-      'Luxury 100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian) and bespoke wedding stage decoration across Greater London, Essex, and Kent.',
+      'Family-led 100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian) and bespoke wedding stage decoration across Greater London, Essex, and Kent from £25pp.',
     url: '/',
   }),
   buildOfferCatalogSchema(),
@@ -299,7 +300,7 @@ const schemas = [
 
 <BaseLayout
   title="Luxury Asian Wedding Catering London & Stage Decor | Salwah Events"
-  description="Luxury 100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian) & bespoke stage decor in London, Essex & Kent. Packages from £30pp for 50–1,000+ guests."
+  description="Family-led 100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian), bespoke stage decor & event planning in London, Essex & Kent. Packages from £25pp for 50–1,000+ guests."
   canonicalPath="/"
   schemas={schemas}
 >
@@ -312,45 +313,45 @@ const schemas = [
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-9 sm:py-12 lg:py-14">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        <!-- Left: Timeless Editorial Copy & High-Intent CTAs -->
+        <!-- Left: Sharp Editorial Copy & High-Intent CTAs -->
         <div class="lg:col-span-6 text-left">
           <p class="inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-3.5">
             <span class="h-px w-6 bg-salwah-gold/75 shrink-0" aria-hidden="true" />
-            London • Essex • Kent • Bespoke Weddings
+            London &middot; Essex &middot; Kent &middot; Family-Led Specialists
           </p>
-          <h1 class="font-serif text-4xl sm:text-5xl xl:text-[3.5rem] font-bold tracking-tight text-white leading-[1.06]">
-            Luxury <span class="gold-gradient-text italic font-semibold">Asian Wedding</span> Catering &amp; Stage Decor
+          <h1 class="font-serif text-4xl sm:text-5xl xl:text-[3.45rem] font-bold tracking-tight text-white leading-[1.06]">
+            Asian Wedding Catering &amp; <span class="gold-gradient-text italic font-semibold">Bespoke Stage Decor</span>
           </h1>
           <p class="mt-4 text-base sm:text-lg text-gray-200/95 max-w-xl leading-relaxed">
-            Unforgettable Bengali, Pakistani, and Indian wedding feasts paired with breathtaking
-            floral stage design — <strong>100% HMC Certified Halal</strong>, crafted fresh in London
-            for <strong>50 to 1,000+ guests</strong> starting from <strong>£30 per person</strong>.
+            Authentic Bengali, Pakistani, and Indian wedding catering paired with bespoke floral
+            stage design — delivered by one dedicated London team for{' '}
+            <strong>50 to 1,000+ guests</strong>, with packages starting from{' '}
+            <strong>£25 per person</strong>.
           </p>
 
-          <div class="mt-5">
-            <TrustBadges align="left" />
-          </div>
-
-          <div class="mt-7 flex flex-col sm:flex-row flex-wrap gap-2.5">
+          <div class="mt-7 flex flex-col sm:flex-row sm:flex-nowrap gap-2.5">
             <a
               href="#quote-form"
-              class="btn-luxury-gold inline-flex items-center justify-center rounded-xl px-5 py-3.5 text-sm sm:text-[15px] font-bold whitespace-nowrap"
+              class="btn-luxury-gold inline-flex items-center justify-center rounded-xl px-5 py-3.5 text-sm font-bold whitespace-nowrap"
             >
-              Get Your Free Quote
+              Check Date &amp; Pricing
             </a>
             <a
               href="#instant-estimator"
-              class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/55 bg-black/55 backdrop-blur-md px-5 py-3.5 text-sm sm:text-[15px] font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition whitespace-nowrap"
+              class="btn-luxury-outline inline-flex items-center justify-center rounded-xl px-4.5 py-3.5 text-sm font-semibold whitespace-nowrap"
             >
-              Estimate Your Price
+              Estimate Cost
             </a>
             <a
               href={SITE.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center rounded-xl bg-[#25D366] px-5 py-3.5 text-sm sm:text-[15px] font-bold text-black hover:brightness-105 transition shadow-lg shadow-[#25D366]/20 whitespace-nowrap"
+              class="hidden sm:inline-flex btn-luxury-whatsapp items-center justify-center gap-2 rounded-xl px-4.5 py-3.5 text-sm font-semibold whitespace-nowrap"
             >
-              WhatsApp Us
+              <svg class="h-4 w-4 text-[#25D366] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.391c1.469.797 3.125 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.906-.125-.453-.141-1.031-.344-1.766-.656-3.109-1.344-5.141-4.484-5.297-4.688-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.625-.391.828-.391h.594c.188 0 .453-.078.703.531.266.641.891 2.188.969 2.344.078.156.125.344.016.547-.094.203-.156.344-.313.516-.156.172-.328.391-.469.516-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.125.688-.078.188-.203.797-.938 1.016-1.25.219-.313.438-.266.734-.156.297.109 1.875.891 2.203 1.047.328.156.547.234.625.375.078.141.078.813-.172 1.516z" />
+              </svg>
+              <span>WhatsApp Us</span>
             </a>
           </div>
         </div>
@@ -360,7 +361,7 @@ const schemas = [
           <div class="relative rounded-3xl editorial-frame overflow-hidden bg-black aspect-[4/3] sm:aspect-[16/11] lg:aspect-[5/4] shadow-2xl">
             <Picture
               src={heroCouple}
-              alt="Joyful South Asian bride and groom celebrating inside a candlelit luxury London ballroom catered by Salwah Events"
+              alt="Joyful South Asian bride and groom celebrating inside a candlelit luxury London ballroom"
               widths={[640, 1280]}
               sizes="(max-width: 1024px) 100vw, 50vw"
               formats={['webp']}
@@ -369,15 +370,15 @@ const schemas = [
               loading="eager"
               fetchpriority="high"
               decoding="sync"
-              class="h-full w-full object-cover object-[56%_22%]"
+              class="h-full w-full object-cover object-[50%_20%]"
             />
             <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
             <div class="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full border border-salwah-gold/45 bg-black/70 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-salwah-gold">
+              <span class="rounded-full border border-salwah-gold/45 bg-black/75 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-salwah-gold">
                 Bespoke Banquets &amp; Floral Stages
               </span>
-              <span class="rounded-full border border-white/20 bg-black/70 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-gray-100">
-                50 – 1,000+ Guests • From £30pp
+              <span class="rounded-full border border-white/20 bg-black/75 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-gray-100">
+                Nikah &middot; Mehndi &middot; Walima &middot; Receptions
               </span>
             </div>
           </div>
@@ -386,45 +387,45 @@ const schemas = [
     </div>
   </section>
 
-  <!-- 2. Architectural 4-Pillar Luxury Credentials Bar -->
+  <!-- 2. Architectural 4-Pillar Credentials Bar -->
   <section class="bg-[#090a0f] border-b border-salwah-gold/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-salwah-gold/20 text-center">
         <div class="px-3">
           <p class="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">100% HMC</p>
-          <p class="mt-1 text-xs sm:text-sm text-gray-300">Certified Dedicated Halal Kitchen</p>
+          <p class="mt-1 text-xs sm:text-sm text-gray-300">Certified Halal Meat &amp; Poultry</p>
         </div>
         <div class="px-3">
-          <p class="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">From £30pp</p>
-          <p class="mt-1 text-xs sm:text-sm text-gray-300">Transparent Per-Head Packages</p>
+          <p class="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">From £25pp</p>
+          <p class="mt-1 text-xs sm:text-sm text-gray-300">Clear Per-Head Packages</p>
         </div>
         <div class="px-3">
           <p class="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">50 – 1,000+</p>
-          <p class="mt-1 text-xs sm:text-sm text-gray-300">Intimate Nikah to Grand Walima</p>
+          <p class="mt-1 text-xs sm:text-sm text-gray-300">Intimate Nikahs to Grand Walimas</p>
         </div>
         <div class="px-3">
           <p class="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">5.0★ Rated</p>
-          <p class="mt-1 text-xs sm:text-sm text-gray-300">London, Essex &amp; Kent Families</p>
+          <p class="mt-1 text-xs sm:text-sm text-gray-300">Trusted by UK Families</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. Interactive Luxury Wedding Experience Showcase -->
+  <!-- 3. Interactive Wedding Experience Showcase -->
   <section class="py-18 sm:py-24 obsidian-glow" data-reveal>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <p class="text-xs font-semibold uppercase tracking-[0.24em] text-salwah-gold mb-2.5">
-          The Salwah Experience
+          The Salwah Standard
         </p>
         <div class="ornamental-divider mb-4" aria-hidden="true">
           <span class="ornamental-diamond" />
         </div>
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-          Every Moment Crafted to <span class="gold-gradient-text italic font-semibold">Captivate Your Guests</span>
+          What Turns a Good Wedding Into <span class="gold-gradient-text italic font-semibold">a Great One</span>
         </h2>
         <p class="mt-4 text-gray-300 text-base sm:text-lg">
-          Explore the four signature pillars that turn a London wedding into an unforgettable family milestone.
+          Guests rarely remember spreadsheets. They remember the aroma when dinner opens, the stage behind your portraits, and how warmly every table was looked after.
         </p>
       </div>
 
@@ -432,16 +433,16 @@ const schemas = [
     </div>
   </section>
 
-  <!-- 4. Mouth-Watering Culinary & Bridal Bento Lookbook -->
+  <!-- 4. Culinary & Decor Visual Lookbook -->
   <section class="py-18 sm:py-22 velvet-section border-y border-salwah-gold/15" data-reveal>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
         <div class="max-w-2xl">
           <p class="text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-2">
-            Visual Culinary &amp; Decor Lookbook
+            From Our Kitchen &amp; Floral Studio
           </p>
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            A Feast for the Eyes — <span class="gold-gradient-text italic font-semibold">Before the First Bite</span>
+            Dishes &amp; Stages Built to <span class="gold-gradient-text italic font-semibold">Impress Every Table</span>
           </h2>
         </div>
         <div class="flex items-center gap-5 shrink-0">
@@ -455,14 +456,13 @@ const schemas = [
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
-        <!-- Large Left Showcase: Kacchi Biryani -->
         <a
           href="/menu#rice-biryani"
           class="group md:col-span-7 relative overflow-hidden rounded-2xl editorial-frame min-h-[280px] sm:min-h-[360px]"
         >
           <Picture
             src={menuBiryani}
-            alt="Steaming saffron Dhakai Lamb Kacchi Biryani served in hammered copper deg"
+            alt="Steaming saffron Lamb Kacchi Biryani served in hammered copper deg"
             widths={[480, 800]}
             sizes="(max-width: 768px) 100vw, 58vw"
             formats={['webp']}
@@ -474,15 +474,14 @@ const schemas = [
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent p-6 sm:p-7 flex flex-col justify-end">
             <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-salwah-gold">Signature Centrepiece</span>
             <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-1 group-hover:text-salwah-gold transition">
-              Traditional Dhakai Lamb Kacchi Biryani
+              Traditional Lamb Kacchi Biryani
             </h3>
             <p class="mt-1.5 text-sm text-gray-200 max-w-lg">
-              Aged saffron basmati slow-sealed on dum with tender HMC Halal lamb, caramelised onions, and whole aromatic spices.
+              Aged saffron basmati slow-sealed on dum with tender HMC-certified lamb, caramelised onions, and whole aromatic spices.
             </p>
           </div>
         </a>
 
-        <!-- Right Top: Crimson & Gold Wedding Stage -->
         <a
           href="/services/wedding-stage-decoration"
           class="group md:col-span-5 relative overflow-hidden rounded-2xl editorial-frame min-h-[280px] sm:min-h-[360px]"
@@ -506,7 +505,6 @@ const schemas = [
           </div>
         </a>
 
-        <!-- Bottom Row: 3 Equal Mouth-Watering Tiles -->
         <a
           href="/menu#starters"
           class="group md:col-span-4 relative overflow-hidden rounded-2xl editorial-frame h-64 sm:h-72"
@@ -536,7 +534,7 @@ const schemas = [
         >
           <Picture
             src={menuMains}
-            alt="Slow-cooked lamb rogan josh, beef kala bhuna, butter chicken, and fresh garlic naan"
+            alt="Slow-cooked lamb bhuna, beef kala bhuna, butter chicken, and fresh naan"
             widths={[480, 800]}
             sizes="(max-width: 768px) 100vw, 33vw"
             formats={['webp']}
@@ -546,9 +544,9 @@ const schemas = [
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-5 flex flex-col justify-end">
-            <span class="text-[11px] font-bold uppercase tracking-widest text-salwah-gold">Royal Curries</span>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-salwah-gold">Signature Curries</span>
             <h3 class="font-serif text-xl font-bold text-white mt-0.5 group-hover:text-salwah-gold transition">
-              Copper Handi Curries &amp; Garlic Naan
+              Beef Kala Bhuna, Karahi &amp; Naan
             </h3>
           </div>
         </a>
@@ -559,7 +557,7 @@ const schemas = [
         >
           <Picture
             src={menuDesserts}
-            alt="Saffron pistachio rasmalai, warm gulab jamun with vanilla bean ice cream, and gajar halwa"
+            alt="Warm gulab jamun with vanilla bean ice cream, gajar halwa, and South Asian sweets"
             widths={[480, 800]}
             sizes="(max-width: 768px) 100vw, 33vw"
             formats={['webp']}
@@ -569,9 +567,9 @@ const schemas = [
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-5 flex flex-col justify-end">
-            <span class="text-[11px] font-bold uppercase tracking-widest text-salwah-gold">Traditional Finale</span>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-salwah-gold">Sweet Finale</span>
             <h3 class="font-serif text-xl font-bold text-white mt-0.5 group-hover:text-salwah-gold transition">
-              Roshmalai, Gulab Jamun &amp; Halwa
+              Warm Gulab Jamun, Halwa &amp; Ice Cream
             </h3>
           </div>
         </a>
@@ -586,41 +584,41 @@ const schemas = [
         <InstantQuoteEstimator client:visible />
       </div>
 
-      <!-- Dedicated Bespoke Quote & Consultation Section -->
+      <!-- Dedicated Consultation & Quote Section -->
       <div id="quote-form" class="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-4">
         <div class="lg:col-span-5 space-y-6">
           <p class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold">
             <span class="h-px w-6 bg-salwah-gold/70" aria-hidden="true" />
-            Book Your Complimentary Consultation
+            No Obligation &middot; Same-Day Reply
           </p>
           <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
-            Ready to Check Your <span class="gold-gradient-text italic font-semibold">Wedding Date?</span>
+            Hold Your Date Before <span class="gold-gradient-text italic font-semibold">Peak Weekends Go</span>
           </h2>
           <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
-            Peak London, Essex, and Kent wedding weekends fill up months in advance. Tell us your
-            preferred date, approximate guest count, and cuisine vision — our specialists will reply
-            promptly with tailored 100% HMC Halal menu options and clear pricing.
+            Tell us your wedding date, estimated guest count, and preferred dishes or stage ideas.
+            We reply promptly with an itemised written quote and arrange a complimentary menu
+            consultation — never a pushy sales call.
           </p>
 
           <div class="space-y-3 pt-1 text-sm text-gray-200">
             <div class="flex items-start gap-3">
               <span class="text-salwah-gold font-bold mt-0.5">&#10003;</span>
-              <span><strong>Zero hidden venue fees</strong> — crockery, cutlery &amp; uniformed staff clearly itemised</span>
+              <span><strong>Clear pricing from £25pp</strong> — crockery, cutlery &amp; waiting staff included</span>
             </div>
             <div class="flex items-start gap-3">
               <span class="text-salwah-gold font-bold mt-0.5">&#10003;</span>
-              <span><strong>Menu consultation &amp; food sampling</strong> available before you commit</span>
+              <span><strong>Menu consultation &amp; food sampling</strong> before you lock in your menu</span>
             </div>
             <div class="flex items-start gap-3">
               <span class="text-salwah-gold font-bold mt-0.5">&#10003;</span>
-              <span><strong>One seamless team</strong> for catering, floral stage decor &amp; event management</span>
+              <span><strong>One coordinated team</strong> for Halal catering, stage decor &amp; event management</span>
             </div>
           </div>
 
           <div class="flex flex-wrap gap-3 pt-2">
             <a
               href={SITE.phoneHref}
-              class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/45 bg-salwah-gold/10 px-5 py-3 text-sm font-bold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+              class="btn-luxury-outline inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold whitespace-nowrap"
             >
               Call {SITE.phoneDisplay}
             </a>
@@ -628,9 +626,12 @@ const schemas = [
               href={SITE.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center rounded-xl bg-[#25D366] px-5 py-3 text-sm font-bold text-black hover:brightness-105 transition"
+              class="btn-luxury-whatsapp inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold whitespace-nowrap"
             >
-              WhatsApp Us Now
+              <svg class="h-4 w-4 text-[#25D366] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.391c1.469.797 3.125 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.906-.125-.453-.141-1.031-.344-1.766-.656-3.109-1.344-5.141-4.484-5.297-4.688-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.625-.391.828-.391h.594c.188 0 .453-.078.703.531.266.641.891 2.188.969 2.344.078.156.125.344.016.547-.094.203-.156.344-.313.516-.156.172-.328.391-.469.516-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.125.688-.078.188-.203.797-.938 1.016-1.25.219-.313.438-.266.734-.156.297.109 1.875.891 2.203 1.047.328.156.547.234.625.375.078.141.078.813-.172 1.516z" />
+              </svg>
+              <span>WhatsApp Us Now</span>
             </a>
           </div>
         </div>
@@ -640,8 +641,8 @@ const schemas = [
             client:visible
             variant="compact"
             sourcePage="Homepage Quote Section"
-            heading="Check Date & Get a Free Quote"
-            subheading="Share your wedding date & guest count for tailored Halal menus & transparent pricing."
+            heading="Check Date & Request a Quote"
+            subheading="Tell us your date and guest count — we’ll reply with tailored Halal menus and transparent pricing."
           />
         </div>
       </div>
@@ -653,13 +654,13 @@ const schemas = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-2">
-          One Trusted Team • Zero Vendor Stress
+          One Team &middot; One Run-Sheet &middot; Complete Peace of Mind
         </p>
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-          Our <span class="gold-gradient-text italic font-semibold">Signature Services</span>
+          Everything Your Reception Needs, <span class="gold-gradient-text italic font-semibold">Under One Roof</span>
         </h2>
         <p class="mt-4 text-gray-300 text-base sm:text-lg">
-          Seamless Halal catering, bespoke stage styling, and calm on-the-day coordination under one roof.
+          When your chefs and stage designers share one schedule, starters land hot, turnarounds finish early, and your parents stay with their guests instead of chasing suppliers.
         </p>
       </div>
 
@@ -688,7 +689,7 @@ const schemas = [
                   {service.description}
                 </p>
                 <span class="mt-5 inline-flex items-center text-sm font-bold text-salwah-gold">
-                  Explore Service &rarr;
+                  {service.ctaLabel} &rarr;
                 </span>
               </div>
             </a>
@@ -698,23 +699,23 @@ const schemas = [
     </div>
   </section>
 
-  <!-- 7. Specialist Cuisines & Ceremonies SEO Hub -->
+  <!-- 7. Specialist Cuisines & Ceremonies Hub -->
   <section class="py-18 sm:py-22 bg-salwah-black" data-reveal>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
         <div class="max-w-2xl">
           <p class="text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-2">
-            Authentic Heritage &amp; Ceremony Specialists
+            Heritage Menus &amp; Ceremony Specialists
           </p>
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            Tailored to Your <span class="gold-gradient-text italic font-semibold">Culture &amp; Ceremony</span>
+            Tailored to Your <span class="gold-gradient-text italic font-semibold">Traditions</span>
           </h2>
         </div>
         <a
           href="/services/asian-wedding-catering"
           class="inline-flex items-center text-sm font-bold text-salwah-gold hover:underline shrink-0"
         >
-          All Catering Options &rarr;
+          View All Catering Options &rarr;
         </a>
       </div>
 
@@ -744,7 +745,7 @@ const schemas = [
                 </h3>
                 <p class="mt-2.5 text-sm text-gray-300 leading-relaxed flex-1">{card.blurb}</p>
                 <span class="mt-4 text-xs font-bold uppercase tracking-wider text-salwah-gold">
-                  Explore Menus &amp; Pricing &rarr;
+                  View Menus &amp; Pricing &rarr;
                 </span>
               </div>
             </a>
@@ -754,15 +755,15 @@ const schemas = [
     </div>
   </section>
 
-  <!-- 8. 4-Step White-Glove Wedding Journey -->
+  <!-- 8. 4-Step Wedding Planning Process -->
   <section class="py-18 sm:py-22 velvet-section border-y border-salwah-gold/15" data-reveal>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-2">
-          How We Work With Your Family
+          From First Call to Final Course
         </p>
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-          From First Enquiry to <span class="gold-gradient-text italic font-semibold">Standing Ovation</span>
+          Four Calm Steps to <span class="gold-gradient-text italic font-semibold">Your Wedding Day</span>
         </h2>
       </div>
 
@@ -785,17 +786,17 @@ const schemas = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-2">
-          Transparent Pricing • No Hidden Surprises
+          Honest, Upfront Pricing
         </p>
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
           Wedding Catering <span class="gold-gradient-text italic font-semibold">Packages</span>
         </h2>
         <p class="mt-3 text-gray-300">
-          Every package is 100% HMC Certified Halal and customisable to your exact guest count and cuisine.
+          Every package uses HMC-certified Halal meat and poultry and can be customised to your guest count and cuisine.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 items-stretch">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 items-stretch pt-2">
         {
           PACKAGES.map((pkg) => (
             <div
@@ -808,16 +809,16 @@ const schemas = [
               }`}
             >
               {pkg.popular && (
-                <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-salwah-gold px-4 py-1 text-xs font-bold uppercase tracking-wider text-black shadow">
+                <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-salwah-gold px-4 py-1 text-xs font-bold uppercase tracking-wider text-black shadow">
                   Most Popular
                 </span>
               )}
               <h3 class="font-serif text-2xl font-bold text-white">{pkg.name}</h3>
-              <div class="mt-3 flex items-baseline gap-2">
-                <span class="font-serif text-4xl font-bold text-salwah-gold">{pkg.price}</span>
-                <span class="text-sm text-gray-300">{pkg.unit}</span>
+              <div class="mt-3 pb-4 border-b border-white/10">
+                <span class="block font-serif text-4xl font-bold text-salwah-gold leading-none">{pkg.price}</span>
+                <span class="mt-1.5 block text-xs uppercase tracking-[0.14em] text-gray-300">{pkg.unit}</span>
               </div>
-              <p class="mt-3 text-sm text-gray-300">{pkg.tagline}</p>
+              <p class="mt-4 text-sm text-gray-300">{pkg.tagline}</p>
 
               <ul class="mt-6 space-y-2.5 text-sm text-gray-200 flex-1">
                 {pkg.features.map((feat) => (
@@ -830,13 +831,15 @@ const schemas = [
 
               <a
                 href="/contact#quote-form"
-                class={`mt-7 inline-flex items-center justify-center rounded-xl px-5 py-3.5 text-sm font-bold transition ${
-                  pkg.popular
-                    ? 'btn-luxury-gold'
-                    : 'border border-salwah-gold/50 text-salwah-gold hover:bg-salwah-gold hover:text-black'
+                class={`mt-7 inline-flex items-center justify-center rounded-xl px-5 py-3.5 text-sm font-bold whitespace-nowrap ${
+                  pkg.popular ? 'btn-luxury-gold' : 'btn-luxury-outline'
                 }`}
               >
-                Enquire for {pkg.name}
+                {pkg.id === 'silver'
+                  ? 'Choose Silver (£25pp)'
+                  : pkg.id === 'gold'
+                    ? 'Choose Gold (£40pp)'
+                    : 'Enquire for Platinum'}
               </a>
             </div>
           ))
@@ -856,13 +859,13 @@ const schemas = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
       <div class="text-center max-w-3xl mx-auto">
         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-2">
-          Local Coverage Across the South East
+          Across London &amp; Surrounding Counties
         </p>
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-          Serving <span class="gold-gradient-text italic font-semibold">Greater London, Essex &amp; Kent</span>
+          Serving <span class="gold-gradient-text italic font-semibold">London, Essex &amp; Kent</span>
         </h2>
         <p class="mt-3 text-gray-300">
-          Fresh from our dedicated Edmonton (N18) Halal kitchen straight to London's premier banqueting halls, hotels, and dry-hire estates.
+          Fresh from our dedicated Edmonton (N18) Halal kitchen straight to London’s leading banqueting halls, hotels, and dry-hire estates.
         </p>
       </div>
 
@@ -870,13 +873,13 @@ const schemas = [
         {
           regionalHubs.map((hub) => (
             <a href={hub.href} class="group luxury-card rounded-2xl p-6 flex flex-col">
-              <span class="text-xs font-bold uppercase tracking-widest text-salwah-gold">Regional Specialist</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-salwah-gold">Regional Guide</span>
               <h3 class="mt-2 font-serif text-2xl font-bold text-white group-hover:text-salwah-gold transition">
                 {hub.region}
               </h3>
               <p class="mt-2 text-xs text-salwah-gold/90 font-medium leading-relaxed">{hub.towns}</p>
               <p class="mt-3 text-sm text-gray-300 leading-relaxed flex-1">{hub.blurb}</p>
-              <span class="mt-5 text-sm font-bold text-salwah-gold">View {hub.region} Guide &rarr;</span>
+              <span class="mt-5 text-sm font-bold text-salwah-gold">Explore {hub.region} &rarr;</span>
             </a>
           ))
         }
@@ -884,12 +887,12 @@ const schemas = [
 
       <div class="text-center pt-4">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-4">
-          Frequent Partner Venues
+          Our Venue Partners
         </p>
-        <div class="flex flex-wrap justify-center gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto">
           {
             PARTNER_VENUE_NAMES.map((venue) => (
-              <span class="rounded-xl border border-salwah-gold/30 bg-salwah-gold/10 px-5 py-3 text-sm sm:text-base font-semibold text-white">
+              <span class="flex items-center justify-center text-center rounded-xl border border-salwah-gold/30 bg-salwah-gold/10 px-4 py-3 text-sm font-semibold text-white">
                 {venue}
               </span>
             ))
@@ -897,14 +900,14 @@ const schemas = [
         </div>
         <div class="mt-6">
           <a href="/services/venues-locations" class="text-sm font-semibold text-salwah-gold hover:underline">
-            Explore All Partner Venues &amp; Capacities &rarr;
+            Explore All Partner Venues &rarr;
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 11. Client Reviews -->
+  <!-- 11. Verified Client Testimonials (3 Real Reviews from salwahevents.com) -->
   <section class="py-18 sm:py-22 bg-salwah-black" data-reveal>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-12">
@@ -912,14 +915,14 @@ const schemas = [
           5.0★ Google Rating
         </p>
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-          Trusted by <span class="gold-gradient-text italic font-semibold">Families Across the UK</span>
+          Trusted by <span class="gold-gradient-text italic font-semibold">Our Clients</span>
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {
           TESTIMONIALS.map((review) => (
-            <blockquote class="luxury-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+            <blockquote class="luxury-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
               <div>
                 <div class="text-salwah-gold text-base tracking-widest mb-3" aria-label="5 out of 5 stars">
                   &#9733;&#9733;&#9733;&#9733;&#9733;
@@ -930,9 +933,7 @@ const schemas = [
               </div>
               <footer class="mt-5 pt-4 border-t border-white/10">
                 <p class="font-semibold text-white">{review.name}</p>
-                <p class="text-xs text-salwah-gold">
-                  {review.event} &bull; {review.location}
-                </p>
+                <p class="text-xs text-salwah-gold">{review.event}</p>
               </footer>
             </blockquote>
           ))
@@ -941,12 +942,12 @@ const schemas = [
     </div>
   </section>
 
-  <!-- 12. Extractable GEO / AI Overview Quick Facts -->
+  <!-- 12. Extractable Quick Facts -->
   <section class="py-14 sm:py-16 velvet-section border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <QuickFactsBox
         heading="Salwah Events and Catering — At a Glance"
-        summary="Salwah Events and Catering (Salwah Events Ltd) is a London-based 100% HMC Certified Halal Asian wedding caterer and event decorator serving Greater London, Essex, and Kent from our Edmonton kitchen (N18 1UB)."
+        summary="Salwah Events and Catering (Salwah Events Ltd) is a family-led London Asian wedding caterer and event specialist serving Greater London, Essex, and Kent from our Edmonton kitchen (N18 1UB)."
         facts={quickFacts}
       />
     </div>

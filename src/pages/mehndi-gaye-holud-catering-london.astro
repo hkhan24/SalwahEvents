@@ -27,11 +27,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 const quickFacts = [
-  { label: 'Starting Price', value: 'From £30pp (Silver) • £45pp (Gold) • Custom Live Street-Food Bundles' },
+  { label: 'Starting Price', value: 'From £25pp (Silver) • £40pp (Gold) • Custom Live Street-Food & Chaat Bundles' },
   { label: 'Guest Capacity', value: '50 to 800+ guests (Garden Marquees, Halls & Community Centres)' },
-  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen' },
-  { label: 'Live Stations', value: 'Papri Chaat, Puchka/Golgappa, Live Charcoal Grills, Karak Chai & Jalebi' },
-  { label: 'Holud & Mehndi Decor', value: 'Marigold arches, colourful draping, jhoola swings & festive uplighting' },
+  { label: 'Halal Standard', value: 'HMC-Certified Halal Meat & Poultry • Dedicated London Halal Kitchen' },
+  { label: 'Live Stations', value: 'Papri Chaat, Puchka/Golgappa, Charcoal Grills, Karak Chai & Dessert/Paan Stalls' },
+  { label: 'Holud & Mehndi Decor', value: 'Marigold arches, vibrant draping, jhoola swings & festive uplighting' },
   { label: 'Areas Covered', value: 'East London, North London, West London, South London, Essex & Kent' },
 ];
 
@@ -100,10 +100,10 @@ const faqs: FaqItem[] = [
 const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
   buildServiceSchema({
-    name: 'Mehndi & Gaye Holud Catering London (100% HMC Halal)',
+    name: 'Mehndi & Gaye Holud Catering London (HMC Halal)',
     serviceType: 'Mehndi & Gaye Holud Catering & Live Street-Food Stations',
     description:
-      'Vibrant 100% HMC Certified Halal Mehndi & Gaye Holud catering in London, Essex, and Kent with live chaat, puchka, charcoal grills, karak chai, mocktails & stage decor from £30pp.',
+      'Vibrant HMC-certified Halal Mehndi & Gaye Holud catering in London, Essex, and Kent with live chaat, puchka, charcoal grills, karak chai, mocktails & stage decor from £25pp.',
     url: '/mehndi-gaye-holud-catering-london',
     areaServed: ['Greater London', 'East London', 'North London', 'West London', 'Essex', 'Kent'],
   }),
@@ -112,8 +112,8 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="Mehndi & Gaye Holud Catering London | Live Chaat & Chai | Salwah Events"
-  description="Vibrant 100% HMC Certified Halal Mehndi & Gaye Holud catering in London, Essex & Kent from £30pp. Live chaat & puchka stalls, charcoal kebabs, karak chai, mocktails & festive stages."
+  title="Mehndi & Gaye Holud Catering London | Live Chaat & Grills From £25pp | Salwah Events"
+  description="Vibrant HMC-certified Halal Mehndi & Gaye Holud catering in London, Essex & Kent from £25pp. Live chaat & puchka stalls, charcoal kebabs, karak chai, mocktails & festive stages."
   canonicalPath="/mehndi-gaye-holud-catering-london"
   schemas={schemas}
 >
@@ -121,7 +121,7 @@ const schemas = [
     eyebrow="Live Chaat • Charcoal Grills • Karak Chai • Festive Stages"
     title="Mehndi & Gaye Holud"
     highlight="Catering London"
-    subtitle="Bring irresistible street-food theatre, sizzling 100% HMC Halal kebabs, fragrant biryani, spiced borhani, and pouring karak chai to your Mehndi, Sangeet, or Gaye Holud celebration across London, Essex & Kent."
+    subtitle="Bring lively street-food stalls, sizzling HMC Halal kebabs, fragrant kacchi biryani, spiced borhani, and pouring karak chai to your Mehndi, Sangeet, or Gaye Holud across London, Essex & Kent — starting from £25pp."
     image={galleryMocktails}
     imageAlt="Festive Mehndi and Gaye Holud catering with fruit mocktails, spiced borhani and pouring karak chai"
     breadcrumbs={breadcrumbs}
@@ -135,7 +135,7 @@ const schemas = [
         <div class="lg:col-span-7 space-y-10">
           <QuickFactsBox
             heading="Mehndi & Gaye Holud Catering — Quick Facts"
-            summary="Designed for joyful, high-energy pre-wedding nights — combining theatrical live street-food counters, abundant Halal buffets, colourful mocktails, and festive stage decor."
+            summary="Built for lively pre-wedding evenings — combining fresh street-food counters, generous Halal buffets, chilled welcome drinks, and colourful stage decor."
             facts={quickFacts}
           />
 

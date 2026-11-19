@@ -4,8 +4,8 @@ export default function GuestEstimatorTool() {
   const [guestCount, setGuestCount] = useState(200);
 
   const estimates = useMemo(() => {
-    const cateringMin = guestCount * 30;
-    const cateringMax = guestCount * 50;
+    const cateringMin = guestCount * 25;
+    const cateringMax = guestCount * 40;
     const decorMin = guestCount * 15;
     const decorMax = guestCount * 35;
     return {
@@ -38,7 +38,7 @@ export default function GuestEstimatorTool() {
         <div className="rounded-xl border border-white/15 bg-black/50 p-6">
           <p className="font-serif text-lg text-gray-200 mb-2">Halal Catering Range</p>
           <p className="text-2xl font-bold text-salwah-gold">{estimates.catering}</p>
-          <p className="text-xs text-gray-400 mt-1">Based on £30–£50 per person</p>
+          <p className="text-xs text-gray-400 mt-1">Based on £25–£40 per person (Silver to Gold)</p>
         </div>
         <div className="rounded-xl border border-white/15 bg-black/50 p-6">
           <p className="font-serif text-lg text-gray-200 mb-2">Stage &amp; Venue Decor</p>

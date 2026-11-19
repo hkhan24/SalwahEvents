@@ -37,7 +37,7 @@ const faqs: FaqItem[] = [
   {
     question: 'How much does Asian wedding catering cost per head in London?',
     answer:
-      'Our Halal Asian wedding catering packages start from £30 per person for our Silver Package (2 starters, 3 mains, rice, naan, dessert, crockery, and uniformed staff) and £45 per person for our Gold Package with grilled starters and gourmet welcome mocktails. All-inclusive Platinum catering and stage decor packages start from £17,500 for 200 guests.',
+      'Our Halal Asian wedding catering packages start from £25 per person for the Silver Package (3 starters, 4 mains, pilau rice, plain rice or naan, 1 dessert, crockery, cutlery, and waiting staff) and £40 per person for our most popular Gold Package (adding welcome drinks, canapés, 4 starters including fish, 4 premium mains, 2 desserts, glassware, and a floor supervisor). All-inclusive Platinum catering and stage decoration starts from £17,500 for 200 guests.',
   },
   {
     question: 'What guest numbers can you cater for?',
@@ -62,11 +62,11 @@ const faqs: FaqItem[] = [
 ];
 
 const quickFacts = [
-  { label: 'Starting Price', value: 'From £30 per person (Silver) • £45pp (Gold) • From £17,500 (Platinum)' },
-  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Single or Multi-Day Weddings)' },
-  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated Kitchen' },
+  { label: 'Starting Price', value: 'From £25 per person (Silver) • £40pp (Gold) • From £17,500 (Platinum, 200 guests)' },
+  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Single or Multi-Day Weddings & Celebrations)' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Meat & Poultry • Dedicated Halal Kitchen' },
   { label: 'Signature Cuisines', value: 'Bengali (Bangladeshi), Pakistani & Indian Wedding Menus' },
-  { label: 'Service Styles', value: 'Grand Buffet, Family-Style Table Service, Plated Dining & Live Stations' },
+  { label: 'Service Styles', value: 'Grand Buffet, Family-Style Table Service, Plated Dining & Live Stalls' },
   { label: 'Coverage Areas', value: 'Greater London, East London, North London, West London, Essex & Kent' },
 ];
 
@@ -76,7 +76,7 @@ const schemas = [
     name: 'Asian Wedding Catering London, Essex & Kent',
     serviceType: 'Halal Asian Wedding Catering',
     description:
-      '100% HMC Certified Halal Asian wedding catering for Bengali, Pakistani, and Indian weddings across London, Essex, and Kent. Packages from £30 per person for 50–1,000+ guests.',
+      'Authentic Bengali, Pakistani, and Indian wedding catering using exclusively HMC-certified Halal meat and poultry across London, Essex, and Kent. Packages from £25 per person for 50–1,000+ guests.',
     url: '/services/asian-wedding-catering',
   }),
   buildFaqSchema(faqs),
@@ -84,21 +84,21 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="Asian Wedding Catering London | 100% HMC Halal From £30pp | Salwah Events"
-  description="Award-worthy 100% HMC Certified Halal Asian wedding catering in London, Essex & Kent. Authentic Bengali, Pakistani & Indian menus, gourmet mocktails & chai, from £30pp for 50–1,000+ guests."
+  title="Asian Wedding Catering London | Halal Menus From £25pp | Salwah Events"
+  description="Authentic Bengali, Pakistani & Indian wedding catering in London, Essex & Kent using exclusively HMC-certified Halal meat & poultry. Transparent packages from £25pp for 50–1,000+ guests."
   canonicalPath="/services/asian-wedding-catering"
   schemas={schemas}
 >
   <PageHero
-    eyebrow="100% HMC Certified Halal • Authentic South Asian Cuisine"
+    eyebrow="HMC-Certified Halal • Authentic South Asian Cuisine"
     title="Asian Wedding Catering"
     highlight="in London, Essex & Kent"
-    subtitle="Authentic Bengali, Pakistani, and Indian Halal wedding feasts cooked fresh for 50 to 1,000+ guests — starting from £30 per person with uniformed waiting staff, crockery, and handcrafted mocktails."
+    subtitle="Slow-cooked Bengali, Pakistani, and Indian wedding banquets served hot for 50 to 1,000+ guests — starting from £25 per person with crockery, cutlery, and professional waiting staff included."
     image={headerCatering}
     imageAlt="Luxury Halal Asian wedding catering spread in London by Salwah Events"
     breadcrumbs={breadcrumbs}
     primaryCtaHref="#quote-form"
-    primaryCtaLabel="Get Instant Catering Quote"
+    primaryCtaLabel="Request a Catering Quote"
   />
 
   <!-- Quick Facts + Inline High-Converting Quote Form -->
@@ -122,8 +122,8 @@ const schemas = [
               hospitality.
             </p>
             <p>
-              We elevate every reception with handcrafted fruit mocktails, Bengali spiced
-              borhani, Kashmiri pink chai, freshly brewed cardamom karak chai, and artisan coffee.
+              Complete your reception with chilled fruit mocktails, Bengali spiced borhani, Kashmiri
+              pink chai, freshly brewed cardamom karak chai, and artisan coffee.
             </p>
 
             <h2>Three Heritage Cuisines Under One Roof</h2>
@@ -166,9 +166,9 @@ const schemas = [
           <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
             <h2>Flexible Service Styles for Every Venue</h2>
             <p>
-              Whether you are hosting a 60-guest Nikah at home or a 900-guest Walima at{' '}
+              Whether you are hosting an intimate 50-guest Nikah at home or a 1,000-guest Walima at{' '}
               <a href="/services/venues-locations">The City Pavilion, Meridian Grand, or The Willows</a>,
-              our floor supervisors orchestrate piping-hot service tailored to your schedule:
+              our floor supervisors manage piping-hot service around your exact schedule:
             </p>
             <ul>
               <li>
@@ -202,7 +202,7 @@ const schemas = [
             subheading="Request bespoke per-head pricing & arrange a menu consultation in London."
           />
 
-          <div class="rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-4">
+          <div class="mt-6 rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-4">
             <h3 class="font-serif text-xl font-bold text-salwah-gold">
               Popular Package Starting Prices
             </h3>
@@ -255,7 +255,7 @@ const schemas = [
           <Picture src={menuStarters} alt="Indian wedding catering London" widths={[480, 800]} formats={['webp']} fallbackFormat="webp" quality={78} loading="lazy" class="h-44 w-full object-cover group-hover:scale-105 transition duration-500" />
           <div class="p-5">
             <h3 class="font-serif text-xl font-bold text-white group-hover:text-salwah-gold">Indian Wedding Catering London</h3>
-            <p class="mt-2 text-sm text-gray-300">Live tandoor, chaat stations, rich curries &amp; gourmet vegetarian/vegan feasts.</p>
+            <p class="mt-2 text-sm text-gray-300">Live tandoor, chaat stations, rich curries &amp; dedicated vegetarian/vegan feasts.</p>
           </div>
         </a>
       </div>
@@ -266,6 +266,7 @@ const schemas = [
   <CtaBanner
     title="Ready to Plan Your"
     highlight="Halal Wedding Feast?"
+    subtitle="Share your date, guest count, and favourite dishes. We will reply promptly with clear per-head pricing from £25pp and arrange a complimentary menu consultation."
     primaryHref="#quote-form"
     primaryLabel="Get Your Free Catering Quote"
   />

@@ -26,11 +26,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 const quickFacts = [
-  { label: 'Starting Price', value: 'From £30 per person (Silver) • £45pp (Gold) • Platinum from £17,500' },
+  { label: 'Starting Price', value: 'From £25 per person (Silver) • £40pp (Gold) • Platinum from £17,500' },
   { label: 'Guest Capacity', value: '50 to 1,000+ guests (Gaye Holud, Akhd / Nikah, Biye & Walima)' },
-  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen' },
-  { label: 'Signature Bengali Dishes', value: 'Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, Shahi Chicken Roast, Borthas, Spiced Borhani & Roshmalai' },
-  { label: 'Service Styles', value: 'Traditional Family-Style Table Service, Grand Multi-Line Buffet & Plated Dining' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Meat & Poultry • Dedicated Halal Kitchen' },
+  { label: 'Signature Bengali Dishes', value: 'Lamb Kacchi Biryani, Beef Kala Bhuna, Beef Rezala, Chicken Roast, Fish Masala & Kalajam' },
+  { label: 'Service Styles', value: 'Family-Style Table Service, Grand Multi-Line Buffet & Plated Dining' },
   { label: 'Areas Covered', value: 'East London (Tower Hamlets, Newham, Redbridge, Ilford, Romford), Greater London, Essex & Kent' },
 ];
 
@@ -63,7 +63,7 @@ const faqs: FaqItem[] = [
   {
     question: 'How much does Bengali wedding catering cost per head in London?',
     answer:
-      'Salwah Events Bengali wedding catering packages start from £30 per person for our Silver Package and £45 per person for our Gold Package (including grilled starters, traditional mains, welcome mocktails/borhani, crockery, and waiting staff). All-inclusive Platinum catering and stage decoration starts from £17,500 for 200 guests.',
+      'Salwah Events Bengali wedding catering starts from £25 per person for the Silver Package (3 starters, 4 mains, pilau & plain rice or naan, 1 dessert, crockery, and staff) and £40 per person for the Gold Package (adding welcome drinks, canapés, 4 starters including fish, 4 premium mains, 2 desserts, glassware, and a floor supervisor). All-inclusive Platinum catering and stage decoration starts from £17,500 for 200 guests.',
   },
   {
     question: 'Do you serve authentic Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, and Borhani?',
@@ -73,7 +73,7 @@ const faqs: FaqItem[] = [
   {
     question: 'Is your Bangladeshi wedding catering 100% HMC Certified Halal?',
     answer:
-      'Yes, 100%. All meat and poultry is strictly HMC Certified Halal, cooked fresh in our dedicated London Halal kitchens alongside chilled Bengali borhani, mango lassi, gourmet fruit mocktails, and freshly brewed karak chai.',
+      'Yes, 100%. We exclusively use HMC-certified Halal meat and poultry, cooked fresh in our dedicated London Halal kitchen alongside chilled Bengali borhani, mango lassi, fresh fruit mocktails, and freshly brewed karak chai.',
   },
   {
     question: 'Which East London and Greater London venues do you cater Bengali weddings at?',
@@ -93,7 +93,7 @@ const schemas = [
     name: 'Bengali & Bangladeshi Wedding Catering London',
     serviceType: 'Bengali Wedding Catering',
     description:
-      '100% HMC Certified Halal Bengali and Bangladeshi wedding catering in East & Greater London. Signature kacchi biryani, beef kala bhuna, chicken roast, borthas, borhani & roshmalai from £30pp for 50–1,000+ guests.',
+      'Authentic HMC-certified Halal Bengali and Bangladeshi wedding catering in East & Greater London. Signature Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Beef Rezala & desserts from £25pp for 50–1,000+ guests.',
     url: '/bengali-wedding-catering-london',
     areaServed: ['East London', 'Greater London', 'Tower Hamlets', 'Newham', 'Redbridge', 'Essex', 'Kent'],
   }),
@@ -102,16 +102,16 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="Bengali Wedding Catering London | HMC Halal Kacchi Biryani & Menus | Salwah Events"
-  description="Authentic 100% HMC Halal Bengali & Bangladeshi wedding catering in East & Greater London from £30pp. Kacchi biryani, beef kala bhuna, chicken roast, borthas, borhani & roshmalai for 50–1,000+ guests."
+  title="Bengali Wedding Catering London | Halal Kacchi Biryani & Menus From £25pp | Salwah Events"
+  description="Authentic Bengali & Bangladeshi Halal wedding catering in East & Greater London from £25pp. Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Beef Rezala & desserts for 50–1,000+ guests."
   canonicalPath="/bengali-wedding-catering-london"
   schemas={schemas}
 >
   <PageHero
-    eyebrow="Authentic Bangladeshi & Sylheti Heritage • 100% HMC Halal"
+    eyebrow="Authentic Bangladeshi Heritage • HMC-Certified Halal"
     title="Bengali Wedding"
     highlight="Catering in London"
-    subtitle="From fragrant Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, and Shahi Chicken Roast to traditional Borthas, Spiced Borhani, and Roshmalai — 100% HMC Halal Bangladeshi wedding feasts from £30pp across East & Greater London."
+    subtitle="From fragrant Lamb Kacchi Biryani, Beef Kala Bhuna, and Chicken Roast to Fish Masala, Beef Rezala, and warm Kalajam — authentic Bangladeshi wedding feasts starting from £25pp across East & Greater London."
     image={menuBiryani}
     imageAlt="Authentic Bengali Lamb Kacchi Biryani wedding catering in London by Salwah Events"
     breadcrumbs={breadcrumbs}
@@ -206,7 +206,7 @@ const schemas = [
             <p>
               Pair your catering with our vibrant{' '}
               <a href="/services/wedding-stage-decoration">Gaye Holud &amp; Walima stage decoration</a>{' '}
-              or explore our <a href="/packages">all-inclusive wedding packages</a> for seamless
+              or explore our <a href="/packages">all-inclusive wedding packages</a> for smooth
               coordination under one roof.
             </p>
           </div>
@@ -226,7 +226,7 @@ const schemas = [
             <h3 class="font-serif text-lg font-bold text-salwah-gold">Related Wedding Services</h3>
             <ul class="space-y-2">
               <li><a href="/menu" class="hover:text-salwah-gold transition">&rarr; Browse Full Halal Wedding Menu</a></li>
-              <li><a href="/packages" class="hover:text-salwah-gold transition">&rarr; Compare Silver (£30pp), Gold (£45pp) &amp; Platinum</a></li>
+              <li><a href="/packages" class="hover:text-salwah-gold transition">&rarr; Compare Silver (£25pp), Gold (£40pp) &amp; Platinum</a></li>
               <li><a href="/services/wedding-stage-decoration" class="hover:text-salwah-gold transition">&rarr; Gaye Holud, Nikah &amp; Walima Stage Decor</a></li>
               <li><a href="/blog/best-wedding-venues-in-east-london-for-asian-weddings" class="hover:text-salwah-gold transition">&rarr; Best East London Asian Wedding Venues</a></li>
             </ul>

@@ -42,7 +42,7 @@ const faqs: FaqItem[] = [
   {
     question: 'We have already booked our venue and some suppliers — can you still manage our day?',
     answer:
-      'Yes! We offer partial planning and on-the-day coordination where we step in, confirm timings with every supplier you have booked, and run the floor seamlessly so your family can simply enjoy the occasion.',
+      'Yes! We offer partial planning and on-the-day coordination where we step in, confirm timings with every supplier you have booked, and run the floor calmly so your family can simply enjoy the occasion.',
   },
   {
     question: 'Why hire a dedicated Asian wedding planner in London?',
@@ -71,18 +71,24 @@ const schemas = [
 
 <BaseLayout
   title="Asian Wedding Planner London | Full Event Management | Salwah Events"
-  description="Stress-free Asian wedding planning and full event management in London, Essex & Kent. Master run-sheets, venue sourcing, supplier coordination, and seamless on-the-day direction."
+  description="Calm, organised Asian wedding planning and full event management in London, Essex & Kent. Master run-sheets, venue sourcing, supplier coordination, and on-the-day floor direction."
   canonicalPath="/services/event-management-planning"
   schemas={schemas}
 >
   <PageHero
-    eyebrow="Calm, Seamless Execution • London, Essex & Kent"
+    eyebrow="Calm, Organised Event Direction · London, Essex & Kent"
     title="Event Management"
     highlight="& Wedding Planning"
-    subtitle="From master timelines and supplier coordination to dedicated on-the-day floor direction — let our experienced Asian wedding planners carry the logistics while you celebrate."
+    subtitle="From master timelines and supplier coordination to dedicated on-the-day floor direction — let our experienced Asian wedding planners carry the logistics while you stay present with your family."
     image={headerPlanning}
     imageAlt="Asian wedding event management and coordination in London by Salwah Events"
     breadcrumbs={breadcrumbs}
+    trustBadges={[
+      { label: 'Full & On-the-Day Planning', accent: true },
+      { label: '50–1,000+ Guests', accent: false },
+      { label: 'Greater London, Essex & Kent', accent: false },
+      { label: '5.0★ Google Rating', accent: true },
+    ]}
     primaryCtaHref="#quote-form"
     primaryCtaLabel="Book Planning Consultation"
   />
@@ -98,13 +104,13 @@ const schemas = [
           />
 
           <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
-            <h2>A Stress-Free Experience for Couples &amp; Parents</h2>
+            <h2>A Stress-Free Day for Couples &amp; Parents</h2>
             <p>
-              Planning a multi-event Asian wedding often turns family members into unpaid project
-              managers on the very day they should be welcoming loved ones. Our{' '}
-              <strong>full event management</strong> team acts as your single behind-the-scenes
-              director — managing load-ins, venue rules, supplier check-ins, and guest flow with
-              quiet authority.
+              Planning a multi-event Asian wedding often turns parents and siblings into unpaid project
+              managers on the very day they should be welcoming guests. Our{' '}
+              <strong>full event management</strong> team runs the schedule behind the scenes —
+              coordinating load-ins, venue timings, supplier arrivals, and dinner service so your
+              family can stay present for every milestone.
             </p>
           </div>
 
@@ -152,9 +158,12 @@ const schemas = [
             client:visible
             variant="compact"
             sourcePage="Event Management LP"
-            defaultService="Full Event Management"
+            defaultService="Full Event Planning"
             heading="Plan Your Event With Us"
-            subheading="Tell us your date & guest count to discuss full planning or all-inclusive Platinum packages."
+            subheading="Tell us your date & guest count to discuss full planning, on-the-day direction, or Platinum packages."
+            notesLabel="Event Functions, Venue & Planning Notes (Optional)"
+            notesPlaceholder="e.g. Same-day Nikah & Walima, 350 guests, City Pavilion, on-the-day coordination..."
+            submitLabel="Book Planning Consultation"
           />
         </aside>
       </div>
@@ -162,5 +171,11 @@ const schemas = [
   </section>
 
   <FaqSection faqs={faqs} />
-  <CtaBanner primaryHref="#quote-form" primaryLabel="Book a Free Consultation" />
+  <CtaBanner
+    title="Want Parents & Family"
+    highlight="Free to Enjoy Every Moment?"
+    subtitle="Tell us your event dates, venue, and what suppliers you already have booked. We will put together a clear planning or all-inclusive Platinum proposal."
+    primaryHref="#quote-form"
+    primaryLabel="Book a Free Consultation"
+  />
 </BaseLayout>

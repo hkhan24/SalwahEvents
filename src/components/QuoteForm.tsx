@@ -22,19 +22,37 @@ export interface QuoteFormProps {
   defaultService?: string;
   heading?: string;
   subheading?: string;
+  notesLabel?: string;
+  notesPlaceholder?: string;
+  submitLabel?: string;
+  hideWhatsAppFooter?: boolean;
 }
 
 const SERVICE_OPTIONS = [
-  'Halal Wedding Catering',
-  'Wedding Stage Decor',
-  'Both Catering & Stage Decor',
-  'Full Event Management',
+  'Wedding Catering',
+  'Stage Decoration',
+  'Catering & Stage',
+  'Full Event Planning',
 ];
+
+function normalizeServiceOption(input?: string): string {
+  if (!input) return 'Catering & Stage';
+  if (SERVICE_OPTIONS.includes(input)) return input;
+  const lower = input.toLowerCase();
+  if (lower.includes('both') || (lower.includes('catering') && lower.includes('stage'))) {
+    return 'Catering & Stage';
+  }
+  if (lower.includes('stage') || lower.includes('decor')) return 'Stage Decoration';
+  if (lower.includes('event') || lower.includes('plan') || lower.includes('manage')) {
+    return 'Full Event Planning';
+  }
+  return 'Wedding Catering';
+}
 
 const EVENT_TYPES = [
   'Wedding Reception',
   'Walima',
-  'Nikkah',
+  'Nikah',
   'Mehndi / Gaye Holud',
   'Baraat',
   'Aqiqah',
@@ -54,16 +72,20 @@ const GUEST_RANGES = [
 export default function QuoteForm({
   variant = 'compact',
   sourcePage = 'Website',
-  defaultService = 'Both Catering & Stage Decor',
-  heading = 'Get Your Free Wedding Quote',
-  subheading = 'Packages from £30pp • 100% HMC Certified Halal • Fast response via call or WhatsApp.',
+  defaultService = 'Catering & Stage',
+  heading = 'Check Date & Request a Quote',
+  subheading = 'Packages from £25pp · HMC-certified Halal · Same-day reply by phone or WhatsApp.',
+  notesLabel,
+  notesPlaceholder = 'e.g. Lamb Kacchi Biryani, Beef Kala Bhuna, floral Walima stage, venue name...',
+  submitLabel = 'Check Availability & Get Quote',
+  hideWhatsAppFooter = false,
 }: QuoteFormProps) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [eventDate, setEventDate] = useState('');
   const [guestCount, setGuestCount] = useState('200–350 guests');
-  const [servicesNeeded, setServicesNeeded] = useState(defaultService);
+  const [servicesNeeded, setServicesNeeded] = useState(normalizeServiceOption(defaultService));
   const [eventType, setEventType] = useState('Wedding Reception');
   const [location, setLocation] = useState('');
   const [message, setMessage] = useState('');
@@ -80,13 +102,13 @@ export default function QuoteForm({
       if (detail.guestCount && GUEST_RANGES.includes(detail.guestCount)) {
         setGuestCount(detail.guestCount);
       }
-      if (detail.servicesNeeded && SERVICE_OPTIONS.includes(detail.servicesNeeded)) {
-        setServicesNeeded(detail.servicesNeeded);
+      if (detail.servicesNeeded) {
+        setServicesNeeded(normalizeServiceOption(detail.servicesNeeded));
       }
       if (detail.message) {
         setMessage(detail.message);
       }
-      setPrefillBadge(detail.label || 'Selection loaded — enter your name & number to lock in availability');
+      setPrefillBadge(detail.label || 'Selection loaded — add your name & number to check date availability');
       setStatus('idle');
     };
     window.addEventListener('salwah:prefill-quote', handler);
@@ -183,13 +205,13 @@ export default function QuoteForm({
             href={SITE.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-xl bg-[#25D366] px-5 py-3 text-sm font-semibold text-black hover:brightness-105 transition"
+            className="btn-luxury-whatsapp inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold"
           >
             Message Us on WhatsApp
           </a>
           <a
             href={SITE.phoneHref}
-            className="inline-flex items-center justify-center rounded-xl border border-salwah-gold/40 px-5 py-3 text-sm font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+            className="btn-luxury-outline inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold"
           >
             Call {SITE.phoneDisplay}
           </a>
@@ -215,7 +237,7 @@ export default function QuoteForm({
       <div className="mb-5">
         <div className="inline-flex items-center gap-1.5 rounded-full border border-salwah-gold/35 bg-salwah-gold/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-salwah-gold mb-3">
           <Clock className="h-3.5 w-3.5" />
-          Fast Reply • Free Menu Consultation
+          Same-Day Reply • Complimentary Consultation
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">{heading}</h2>
         <p className="mt-1.5 text-sm text-gray-300">{subheading}</p>
@@ -325,10 +347,10 @@ export default function QuoteForm({
                   type="button"
                   onClick={() => setServicesNeeded(option)}
                   aria-pressed={selected}
-                  className={`rounded-lg border px-3 py-2.5 text-left text-xs sm:text-sm font-medium transition cursor-pointer ${
+                  className={`flex items-center justify-center text-center min-h-[46px] rounded-lg border px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap transition cursor-pointer ${
                     selected
                       ? 'border-salwah-gold bg-salwah-gold/18 text-salwah-gold shadow-sm shadow-salwah-gold/15'
-                      : 'border-white/15 bg-black/50 text-gray-300 hover:border-salwah-gold/40'
+                      : 'border-white/15 bg-black/50 text-gray-200 hover:border-salwah-gold/45 hover:text-white'
                   }`}
                 >
                   {option}
@@ -397,7 +419,7 @@ export default function QuoteForm({
 
         <div>
           <label htmlFor={`qf-msg-${variant}`} className="block text-xs font-medium uppercase tracking-wider text-salwah-gold mb-1.5">
-            {variant === 'full' ? 'Cuisine Preferences & Notes' : 'Cuisine or Venue Notes (Optional)'}
+            {notesLabel ?? (variant === 'full' ? 'Event, Venue & Menu Notes' : 'Venue, Menu or Stage Notes (Optional)')}
           </label>
           <textarea
             id={`qf-msg-${variant}`}
@@ -405,8 +427,8 @@ export default function QuoteForm({
             rows={variant === 'full' ? 4 : 3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="e.g. Bengali kacchi biryani, Pakistani walima menu, floral stage, venue name..."
-            className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-2.5 text-sm text-white placeholder:text-gray-500 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold resize-none"
+            placeholder={notesPlaceholder}
+            className="w-full rounded-lg border border-salwah-gold/25 bg-black/75 px-3.5 py-2.5 text-sm text-white placeholder:text-gray-400 focus:border-salwah-gold focus:outline-none focus:ring-1 focus:ring-salwah-gold resize-none"
           />
         </div>
 
@@ -419,7 +441,7 @@ export default function QuoteForm({
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="btn-luxury-gold w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold disabled:opacity-60 cursor-pointer"
+          className="btn-luxury-gold w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm sm:text-base font-bold whitespace-nowrap disabled:opacity-60 cursor-pointer"
         >
           {status === 'submitting' ? (
             <>
@@ -428,25 +450,27 @@ export default function QuoteForm({
             </>
           ) : (
             <>
-              <Send className="h-5 w-5" />
-              Get My Free Bespoke Quote
+              <Send className="h-4 w-4 shrink-0" />
+              {submitLabel}
             </>
           )}
         </button>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-1 text-xs text-gray-400">
+        <div className={`flex flex-col sm:flex-row items-center ${hideWhatsAppFooter ? 'justify-center' : 'justify-between'} gap-2 pt-1 text-xs text-gray-300/80`}>
           <p className="flex items-center gap-1.5">
             <ShieldCheck className="h-4 w-4 text-salwah-gold shrink-0" />
-            <span>100% HMC Halal • No obligation</span>
+            <span>HMC-certified Halal &middot; Zero obligation</span>
           </p>
-          <a
-            href={SITE.whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#25D366] font-semibold hover:underline"
-          >
-            Or WhatsApp {SITE.phoneDisplay} &rarr;
-          </a>
+          {!hideWhatsAppFooter && (
+            <a
+              href={SITE.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-salwah-gold font-semibold hover:text-salwah-gold-light hover:underline transition"
+            >
+              <span>Or WhatsApp {SITE.phoneDisplay} &rarr;</span>
+            </a>
+          )}
         </div>
       </form>
     </div>

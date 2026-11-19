@@ -95,16 +95,16 @@ export default function WeddingExperienceShowcase({ slides }: { slides: Showcase
             <button
               type="button"
               onClick={handleEnquireLook}
-              className="btn-luxury-gold inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-bold cursor-pointer"
+              className="btn-luxury-gold inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-bold whitespace-nowrap cursor-pointer"
             >
               {current.ctaLabel}
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 shrink-0" />
             </button>
             <a
               href={current.href}
-              className="inline-flex items-center justify-center rounded-xl border border-salwah-gold/40 px-4 py-3.5 text-sm font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+              className="btn-luxury-outline inline-flex items-center justify-center rounded-xl px-4 py-3.5 text-sm font-semibold whitespace-nowrap"
             >
-              View Details
+              Explore Details
             </a>
           </div>
         </div>

@@ -8,15 +8,15 @@ export const SITE = {
   stagingUrl: 'https://calming-white-penguin-96.hostingersite.com',
   isStaging: (import.meta.env.PUBLIC_STAGING_MODE ?? 'true') === 'true',
 
-  // Verified Google Business Profile NAP
+  // Verified Business Profile & Live Site NAP
   address: {
-    street: 'Unit 7 Landmark Commercial Centre, 7 Commercial Road',
+    street: 'Number 19, Unit 7 Landmark Commercial Centre, Commercial Road',
     locality: 'Edmonton',
     city: 'London',
     postcode: 'N18 1UB',
     country: 'GB',
     countryName: 'United Kingdom',
-    full: 'Unit 7 Landmark Commercial Centre, 7 Commercial Road, Edmonton, London, N18 1UB',
+    full: 'Number 19, Unit 7 Landmark Commercial Centre, Commercial Road, Edmonton, London, N18 1UB',
   },
   geo: {
     latitude: 51.6118,
@@ -51,10 +51,10 @@ export const SITE = {
   mapsEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158857.0395249813!2d-0.2416815349688282!3d51.52877184085964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761e0969562635%3A0xed43594fb3763f6!2sLandmark%20Commercial%20Centre%2C%20Commercial%20Rd%2C%20London%20N18%201UB!5e0!3m2!1sen!2suk!4v1721834534653!5m2!1sen!2suk',
 
-  // Trust & Key Facts (consistent across every GEO/AEO block)
+  // Verified Trust & Key Facts (synced with salwahevents.com)
   facts: {
-    startingPrice: 'From £30 per person',
-    startingPriceShort: 'From £30pp',
+    startingPrice: 'From £25 per person',
+    startingPriceShort: 'From £25pp',
     guestCapacity: '50–1,000+ guests',
     halalStatus: '100% HMC Certified Halal — Dedicated Halal Kitchen',
     halalShort: '100% HMC Certified Halal',

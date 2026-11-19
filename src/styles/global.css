@@ -32,6 +32,11 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
@@ -121,13 +126,14 @@
   backdrop-filter: blur(18px);
 }
 
-/* Luminous Gold CTA Button with Diagonal Sheen */
+/* Luminous Gold Primary CTA Button with Diagonal Sheen */
 .btn-luxury-gold {
   position: relative;
   overflow: hidden;
+  border: 1px solid transparent;
   background: linear-gradient(135deg, #fdf4cf 0%, #f6df91 45%, #d6b04d 100%);
   color: #050507;
-  box-shadow: 0 12px 28px -10px rgba(246, 223, 145, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 28px -10px rgba(246, 223, 145, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.55);
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
@@ -143,12 +149,44 @@
 
 .btn-luxury-gold:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 36px -10px rgba(246, 223, 145, 0.6);
+  box-shadow: 0 18px 36px -10px rgba(246, 223, 145, 0.58);
   filter: brightness(1.03);
 }
 
 .btn-luxury-gold:hover::after {
   transform: translateX(120%);
+}
+
+/* Refined Secondary Gold-Bordered Obsidian CTA */
+.btn-luxury-outline {
+  border: 1px solid rgba(246, 223, 145, 0.52);
+  background: rgba(11, 13, 19, 0.78);
+  color: #f6df91;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+.btn-luxury-outline:hover {
+  background: #f6df91;
+  border-color: #f6df91;
+  color: #050507;
+  transform: translateY(-1px);
+}
+
+/* Refined Obsidian WhatsApp CTA (harmonious with obsidian & warm gold) */
+.btn-luxury-whatsapp {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(14, 17, 24, 0.86);
+  color: #f8fafc;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.22s ease, background-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
+}
+
+.btn-luxury-whatsapp:hover {
+  border-color: rgba(246, 223, 145, 0.65);
+  background: rgba(22, 26, 36, 0.96);
+  color: #fdf4cf;
+  transform: translateY(-1px);
 }
 
 /* Package Cards */

@@ -86,11 +86,11 @@ export function buildLocalBusinessSchema() {
     image: `${SITE.siteUrl}/og-default.jpg`,
     telephone: SITE.phoneE164,
     email: SITE.email,
-    priceRange: '££-£££ (From £30pp)',
+    priceRange: '££-£££ (From £25pp)',
     servesCuisine: ['Bangladeshi', 'Bengali', 'Pakistani', 'Indian', 'South Asian', 'Halal'],
     acceptsReservations: 'True',
     description:
-      '100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian), bespoke wedding stage decoration, and full event management across Greater London, Essex, and Kent. Packages from £30 per person for 50 to 1,000+ guests.',
+      'Family-led 100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian), bespoke wedding stage decoration, and full event management across Greater London, Essex, and Kent. Packages from £25 per person for 50 to 1,000+ guests.',
     knowsAbout: [
       'Asian Wedding Catering London',
       '100% HMC Certified Halal Catering',
@@ -189,10 +189,10 @@ export function buildServiceSchema(params: {
     offers: {
       '@type': 'Offer',
       priceCurrency: 'GBP',
-      price: '30',
+      price: '25',
       description:
         params.priceSpecification ??
-        '100% HMC Certified Halal packages starting from £30 per person (50–1,000+ guests).',
+        '100% HMC Certified Halal packages starting from £25 per person (50–1,000+ guests).',
       availability: 'https://schema.org/InStock',
     },
   };

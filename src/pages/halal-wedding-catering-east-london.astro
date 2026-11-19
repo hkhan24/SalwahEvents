@@ -26,39 +26,39 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 const quickFacts = [
-  { label: 'Starting Price', value: 'From £30pp (Silver) • £45pp (Gold) • Platinum from £17,500' },
+  { label: 'Starting Price', value: 'From £25pp (Silver) • £40pp (Gold) • Platinum from £17,500' },
   { label: 'Guest Capacity', value: '50 to 1,000+ guests across East London banqueting halls & dry-hire venues' },
-  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen (A406 / A12 Rapid Access)' },
+  { label: 'Halal Standard', value: 'HMC-Certified Halal Meat & Poultry • Dedicated London Kitchen (A406 / A12 Access)' },
   { label: 'Boroughs Covered', value: 'Redbridge, Newham, Tower Hamlets, Barking & Dagenham, Havering & Waltham Forest' },
   { label: 'Key Towns', value: 'Ilford, Romford, Chadwell Heath, Manor Park, Stratford, Whitechapel, Canary Wharf & Wanstead' },
-  { label: 'Landmark Venues', value: 'The City Pavilion, The Willows, Mayfair Venue, The Royal Regency, Palm Tree & Oasis' },
+  { label: 'Partner Venues', value: 'The City Pavilion (Preferred Caterer), The Willows, Mayfair Venue, The Royal Regency, Palm Tree & Oasis' },
 ];
 
 const eastLondonVenues = [
   {
     name: 'The City Pavilion (Romford)',
-    capacity: 'Up to 1,200 guests',
-    note: 'Grand multi-suite Asian wedding landmark — our brigade manages large 500–1,000+ guest Walima buffets & table service smoothly.',
+    badge: 'Preferred Caterer',
+    note: 'A flagship venue for grand Asian weddings where Salwah Events is a Preferred Caterer — experienced with high-volume multi-course dining, table service, and full stage transformations.',
   },
   {
     name: 'The Willows (Hainault / Ilford)',
-    capacity: '150–650 guests',
-    note: 'Blank-canvas ballroom ideal for pairing our custom ivory/crimson floral stage decoration with full Gold Halal catering.',
+    badge: 'Popular East London Venue',
+    note: 'A versatile ballroom ideal for pairing bespoke ivory or crimson floral stage decoration with our Silver, Gold, or Platinum Halal catering packages.',
   },
   {
     name: 'Mayfair Venue (Chadwell Heath)',
-    capacity: '150–650 guests',
-    note: 'Modern lighting & AV showcase suite popular for contemporary Bengali, Pakistani & Indian receptions.',
+    badge: 'Modern Banqueting Suite',
+    note: 'Contemporary lighting and staging space popular with couples hosting Bengali, Pakistani, and Indian receptions across Redbridge and Romford.',
   },
   {
     name: 'The Royal Regency (Manor Park)',
-    capacity: '200–1,000+ guests',
-    note: 'Historic chandelier-lit hall where our high-output kitchens keep kacchi biryani and grilled starters piping hot for every table.',
+    badge: 'Heritage Banqueting Hall',
+    note: 'A landmark Newham venue where our catering team keeps kacchi biryani, slow-cooked curries, and grilled starters piping hot for large family gatherings.',
   },
   {
-    name: 'Palm Tree & Oasis Venues (East London)',
-    capacity: '100–500 guests',
-    note: 'Beloved community venues suited to lively Gaye Holud, Mehndi, Nikah & family wedding celebrations.',
+    name: 'Palm Tree & Oasis (East London)',
+    badge: 'Beloved Local Venues',
+    note: 'Welcoming East London halls well suited to Gaye Holud, Mehndi, Nikah, and family wedding receptions.',
   },
 ];
 
@@ -66,22 +66,22 @@ const faqs: FaqItem[] = [
   {
     question: 'Do you cater at East London venues like The City Pavilion, The Willows, and Mayfair Venue?',
     answer:
-      'Yes! Our kitchen sits right off the A406 North Circular in Edmonton (N18), giving us fast, direct access to Ilford, Romford, Chadwell Heath, Manor Park, Stratford, and Canary Wharf. We regularly serve The City Pavilion, The Willows, Mayfair Venue, The Royal Regency, Palm Tree, and Oasis.',
+      'Yes. We are a Preferred Caterer at The City Pavilion in Romford and cater regularly at The Willows, Mayfair Venue, The Royal Regency, Palm Tree, and Oasis. Our kitchen in Edmonton (N18) sits right off the A406 North Circular for fast, direct access across Ilford, Romford, Newham, and Tower Hamlets.',
   },
   {
     question: 'How much does Halal Asian wedding catering cost in Ilford, Romford, or East London?',
     answer:
-      'Transparent packages start at £30 per person (Silver) and £45 per person (Gold with chargrilled starters and welcome mocktails). Our all-inclusive Platinum Package combines Gold catering, bespoke wedding stage decor, lighting, and event management from £17,500 for 200 guests.',
+      'Packages start from £25 per person for Silver (3 starters, 4 mains, pilau & plain rice or naan, 1 dessert, crockery, cutlery & waiting staff) and £40 per person for Gold (adding welcome drinks, canapés, 4 starters including fish, 4 premium mains, 2 desserts, glassware & a floor supervisor). Our all-inclusive Platinum Package starts from £17,500 for 200 guests.',
   },
   {
     question: 'Do you specialise in Bengali and Pakistani wedding catering in East London?',
     answer:
-      'Yes — East London is the heart of our Bengali (Bangladeshi) and Pakistani wedding clientele. Signature dishes include Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, Bengali Chicken Roast, Lamb Karahi, Chapli Kebabs, spiced borhani, and roshmalai — all 100% HMC Certified Halal.',
+      'Yes — East London is at the heart of our Bengali (Bangladeshi) and Pakistani wedding clientele. Popular dishes include Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Lamb Bhuna, Chicken Karahi, Chapli Kebabs, spiced borhani, and warm gulab jamun — all prepared with HMC-certified Halal meat and poultry.',
   },
   {
     question: 'Can we book both food and wedding stage decoration in East London?',
     answer:
-      'Yes. Bundling catering and bespoke floral stage decoration with Salwah Events eliminates venue coordination headaches and often saves significantly compared to hiring separate caterers and decorators.',
+      'Yes. Booking catering and bespoke floral stage decoration together with Salwah Events removes supplier coordination stress and often offers better overall value than hiring two separate companies.',
   },
 ];
 
@@ -91,7 +91,7 @@ const schemas = [
     name: 'East London Halal Asian Wedding Catering (Ilford, Romford, Newham & Tower Hamlets)',
     serviceType: 'East London Halal Wedding Catering & Stage Decor',
     description:
-      '100% HMC Certified Halal Bengali, Pakistani & Indian wedding catering and stage decor across East London — Ilford, Romford, Newham, Tower Hamlets, Redbridge, Stratford & Wanstead from £30pp.',
+      'HMC-certified Halal Bengali, Pakistani & Indian wedding catering and stage decor across East London — Ilford, Romford, Newham, Tower Hamlets, Redbridge, Stratford & Wanstead from £25pp.',
     url: '/halal-wedding-catering-east-london',
     areaServed: ['East London', 'Ilford', 'Romford', 'Redbridge', 'Newham', 'Tower Hamlets', 'Barking', 'Stratford', 'Wanstead', 'Canary Wharf'],
   }),
@@ -100,8 +100,8 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="East London Asian Wedding Caterers | Ilford, Romford & Newham | Salwah Events"
-  description="Top-rated 100% HMC Certified Halal Asian wedding caterers in East London (Ilford, Romford, Newham, Tower Hamlets & Redbridge) from £30pp. Bengali, Pakistani & Indian menus + stage decor."
+  title="East London Asian Wedding Caterers | Ilford, Romford & Newham From £25pp | Salwah Events"
+  description="Trusted HMC-certified Halal Asian wedding caterers in East London (Ilford, Romford, Newham, Tower Hamlets & Redbridge) from £25pp. Preferred Caterer at The City Pavilion."
   canonicalPath="/halal-wedding-catering-east-london"
   schemas={schemas}
 >
@@ -109,7 +109,7 @@ const schemas = [
     eyebrow="Ilford • Romford • Newham • Tower Hamlets • Redbridge • Stratford"
     title="East London Halal"
     highlight="Asian Wedding Catering"
-    subtitle="Serving East London's most celebrated banqueting halls and families with piping-hot 100% HMC Certified Halal Bengali, Pakistani, and Indian banquets plus luxury floral stage decoration — from £30pp for 50 to 1,000+ guests."
+    subtitle="Serving East London's favourite banqueting halls with freshly cooked HMC-certified Halal Bengali, Pakistani, and Indian banquets plus bespoke floral stage decoration — from £25pp for 50 to 1,000+ guests."
     image={headerAsianCatering}
     imageAlt="Grand East London Asian wedding banquet catered by Salwah Events"
     breadcrumbs={breadcrumbs}
@@ -123,7 +123,7 @@ const schemas = [
         <div class="lg:col-span-7 space-y-10">
           <QuickFactsBox
             heading="East London Asian Wedding Catering — Quick Facts"
-            summary="Rapid A406/A12 delivery from our dedicated Edmonton London HMC Halal kitchen straight to Ilford, Romford, Manor Park, Stratford, Canary Wharf, and Barking."
+            summary="Direct A406/A12 delivery from our Edmonton London Halal kitchen straight to Ilford, Romford, Manor Park, Stratford, Canary Wharf, and Barking."
             facts={quickFacts}
           />
 
@@ -138,7 +138,7 @@ const schemas = [
                     <div class="flex flex-wrap items-baseline justify-between gap-2">
                       <h3 class="font-serif text-xl font-bold text-salwah-gold">{venue.name}</h3>
                       <span class="rounded-full border border-salwah-gold/30 bg-salwah-gold/10 px-3 py-0.5 text-xs font-semibold text-salwah-gold">
-                        {venue.capacity}
+                        {venue.badge}
                       </span>
                     </div>
                     <p class="mt-2 text-sm text-gray-300 leading-relaxed">{venue.note}</p>
@@ -178,11 +178,11 @@ const schemas = [
           <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
             <h2>Why East London Families Choose Salwah Events</h2>
             <p>
-              East London wedding guests are discerning food critics — every elder notices instantly whether the
-              kacchi biryani rice is fluffy, whether the seekh kebabs are freshly chargrilled, and whether the
-              beef kala bhuna has slow-caramelised depth. Because our dedicated 100% HMC Halal kitchen sits just
-              minutes along the North Circular, dishes arrive hot, aromatic, and finished to perfection rather than
-              steamed out in transit.
+              East London families know great South Asian food when they taste it — every auntie and uncle
+              notices right away whether the kacchi biryani rice is fluffy, whether the kebabs were freshly
+              grilled, and whether the beef kala bhuna was slow-cooked properly. Because our dedicated Halal
+              kitchen sits just minutes along the North Circular in Edmonton, dishes reach your East London
+              venue hot, aromatic, and freshly finished rather than sitting for hours in transit.
             </p>
             <p>
               Explore our specialist <a href="/bengali-wedding-catering-london">Bengali</a>,{' '}
@@ -201,7 +201,7 @@ const schemas = [
             sourcePage="East London LP"
             defaultService="Both Catering & Stage Decor"
             heading="Get an East London Quote"
-            subheading="Tell us your East London venue, date & guest count for clear pricing from £30pp."
+            subheading="Tell us your East London venue, date & guest count for clear pricing from £25pp."
           />
         </aside>
       </div>

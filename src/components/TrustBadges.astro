@@ -1,14 +1,20 @@
 ---
 import { SITE } from '@/data/site';
 
+export interface TrustBadgeItem {
+  label: string;
+  accent?: boolean;
+}
+
 interface Props {
   compact?: boolean;
   align?: 'center' | 'left';
+  customBadges?: TrustBadgeItem[];
 }
 
-const { compact = false, align = 'center' } = Astro.props;
+const { compact = false, align = 'center', customBadges } = Astro.props;
 
-const badges = [
+const badges: TrustBadgeItem[] = customBadges ?? [
   { label: SITE.facts.halalShort, accent: true },
   { label: SITE.facts.startingPriceShort, accent: false },
   { label: SITE.facts.serviceAreas, accent: false },

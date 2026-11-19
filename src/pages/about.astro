@@ -18,26 +18,26 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const values = [
   {
-    title: 'Uncompromising Halal Quality',
+    title: 'Quality Without Shortcuts',
     description:
-      'Every cut of meat and poultry is 100% HMC Certified Halal, sourced from vetted UK suppliers and cooked fresh in our dedicated Edmonton, London Halal kitchen.',
+      'From the freshness of our spices and exclusively HMC-certified Halal meat and poultry to the finishing touches on your stage, we refuse to cut corners.',
   },
   {
-    title: 'Cultural & Religious Understanding',
+    title: 'Cultural & Religious Respect',
     description:
-      'As a family-led team rooted in London, we deeply understand the traditions of Bengali, Pakistani, and Indian weddings — from Nikah modesty and Gaye Holud warmth to grand Walima hospitality.',
+      'We create welcoming, Halal-centred celebrations where every guest — from elders to younger family members — feels honoured, comfortable, and well looked after.',
   },
   {
-    title: 'End-to-End Professionalism',
+    title: 'Calm, Reliable Professionalism',
     description:
-      'From transparent pricing starting at £30pp to punctual delivery, uniformed floor supervisors, and calm on-the-day execution, every detail is handled with precision.',
+      'Clear per-head pricing from £25pp, punctual kitchen logistics, and attentive waiting staff ensure your celebration runs smoothly while you stay present with loved ones.',
   },
 ];
 ---
 
 <BaseLayout
-  title="About Salwah Events | HMC Halal Asian Wedding Specialists London"
-  description="Meet Salwah Events and Catering (Salwah Events Ltd) — family-led 100% HMC Certified Halal Asian wedding caterers, stage decorators, and event planners based in Edmonton, London serving Essex & Kent."
+  title="About Salwah Events | Family-Led Asian Wedding Specialists London"
+  description="Meet Salwah Events and Catering (Salwah Events Ltd) — a family-led London Asian wedding catering, stage decor, and event management team serving Greater London, Essex & Kent."
   canonicalPath="/about"
   schemas={[buildBreadcrumbSchema(breadcrumbs)]}
 >
@@ -45,9 +45,9 @@ const values = [
     eyebrow="Family-Led Excellence • Edmonton, London"
     title="Your Trusted Asian"
     highlight="Event Partner"
-    subtitle="Creating unforgettable, 100% HMC Certified Halal weddings and events across Greater London, Essex, and Kent."
+    subtitle="Founded to give UK Muslim and South Asian families a genuinely reliable, luxury Halal catering and event experience across London, Essex, and Kent."
     image={headerAbout}
-    imageAlt="About Salwah Events and Catering luxury Asian wedding specialists in London"
+    imageAlt="Salwah Events chefs preparing fresh Halal wedding cuisine in London"
     breadcrumbs={breadcrumbs}
     primaryCtaHref="/contact#quote-form"
     primaryCtaLabel="Book a Consultation"
@@ -59,37 +59,31 @@ const values = [
         <div class="space-y-5">
           <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold">Our Story</p>
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            Built on <span class="text-salwah-gold">Halal Excellence &amp; Hospitality</span>
+            Built on <span class="gold-gradient-text italic font-semibold">Halal Excellence &amp; Hospitality</span>
           </h2>
           <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
-            <strong>{SITE.businessName}</strong> was founded with a clear mission: to give UK
-            Muslim and South Asian families a luxury, reliable, and genuinely{' '}
-            <strong>100% HMC Certified Halal</strong> wedding catering and
-            event service that never compromises on taste, presentation, or cultural respect.
+            <strong>{SITE.businessName}</strong> was born from a simple conviction: UK Muslim and South
+            Asian families deserve a wedding and event specialist who genuinely understands the cultural
+            and religious nuances of our celebrations — without ever compromising on luxury, presentation,
+            or reliability.
           </p>
           <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
-            Operating from our dedicated kitchen and headquarters at{' '}
-            <strong>{SITE.address.full}</strong>, our family-led team pours care into every Nikah,
-            Mehndi, Gaye Holud, Baraat, Walima, Aqiqah, and corporate gala — serving gatherings
-            from 50 to 1,000+ guests across Greater London, Essex, and Kent.
+            As a family-led team operating from our dedicated Halal kitchen in Edmonton, North
+            London, we pour personal care into every wedding, Nikah, Walima, Aqiqah, private
+            celebration, and charity or corporate gala — catering gatherings from 50 to 1,000+
+            guests across Greater London, Essex, and Kent.
           </p>
-          <div class="pt-2 flex flex-wrap gap-4 text-xs text-gray-400">
-            <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-              {SITE.legalName} • Co. No. {SITE.companiesHouseNo}
-            </span>
-            <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-              VAT Reg. No. {SITE.vatNo}
-            </span>
-          </div>
         </div>
 
         <div class="rounded-2xl overflow-hidden border border-salwah-gold/25">
           <Picture
             src={aboutTable}
-            alt="Luxury wedding reception table setting styled by Salwah Events in London"
+            alt="Candlelit wedding reception table setting styled for a London celebration"
             widths={[480, 800]}
             sizes="(max-width: 1024px) 100vw, 48vw"
-            formats={['webp']} fallbackFormat="webp" quality={78}
+            formats={['webp']}
+            fallbackFormat="webp"
+            quality={80}
             loading="lazy"
             class="w-full h-80 sm:h-96 object-cover"
           />
@@ -100,14 +94,14 @@ const values = [
       <div>
         <div class="text-center max-w-2xl mx-auto mb-12">
           <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
-            Our Core <span class="text-salwah-gold">Values</span>
+            Our Core <span class="gold-gradient-text italic font-semibold">Values</span>
           </h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
           {
             values.map((val, idx) => (
               <div class="luxury-card rounded-2xl p-7">
-                <span class="font-serif text-3xl font-bold text-salwah-gold/40">0{idx + 1}</span>
+                <span class="font-serif text-3xl font-bold text-salwah-gold/45">0{idx + 1}</span>
                 <h3 class="mt-2 font-serif text-xl font-bold text-white">{val.title}</h3>
                 <p class="mt-3 text-sm sm:text-base text-gray-300 leading-relaxed">{val.description}</p>
               </div>
@@ -121,31 +115,33 @@ const values = [
         <div class="rounded-2xl overflow-hidden border border-salwah-gold/25 order-2 lg:order-1">
           <Picture
             src={aboutTeam}
-            alt="Salwah Events culinary chefs preparing authentic Halal wedding cuisine in London"
+            alt="Salwah Events catering brigade preparing hot dishes for a London wedding banquet"
             widths={[480, 800]}
             sizes="(max-width: 1024px) 100vw, 48vw"
-            formats={['webp']} fallbackFormat="webp" quality={78}
+            formats={['webp']}
+            fallbackFormat="webp"
+            quality={80}
             loading="lazy"
             class="w-full h-80 sm:h-96 object-cover"
           />
         </div>
 
         <div class="space-y-5 order-1 lg:order-2">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold">Our People</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold">Our Team</p>
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            Chefs, Designers &amp; <span class="text-salwah-gold">Event Directors</span>
+            Chefs, Designers &amp; <span class="gold-gradient-text italic font-semibold">Event Planners</span>
           </h2>
           <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
-            At the heart of Salwah Events is a specialist collective: regional South Asian chefs
-            trained in authentic Bengali, Pakistani, and Indian wedding cooking; floral and lighting
-            designers who transform blank halls into dreamscapes; and experienced floor supervisors
-            who keep 500+ guest dinners running right on schedule.
+            Behind every Salwah celebration is an experienced collective: culinary specialists dedicated
+            to authentic Bengali, Pakistani, and Indian cooking; stage and floral designers who turn
+            blank halls into warm, memorable rooms; and calm floor supervisors who keep every course
+            and milestone right on schedule.
           </p>
           <div class="pt-2 flex flex-wrap gap-3">
-            <a href="/services/asian-wedding-catering" class="rounded-xl bg-salwah-gold px-5 py-3 text-sm font-bold text-black hover:bg-salwah-gold-light transition">
+            <a href="/services/asian-wedding-catering" class="btn-luxury-gold inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-bold whitespace-nowrap">
               Explore Catering
             </a>
-            <a href="/services/wedding-stage-decoration" class="rounded-xl border border-salwah-gold/50 px-5 py-3 text-sm font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition">
+            <a href="/services/wedding-stage-decoration" class="btn-luxury-outline inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold whitespace-nowrap">
               Explore Stage Decor
             </a>
           </div>
@@ -154,5 +150,11 @@ const values = [
     </div>
   </section>
 
-  <CtaBanner />
+  <CtaBanner
+    title="Meet the Team Behind"
+    highlight="Your Celebration"
+    subtitle="Tell us your date, guest count, and what matters most to your family — whether Halal catering, bespoke stage decor, or complete wedding management."
+    primaryHref="/contact#quote-form"
+    primaryLabel="Book a Free Consultation"
+  />
 </BaseLayout>

@@ -21,9 +21,9 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   {
     slug: 'asian-wedding-catering-cost-london-2026-guide',
     href: '/blog/asian-wedding-catering-cost-london-2026-guide',
-    title: 'Asian Wedding Catering Costs in London: Complete Price Guide (From £30pp)',
+    title: 'Asian Wedding Catering Costs in London: Complete Price Guide (From £25pp)',
     description:
-      'Real per-person pricing for 100, 200, 350, 500 & 800 guests in London, Silver vs Gold vs Platinum inclusions, and 5 hidden catering costs to avoid.',
+      'Real per-person pricing for 100, 200, 350, 500 & 800 guests in London, Silver (£25pp) vs Gold (£40pp) vs Platinum inclusions, and 5 hidden catering costs to avoid.',
     publishedDate: 'February 10, 2026',
     publishedIso: '2026-02-10',
     tags: ['Pricing Guide', 'Budgeting'],
@@ -62,7 +62,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     href: '/blog/how-to-plan-a-pakistani-nikah-ceremony-a-checklist',
     title: 'How to Plan a Pakistani Nikah Ceremony – A Complete Checklist',
     description:
-      'A step-by-step guide to planning a meaningful Pakistani Nikah ceremony in London, covering legal formalities, Mehar, HMC Halal catering, floral backdrops, and day-of timelines.',
+      'A step-by-step guide to planning a meaningful Pakistani Nikah ceremony in London, covering legal formalities, Mehr, HMC Halal catering, floral backdrops, and day-of timelines.',
     publishedDate: 'August 29, 2025',
     publishedIso: '2025-08-29',
     tags: ['Planning', 'Pakistani Wedding'],

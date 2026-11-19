@@ -8,6 +8,7 @@ import CtaBanner from '@/components/CtaBanner.astro';
 import QuoteForm from '@/components/QuoteForm';
 
 import headerMenu from '@/assets/images/header-menu.png';
+import galleryDrinks from '@/assets/images/gallery-catering-platters.png';
 import { MENU_CATEGORIES } from '@/data/menu';
 import {
   buildBreadcrumbSchema,
@@ -25,34 +26,34 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const faqs: FaqItem[] = [
   {
-    question: 'Are all dishes on your wedding catering menu 100% HMC Certified Halal?',
+    question: 'Are all meat and poultry dishes on your menu HMC Certified Halal?',
     answer:
-      'Yes. Every meat and poultry dish across our Bengali, Pakistani, and Indian menus uses 100% HMC Certified Halal ingredients prepared in our dedicated London Halal kitchen.',
+      'Yes. We source all meat and poultry exclusively from HMC-certified suppliers, and our London kitchens follow strict Halal procedures from preparation through to table service.',
   },
   {
     question: 'Can we mix Bengali, Pakistani, and Indian dishes on one wedding menu?',
     answer:
-      'Yes! Many couples customise fusion heritage menus — for example combining Lamb Kacchi Biryani and Beef Kala Bhuna with Chicken Malai Tikka, Chapli Kebabs, and Warm Gulab Jamun.',
+      'Of course. Many couples blend dishes from both sides of the family — for example pairing Lamb Kacchi Biryani and Beef Kala Bhuna with Chicken Malai Tikka, Chapli Kebabs, and warm Gulab Jamun.',
   },
   {
-    question: 'Do you offer food sampling before we finalise our wedding menu?',
+    question: 'Do you cater for vegetarian, vegan, and allergen-specific guests?',
     answer:
-      'Yes. You can book a menu consultation and food sampling session with our team so you can review spice levels, authentic seasoning, and plating before your event.',
+      'Yes. Alongside our dedicated vegetable and daal dishes, we prepare separate vegan, gluten-free, and allergen-safe meals so every guest dines comfortably.',
   },
   {
-    question: 'What welcome drinks and hot beverage stations do you offer?',
+    question: 'Can we arrange food sampling before finalising our menu?',
     answer:
-      'We serve bespoke fruit mocktails (mint & lime cooler, strawberry rose, mango passionfruit), traditional spiced Bengali borhani, mango lassi, freshly brewed cardamom karak chai, Kashmiri pink chai, and artisan coffee.',
+      'Yes. Request a quote or WhatsApp 07359 337887 to arrange a menu consultation and food sampling with our chefs before confirming your final selection.',
   },
 ];
 
 const quickFacts = [
-  { label: 'Dietary Standard', value: '100% HMC Certified Halal Kitchen' },
-  { label: 'Cuisines Included', value: 'Bengali (Bangladeshi), Pakistani, North & South Indian' },
-  { label: 'Signature Highlights', value: 'Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Chapli Kebab & Roshmalai' },
-  { label: 'Vegetarian & Vegan', value: 'Dedicated veg mains, daals, Bengali borthas & live chaat counters' },
-  { label: 'Drinks & Tea Stations', value: 'Gourmet fruit mocktails, spiced borhani, karak chai & artisan coffee' },
-  { label: 'Packages From', value: '£30pp (Silver) • £45pp (Gold) • Custom Menus for 50–1,000+ Guests' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Meat & Poultry • Dedicated Halal Kitchen' },
+  { label: 'Cuisines Offered', value: 'Bengali (Bangladeshi), Pakistani & Indian Wedding Classics' },
+  { label: 'Signature Dishes', value: 'Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Chapli Kebab & Gulab Jamun' },
+  { label: 'Vegetarian & Allergens', value: '7 Dedicated Vegetable Dishes, 6 Slow-Simmered Daals & Allergen Care' },
+  { label: 'Hospitality Add-Ons', value: 'Welcome Drinks, Canapés, Live Dessert Stalls & Paan Stalls (Gold & Platinum)' },
+  { label: 'Packages From', value: '£25pp (Silver) • £40pp (Gold) • Platinum All-Inclusive From £17,500' },
 ];
 
 const schemas = [
@@ -62,7 +63,7 @@ const schemas = [
     name: 'Halal Asian Wedding Catering Menus London',
     serviceType: 'Halal Wedding Catering Menu',
     description:
-      'Explore 100% HMC Certified Halal Bengali, Pakistani, and Indian wedding catering menus in London, Essex & Kent — starters, mains, kacchi biryani, desserts, mocktails & karak chai.',
+      'Explore 52 authentic HMC-certified Halal Bengali, Pakistani, and Indian wedding catering dishes in London, Essex & Kent — starters, mains, vegetable & daal dishes, biryani, and desserts from £25pp.',
     url: '/menu',
   }),
   buildFaqSchema(faqs),
@@ -70,44 +71,51 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="Asian Wedding Catering Menu London | 100% HMC Halal Dishes | Salwah Events"
-  description="Browse our 100% HMC Certified Halal Asian wedding catering menu: starters, mains, Lamb Kacchi Biryani, Beef Kala Bhuna, vegetarian dishes, desserts, mocktails & karak chai."
+  title="Asian Wedding Catering Menu London | 52 Halal Dishes | Salwah Events"
+  description="Browse our 52 authentic HMC-certified Halal Asian wedding dishes: charcoal starters, Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, vegetarian & daal dishes, and warm desserts from £25pp."
   canonicalPath="/menu"
   schemas={schemas}
 >
   <PageHero
-    eyebrow="100% HMC Certified Halal • Authentic South Asian Menus"
-    title="Flavours That"
-    highlight="Inspire"
-    subtitle="Explore our bespoke Bengali, Pakistani, and Indian wedding menus — cooked fresh in London for 50 to 1,000+ guests, paired with handcrafted mocktails, spiced borhani, and karak chai."
+    eyebrow="HMC-Certified Halal · 52 Authentic Dishes"
+    title="Flavours Guests"
+    highlight="Remember"
+    subtitle="Fifty-two traditional Bengali, Pakistani, and Indian dishes cooked fresh in London for 50 to 1,000+ guests — mix and match freely from £25 per person."
     image={headerMenu}
-    imageAlt="Authentic Halal South Asian wedding catering menu dishes by Salwah Events"
+    imageAlt="Salwah Events chefs plating saffron biryani in a commercial kitchen"
     breadcrumbs={breadcrumbs}
     primaryCtaHref="#quote-form"
-    primaryCtaLabel="Sample Our Wedding Menus"
+    primaryCtaLabel="Request a Menu Quote"
   />
 
-  <!-- Quick Category Jump Navigation (clean wrapped pills on desktop, smooth hidden-scrollbar swipe on mobile) -->
+  <!-- Quick Category Jump Navigation (Offsets accurately beneath desktop utility bar + navbar) -->
   <nav
     aria-label="Menu Categories"
-    class="sticky top-20 z-30 border-b border-salwah-gold/20 bg-[#08090e]/95 backdrop-blur-md py-3"
+    class="sticky top-20 lg:top-[113px] z-30 border-b border-salwah-gold/20 bg-[#08090e]/95 backdrop-blur-md py-3"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-nowrap md:flex-wrap md:justify-center gap-2 overflow-x-auto md:overflow-visible no-scrollbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-nowrap md:flex-wrap md:items-center md:justify-center gap-2 overflow-x-auto md:overflow-visible no-scrollbar">
       {
         MENU_CATEGORIES.map((cat) => (
           <a
             href={`#${cat.id}`}
-            class="shrink-0 rounded-full border border-salwah-gold/30 bg-black/60 px-4 py-1.5 text-xs sm:text-sm font-medium text-gray-200 hover:border-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+            class="shrink-0 rounded-full border border-salwah-gold/30 bg-black/60 px-4 py-1.5 text-xs sm:text-sm font-medium text-gray-200 hover:border-salwah-gold hover:bg-salwah-gold hover:text-black transition whitespace-nowrap"
           >
             {cat.title}
           </a>
         ))
       }
       <a
-        href="/resources/quote-builder"
-        class="shrink-0 rounded-full bg-salwah-gold px-4 py-1.5 text-xs sm:text-sm font-bold text-black hover:bg-salwah-gold-light transition"
+        href="#bespoke-additions"
+        class="shrink-0 rounded-full border border-salwah-gold/30 bg-black/60 px-4 py-1.5 text-xs sm:text-sm font-medium text-gray-200 hover:border-salwah-gold hover:bg-salwah-gold hover:text-black transition whitespace-nowrap"
       >
-        Build Custom Menu PDF
+        Drinks &amp; Stalls
+      </a>
+      <span class="hidden md:inline-block h-4 w-px bg-white/15 mx-1" aria-hidden="true" />
+      <a
+        href="/resources/quote-builder"
+        class="shrink-0 rounded-full border border-salwah-gold/70 bg-salwah-gold/12 px-4 py-1.5 text-xs sm:text-sm font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition whitespace-nowrap"
+      >
+        PDF Menu Builder &rarr;
       </a>
     </div>
   </nav>
@@ -116,7 +124,7 @@ const schemas = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <QuickFactsBox
         heading="Menu Overview & Culinary Standards"
-        summary="Every menu is tailored during your menu consultation. Choose from authentic Bengali, Pakistani, and Indian classics with full allergen and vegetarian/vegan accommodation."
+        summary="Every menu is tailored during your consultation. Mix dishes freely across Bengali, Pakistani, and Indian traditions, with full vegetarian, vegan, and allergen accommodation."
         facts={quickFacts}
       />
 
@@ -125,9 +133,9 @@ const schemas = [
           MENU_CATEGORIES.map((category, index) => (
             <article
               id={category.id}
-              class="scroll-mt-36 luxury-card rounded-2xl p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              class="scroll-mt-44 luxury-card rounded-2xl p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
             >
-              <div class={`lg:col-span-7 space-y-5 ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
+              <div class={`lg:col-span-7 flex flex-col justify-center space-y-5 ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-[0.18em] text-salwah-gold mb-1">
                     Course {String(index + 1).padStart(2, '0')}
@@ -148,22 +156,67 @@ const schemas = [
                 </ul>
               </div>
 
-              <div class={`lg:col-span-5 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                <div class="overflow-hidden rounded-xl border border-salwah-gold/25">
+              <div class={`lg:col-span-5 flex ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                <div class="w-full overflow-hidden rounded-xl border border-salwah-gold/25 min-h-[260px] sm:min-h-[320px]">
                   <Picture
                     src={category.image}
                     alt={category.imageAlt}
                     widths={[480, 800]}
                     sizes="(max-width: 1024px) 100vw, 40vw"
-                    formats={['webp']} fallbackFormat="webp" quality={78}
+                    formats={['webp']}
+                    fallbackFormat="webp"
+                    quality={80}
                     loading="lazy"
-                    class="h-64 sm:h-80 w-full object-cover"
+                    class="h-full w-full object-cover"
                   />
                 </div>
               </div>
             </article>
           ))
         }
+      </div>
+
+      <!-- Bespoke Reception Hospitality Add-Ons -->
+      <div
+        id="bespoke-additions"
+        class="scroll-mt-44 luxury-card rounded-2xl p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
+      >
+        <div class="lg:col-span-7 flex flex-col justify-center space-y-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-salwah-gold">
+            Gold &amp; Platinum Inclusions &middot; Optional Stations
+          </p>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white">
+            Welcome Drinks, Canapés &amp; <span class="gold-gradient-text italic font-semibold">Live Stalls</span>
+          </h2>
+          <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+            Want your guests welcomed the moment doors open? Our Gold (£40pp) and Platinum packages
+            include refreshing welcome drinks and freshly prepared canapés on arrival, and you can add
+            live chaat counters, spiced chai stations, or a live Dessert or Paan Stall for your reception.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-3">
+            <a href="/packages" class="btn-luxury-gold inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-bold whitespace-nowrap">
+              Compare Packages (From £25pp)
+            </a>
+            <a href="/resources/quote-builder" class="btn-luxury-outline inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold whitespace-nowrap">
+              Build a Custom Menu PDF
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex">
+          <div class="w-full overflow-hidden rounded-xl border border-salwah-gold/25 min-h-[260px]">
+            <Picture
+              src={galleryDrinks}
+              alt="Welcome fruit mocktails and freshly poured spiced chai for London Asian weddings"
+              widths={[480, 800]}
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              formats={['webp']}
+              fallbackFormat="webp"
+              quality={80}
+              loading="lazy"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -176,12 +229,18 @@ const schemas = [
         variant="compact"
         sourcePage="Menu Page"
         defaultService="Halal Wedding Catering"
-        heading="Request Your Bespoke Menu & Pricing"
-        subheading="Want to customise dishes or arrange food sampling? Share your date & guest count below."
+        heading="Request a Custom Menu Quote"
+        subheading="Want to mix dishes or arrange food sampling? Share your date and guest count below."
       />
     </div>
   </section>
 
   <FaqSection faqs={faqs} />
-  <CtaBanner primaryHref="/packages" primaryLabel="Compare Wedding Packages" />
+  <CtaBanner
+    title="Ready to Pair Your Dishes"
+    highlight="With Clear Pricing?"
+    subtitle="See how our 52 dishes fit into Silver (£25pp), Gold (£40pp), and all-inclusive Platinum packages — with crockery, cutlery, and waiting staff taken care of."
+    primaryHref="/packages"
+    primaryLabel="Compare Wedding Packages"
+  />
 </BaseLayout>

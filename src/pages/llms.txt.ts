@@ -18,7 +18,7 @@ export const GET: APIRoute = () => {
     `- Email: ${SITE.email}`,
     `- Opening Hours: ${SITE.openingHours.display}`,
     `- Halal Standard: ${SITE.facts.halalStatus}`,
-    `- Starting Price: ${SITE.facts.startingPrice} (Silver £30pp, Gold £45pp, Platinum All-Inclusive from £17,500 for 200 guests)`,
+    `- Starting Price: ${SITE.facts.startingPrice} (Silver £25pp, Gold £40pp, Platinum All-Inclusive from £17,500 for 200 guests)`,
     `- Guest Capacity: ${SITE.facts.guestCapacity} (intimate Nikah & Mehndi to grand 1,000+ guest Walima banquets)`,
     `- Service Areas: Greater London (East, North, West & South London), Essex & Kent`,
     `- Rating: ${SITE.facts.googleRating}`,

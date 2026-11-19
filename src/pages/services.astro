@@ -21,9 +21,10 @@ const services = [
   {
     title: 'Asian Wedding Catering',
     href: '/services/asian-wedding-catering',
-    badge: 'From £30pp',
+    badge: 'From £25pp',
+    ctaLabel: 'Explore Wedding Catering',
     description:
-      '100% HMC Certified Halal Bengali, Pakistani, and Indian wedding catering with uniformed waiting staff for 50–1,000+ guests.',
+      'Authentic Bengali, Pakistani, and Indian cuisine prepared with HMC-certified Halal meat and poultry — with uniformed waiting staff, crockery, and cutlery included.',
     image: cardCatering,
     alt: 'Halal Asian wedding catering service in London',
   },
@@ -31,6 +32,7 @@ const services = [
     title: 'Wedding Stage Decoration',
     href: '/services/wedding-stage-decoration',
     badge: 'Bespoke Design',
+    ctaLabel: 'See Stage Designs',
     description:
       'Bespoke floral walls, Nikah partitions, colourful Mehndi stages, Walima backdrops, Mandaps, mood lighting, and full ballroom table centrepieces.',
     image: cardStage,
@@ -40,6 +42,7 @@ const services = [
     title: 'Event Management & Planning',
     href: '/services/event-management-planning',
     badge: 'End-to-End',
+    ctaLabel: 'See How We Plan',
     description:
       'Complete timelines, supplier coordination, budget planning, and dedicated on-the-day management so you and your family enjoy every moment.',
     image: cardPlanning,
@@ -49,6 +52,7 @@ const services = [
     title: 'Partner Venues & Locations',
     href: '/services/venues-locations',
     badge: 'London, Essex & Kent',
+    ctaLabel: 'View Partner Venues',
     description:
       'Discover our trusted banqueting hall and dry-hire estate partners including The City Pavilion, Meridian Grand, The Willows, and Mayfair Venue.',
     image: cardVenues,
@@ -57,29 +61,34 @@ const services = [
 ];
 
 const regionalLinks = [
-  { label: 'Bengali Wedding Catering London', href: '/bengali-wedding-catering-london' },
-  { label: 'Pakistani Wedding Catering London', href: '/pakistani-wedding-catering-london' },
-  { label: 'Indian Wedding Catering London', href: '/indian-wedding-catering-london' },
-  { label: 'Halal Wedding Catering Essex & Kent', href: '/halal-wedding-catering-essex-kent' },
+  { label: 'Bengali Wedding Catering', href: '/bengali-wedding-catering-london' },
+  { label: 'Pakistani Wedding Catering', href: '/pakistani-wedding-catering-london' },
+  { label: 'Indian Wedding Catering', href: '/indian-wedding-catering-london' },
+  { label: 'Nikah & Walima Catering', href: '/nikah-walima-catering-london' },
+  { label: 'Mehndi & Gaye Holud', href: '/mehndi-gaye-holud-catering-london' },
+  { label: 'Dry-Hire & Hotel Catering', href: '/dry-hire-asian-wedding-catering-london' },
+  { label: 'East London Catering', href: '/halal-wedding-catering-east-london' },
+  { label: 'North & West London', href: '/halal-wedding-catering-north-west-london' },
+  { label: 'Essex & Kent Catering', href: '/halal-wedding-catering-essex-kent' },
 ];
 ---
 
 <BaseLayout
   title="Asian Wedding Services London | Halal Catering, Stage Decor & Planning | Salwah Events"
-  description="Complete 100% HMC Halal Asian wedding services in London, Essex & Kent: authentic catering from £30pp, bespoke stage decoration, full event management, and partner venues."
+  description="Complete Asian wedding services in London, Essex & Kent: authentic HMC-certified Halal catering from £25pp, bespoke stage decoration, full event management, and partner venues."
   canonicalPath="/services"
   schemas={[buildBreadcrumbSchema(breadcrumbs)]}
 >
   <PageHero
-    eyebrow="Complete Wedding & Event Solutions"
-    title="Our Premium"
-    highlight="Event Services"
-    subtitle="From 100% HMC Certified Halal wedding banquets and bespoke stage decoration to full event management across Greater London, Essex, and Kent."
+    eyebrow="One Coordinated Team · London, Essex & Kent"
+    title="Catering, Stage Decor &"
+    highlight="Event Planning"
+    subtitle="Book our HMC-certified Halal kitchen, bespoke floral stage studio, or full wedding planning team individually — or bring everything together under one calm run-sheet."
     image={headerServices}
     imageAlt="Salwah Events Asian wedding catering and decor services in London"
     breadcrumbs={breadcrumbs}
     primaryCtaHref="/contact#quote-form"
-    primaryCtaLabel="Get a Custom Quote"
+    primaryCtaLabel="Request a Tailored Quote"
   />
 
   <section class="py-16 sm:py-20 bg-salwah-black">
@@ -110,7 +119,7 @@ const regionalLinks = [
                   {service.description}
                 </p>
                 <span class="mt-5 inline-flex items-center text-sm font-bold text-salwah-gold">
-                  Explore Service &rarr;
+                  {service.ctaLabel} &rarr;
                 </span>
               </div>
             </a>

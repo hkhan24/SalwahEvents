@@ -17,7 +17,7 @@ const gbp = (v: number) =>
 export default function BudgetCalculatorTool() {
   const [guestCount, setGuestCount] = useState(200);
   const [perHeadItems, setPerHeadItems] = useState<BudgetRow[]>([
-    { id: 1, name: 'Halal Catering (Gold Package)', cost: 45, enabled: true },
+    { id: 1, name: 'Halal Catering (Gold Package)', cost: 40, enabled: true },
   ]);
   const [fixedItems, setFixedItems] = useState<BudgetRow[]>([
     { id: 1, name: 'Venue Hire', cost: 5000, enabled: true },

@@ -26,11 +26,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 const quickFacts = [
-  { label: 'Starting Price', value: 'From £30 per person (Silver) • £45pp (Gold) • Platinum from £17,500' },
+  { label: 'Starting Price', value: 'From £25 per person (Silver) • £40pp (Gold) • Platinum from £17,500' },
   { label: 'Guest Capacity', value: '50 to 1,000+ guests across single or multi-day weddings' },
-  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Meat & Poultry • Dedicated Halal Kitchen' },
   { label: 'Events Catered', value: 'Nikah, Mehndi / Dholki, Baraat & Grand Walima Receptions' },
-  { label: 'Signature Pakistani Dishes', value: 'Lamb Karahi Gosht, Slow-Cooked Nihari, Peshawari Chapli Kebabs, Dum Biryani, Gajar Halwa & Kashmiri Chai' },
+  { label: 'Signature Pakistani Dishes', value: 'Lamb Bhuna, Chicken Karahi, Slow-Cooked Nihari, Chapli Kebabs, Dum Biryani & Gajar Halwa' },
   { label: 'Areas Covered', value: 'Greater London (North, East, West & South), Essex & Kent' },
 ];
 
@@ -42,7 +42,7 @@ const eventMenus = [
       'Chicken Malai Tikka & Live Papri Chaat Station',
       'Authentic Chicken Karahi & Chana Masala',
       'Fresh Tandoori Naan & Fragrant Basmati Pilau',
-      'Gourmet Welcome Mocktails & Fresh Mint Coolers',
+      'Fresh Welcome Mocktails & Mint Coolers',
       'Kashmiri Pink Chai, Cardamom Karak Chai & Mithai',
     ],
   },
@@ -63,7 +63,7 @@ const faqs: FaqItem[] = [
   {
     question: 'How much does Pakistani wedding catering cost in London?',
     answer:
-      'Our 100% HMC Halal Pakistani wedding catering starts from £30 per person (Silver Package) and £45 per person (Gold Package with grilled kebabs, 4 mains, 2 desserts, and welcome mocktails). Multi-event packages for Nikah, Mehndi, Baraat, and Walima can be tailored to your exact guest numbers.',
+      'Our Halal Pakistani wedding catering starts from £25 per person (Silver Package: 3 starters, 4 mains, rice & naan, 1 dessert, crockery, and staff) and £40 per person (Gold Package: welcome drinks, canapés, 4 starters including fish, 4 premium mains, 2 desserts, glassware, and a floor supervisor). Multi-event packages for Nikah, Mehndi, Baraat, and Walima can be tailored to your exact guest numbers.',
   },
   {
     question: 'Can Salwah Events cater all multi-day Pakistani wedding events (Nikah, Mehndi, Baraat & Walima)?',
@@ -93,7 +93,7 @@ const schemas = [
     name: 'Pakistani Wedding Catering London (Nikah, Mehndi, Baraat & Walima)',
     serviceType: 'Pakistani Wedding Catering',
     description:
-      '100% HMC Certified Halal Pakistani wedding catering in London for Nikah, Mehndi, Baraat, and Walima celebrations. Packages from £30pp for 50–1,000+ guests.',
+      'Authentic HMC-certified Halal Pakistani wedding catering in London for Nikah, Mehndi, Baraat, and Walima celebrations. Packages from £25pp for 50–1,000+ guests.',
     url: '/pakistani-wedding-catering-london',
   }),
   buildFaqSchema(faqs),
@@ -102,15 +102,15 @@ const schemas = [
 
 <BaseLayout
   title="Pakistani Wedding Catering London | Nikah, Mehndi, Baraat & Walima | Salwah Events"
-  description="Authentic 100% HMC Halal Pakistani wedding catering in London from £30pp. Bespoke Nikah, Mehndi, Baraat & Walima menus — lamb karahi, nihari, chapli kebabs, biryani & karak chai for 50–1,000+ guests."
+  description="Authentic Halal Pakistani wedding catering in London from £25pp. Bespoke Nikah, Mehndi, Baraat & Walima menus — chicken karahi, nihari, chapli kebabs, biryani & warm gajar halwa for 50–1,000+ guests."
   canonicalPath="/pakistani-wedding-catering-london"
   schemas={schemas}
 >
   <PageHero
-    eyebrow="Nikah • Mehndi • Baraat • Walima • 100% HMC Halal"
+    eyebrow="Nikah • Mehndi • Baraat • Walima • HMC-Certified Halal"
     title="Pakistani Wedding"
     highlight="Catering in London"
-    subtitle="Rich, authentic Lahori, Karachite, and Peshawari wedding feasts — 100% HMC Certified Halal, served piping hot for 50 to 1,000+ guests across London, Essex & Kent from £30pp."
+    subtitle="Rich, authentic Lahori, Karachite, and Peshawari wedding feasts — cooked fresh with HMC-certified Halal meat and poultry for 50 to 1,000+ guests across London, Essex & Kent from £25pp."
     image={menuMains}
     imageAlt="Authentic Pakistani Halal wedding catering dishes in London by Salwah Events"
     breadcrumbs={breadcrumbs}
@@ -149,7 +149,7 @@ const schemas = [
               eventMenus.map((menu) => (
                 <div class="luxury-card rounded-2xl p-6">
                   <p class="text-xs font-semibold uppercase tracking-widest text-salwah-gold mb-1">
-                    Curated Menu
+                    Sample Menu
                   </p>
                   <h3 class="font-serif text-2xl font-bold text-white mb-4">{menu.event}</h3>
                   <ul class="space-y-2.5 text-sm text-gray-200">
@@ -189,7 +189,7 @@ const schemas = [
           </div>
 
           <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
-            <h2>Seamless Nikah, Mehndi &amp; Walima Service at Top London Venues</h2>
+            <h2>Experienced Nikah, Mehndi &amp; Walima Service at Top London Venues</h2>
             <p>
               We are experienced caterers at London's favourite Pakistani wedding venues — including{' '}
               <strong>Ariana Banqueting Hall, Meridian Grand, The City Pavilion, The Willows,
@@ -211,7 +211,7 @@ const schemas = [
             sourcePage="Pakistani Wedding Catering London LP"
             defaultService="Both Catering & Stage Decor"
             heading="Get Your Pakistani Wedding Quote"
-            subheading="Single event or full Nikah, Mehndi, Baraat & Walima multi-day packages from £30pp."
+            subheading="Single event or multi-day Nikah, Mehndi, Baraat & Walima packages starting from £25pp."
           />
 
           <div class="mt-6 rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-3 text-sm text-gray-300">
