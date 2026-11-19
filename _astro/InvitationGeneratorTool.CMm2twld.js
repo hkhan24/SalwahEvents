@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime.D_zvdyIk.js";import{r as t}from"./index.DLkBFFtG.js";import{S as r}from"./site.dB-UUHk4.js";import{C as f}from"./copy.DQgMFnjz.js";import{D as w}from"./download.BvfP16EH.js";import"./createLucideIcon.DncdTSQt.js";const l={Reception:{Formal:`The families of [Couple's Names] request the pleasure of your company at the wedding reception of their beloved children.
+import{j as e}from"./jsx-runtime.D_zvdyIk.js";import{r as t}from"./index.DLkBFFtG.js";import{S as r}from"./site.D6IuSFSN.js";import{C as f}from"./copy.DQgMFnjz.js";import{D as w}from"./download.BvfP16EH.js";import"./createLucideIcon.DncdTSQt.js";const l={Reception:{Formal:`The families of [Couple's Names] request the pleasure of your company at the wedding reception of their beloved children.
 Please join us to celebrate this joyous occasion.
 
 Date: [Date]
