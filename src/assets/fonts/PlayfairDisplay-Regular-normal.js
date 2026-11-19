@@ -1,1 +1,0 @@
-export const PlayfairDisplay = `AAEAAAARAQAABAAQRFNJRwAAAAEAACALEAAAAkZ2ZlYgAAAAAQAAC7QAAAMsR0RFRg... (truncated)`;
