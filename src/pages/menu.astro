@@ -1,0 +1,185 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import headerMenu from '@/assets/images/header-menu.png';
+import { MENU_CATEGORIES } from '@/data/menu';
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Halal Wedding Menu' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Are all dishes on your wedding catering menu 100% HMC Certified Halal?',
+    answer:
+      'Yes. Every meat and poultry dish across our Bengali, Pakistani, and Indian menus uses 100% HMC Certified Halal ingredients prepared in our dedicated London Halal kitchen.',
+  },
+  {
+    question: 'Can we mix Bengali, Pakistani, and Indian dishes on one wedding menu?',
+    answer:
+      'Yes! Many couples customise fusion heritage menus — for example combining Lamb Kacchi Biryani and Beef Kala Bhuna with Chicken Malai Tikka, Chapli Kebabs, and Warm Gulab Jamun.',
+  },
+  {
+    question: 'Do you offer food sampling before we finalise our wedding menu?',
+    answer:
+      'Yes. You can book a menu consultation and food sampling session with our team so you can review spice levels, authentic seasoning, and plating before your event.',
+  },
+  {
+    question: 'What welcome drinks and hot beverage stations do you offer?',
+    answer:
+      'We serve bespoke fruit mocktails (mint & lime cooler, strawberry rose, mango passionfruit), traditional spiced Bengali borhani, mango lassi, freshly brewed cardamom karak chai, Kashmiri pink chai, and artisan coffee.',
+  },
+];
+
+const quickFacts = [
+  { label: 'Dietary Standard', value: '100% HMC Certified Halal Kitchen' },
+  { label: 'Cuisines Included', value: 'Bengali (Bangladeshi), Pakistani, North & South Indian' },
+  { label: 'Signature Highlights', value: 'Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Chapli Kebab & Roshmalai' },
+  { label: 'Vegetarian & Vegan', value: 'Dedicated veg mains, daals, Bengali borthas & live chaat counters' },
+  { label: 'Drinks & Tea Stations', value: 'Gourmet fruit mocktails, spiced borhani, karak chai & artisan coffee' },
+  { label: 'Packages From', value: '£30pp (Silver) • £45pp (Gold) • Custom Menus for 50–1,000+ Guests' },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Halal Asian Wedding Catering Menus London',
+    serviceType: 'Halal Wedding Catering Menu',
+    description:
+      'Explore 100% HMC Certified Halal Bengali, Pakistani, and Indian wedding catering menus in London, Essex & Kent — starters, mains, kacchi biryani, desserts, mocktails & karak chai.',
+    url: '/menu',
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Asian Wedding Catering Menu London | 100% HMC Halal Dishes | Salwah Events"
+  description="Browse our 100% HMC Certified Halal Asian wedding catering menu: starters, mains, Lamb Kacchi Biryani, Beef Kala Bhuna, vegetarian dishes, desserts, mocktails & karak chai."
+  canonicalPath="/menu"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="100% HMC Certified Halal • Authentic South Asian Menus"
+    title="Flavours That"
+    highlight="Inspire"
+    subtitle="Explore our bespoke Bengali, Pakistani, and Indian wedding menus — cooked fresh in London for 50 to 1,000+ guests, paired with handcrafted mocktails, spiced borhani, and karak chai."
+    image={headerMenu}
+    imageAlt="Authentic Halal South Asian wedding catering menu dishes by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Sample Our Wedding Menus"
+  />
+
+  <!-- Quick Category Jump Navigation (clean wrapped pills on desktop, smooth hidden-scrollbar swipe on mobile) -->
+  <nav
+    aria-label="Menu Categories"
+    class="sticky top-20 z-30 border-b border-salwah-gold/20 bg-[#08090e]/95 backdrop-blur-md py-3"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-nowrap md:flex-wrap md:justify-center gap-2 overflow-x-auto md:overflow-visible no-scrollbar">
+      {
+        MENU_CATEGORIES.map((cat) => (
+          <a
+            href={`#${cat.id}`}
+            class="shrink-0 rounded-full border border-salwah-gold/30 bg-black/60 px-4 py-1.5 text-xs sm:text-sm font-medium text-gray-200 hover:border-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+          >
+            {cat.title}
+          </a>
+        ))
+      }
+      <a
+        href="/resources/quote-builder"
+        class="shrink-0 rounded-full bg-salwah-gold px-4 py-1.5 text-xs sm:text-sm font-bold text-black hover:bg-salwah-gold-light transition"
+      >
+        Build Custom Menu PDF
+      </a>
+    </div>
+  </nav>
+
+  <section class="py-12 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <QuickFactsBox
+        heading="Menu Overview & Culinary Standards"
+        summary="Every menu is tailored during your menu consultation. Choose from authentic Bengali, Pakistani, and Indian classics with full allergen and vegetarian/vegan accommodation."
+        facts={quickFacts}
+      />
+
+      <div class="space-y-10">
+        {
+          MENU_CATEGORIES.map((category, index) => (
+            <article
+              id={category.id}
+              class="scroll-mt-36 luxury-card rounded-2xl p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            >
+              <div class={`lg:col-span-7 space-y-5 ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-salwah-gold mb-1">
+                    Course {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+                    {category.title}
+                  </h2>
+                  <p class="mt-2 text-sm sm:text-base text-gray-300">{category.subtitle}</p>
+                </div>
+
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm sm:text-base">
+                  {category.items.map((item) => (
+                    <li class="flex items-start gap-2.5 text-gray-100">
+                      <span class="text-salwah-gold font-bold mt-0.5 shrink-0" aria-hidden="true">&#10003;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class={`lg:col-span-5 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                <div class="overflow-hidden rounded-xl border border-salwah-gold/25">
+                  <Picture
+                    src={category.image}
+                    alt={category.imageAlt}
+                    widths={[480, 800]}
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    formats={['webp']} fallbackFormat="webp" quality={78}
+                    loading="lazy"
+                    class="h-64 sm:h-80 w-full object-cover"
+                  />
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Inline Menu Consultation Form -->
+  <section id="quote-form" class="py-16 bg-salwah-surface border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <QuoteForm
+        client:visible
+        variant="compact"
+        sourcePage="Menu Page"
+        defaultService="Halal Wedding Catering"
+        heading="Request Your Bespoke Menu & Pricing"
+        subheading="Want to customise dishes or arrange food sampling? Share your date & guest count below."
+      />
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner primaryHref="/packages" primaryLabel="Compare Wedding Packages" />
+</BaseLayout>

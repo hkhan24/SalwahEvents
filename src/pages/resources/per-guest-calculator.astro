@@ -1,0 +1,21 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import PerGuestCalculatorTool from '@/components/tools/PerGuestCalculatorTool';
+---
+
+<ToolPageLayout
+  title="Per-Guest Cost Calculator"
+  metaTitle="Per-Guest Wedding Cost Calculator UK | Salwah Events"
+  description="Instantly calculate your total wedding cost per person from your overall UK wedding budget and guest count."
+  canonicalPath="/resources/per-guest-calculator"
+  heroTitle="Per-Guest Cost"
+  heroHighlight="Calculator"
+  subtitle="Divide your overall wedding budget by your guest count to benchmark per-person spend."
+  howToUse={[
+    'Enter your total planned wedding budget in GBP (£).',
+    'Enter your estimated number of guests.',
+    'Use the resulting per-head figure to compare against our Silver (£30pp) and Gold (£45pp) catering packages.',
+  ]}
+>
+  <PerGuestCalculatorTool client:load />
+</ToolPageLayout>

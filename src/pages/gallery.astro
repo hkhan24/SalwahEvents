@@ -1,0 +1,67 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import GalleryGrid, { type OptimizedGalleryItem } from '@/components/GalleryGrid';
+
+import headerGallery from '@/assets/images/header-gallery.png';
+import { GALLERY_PHOTOS } from '@/data/gallery';
+import { buildBreadcrumbSchema, type BreadcrumbItem } from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Gallery' },
+];
+
+const optimizedItems: OptimizedGalleryItem[] = await Promise.all(
+  GALLERY_PHOTOS.map(async (photo) => {
+    const [thumb, full] = await Promise.all([
+      getImage({ src: photo.image, width: 720, format: 'webp', quality: 82 }),
+      getImage({ src: photo.image, width: 1400, format: 'webp', quality: 85 }),
+    ]);
+    return {
+      id: photo.id,
+      src: full.src,
+      thumbSrc: thumb.src,
+      width: Number(thumb.attributes.width ?? 720),
+      height: Number(thumb.attributes.height ?? 540),
+      category: photo.category,
+      title: photo.title,
+      alt: photo.alt,
+    };
+  })
+);
+---
+
+<BaseLayout
+  title="Wedding Catering & Stage Decoration Gallery | Salwah Events London"
+  description="Browse our gallery of 100% HMC Halal Asian wedding catering spreads, luxury floral stage setups, desserts, and London banqueting venue transformations."
+  canonicalPath="/gallery"
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <PageHero
+    eyebrow="Portfolio • London, Essex & Kent"
+    title="Our Wedding"
+    highlight="Gallery"
+    subtitle="Explore real moments from our 100% HMC Halal wedding banquets, bespoke stage decorations, and luxury dessert displays across Greater London, Essex, and Kent."
+    image={headerGallery}
+    imageAlt="Salwah Events Asian wedding catering and stage decoration gallery"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="/contact#quote-form"
+    primaryCtaLabel="Request a Quote"
+  />
+
+  <section class="py-14 sm:py-20 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <GalleryGrid client:load items={optimizedItems} />
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Love What You See?"
+    highlight="Let's Plan Your Day"
+    primaryHref="/contact#quote-form"
+    primaryLabel="Get Your Bespoke Quote"
+  />
+</BaseLayout>

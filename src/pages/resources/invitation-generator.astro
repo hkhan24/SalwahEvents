@@ -1,0 +1,21 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import InvitationGeneratorTool from '@/components/tools/InvitationGeneratorTool';
+---
+
+<ToolPageLayout
+  title="Invitation Text Generator"
+  metaTitle="Free Nikah, Mehndi & Walima Invitation Wording Generator | Salwah Events"
+  description="Generate ready-to-use invitation wording for Nikah, Mehndi, Walima, Engagement, and Wedding Reception cards in formal, traditional, or modern tones."
+  canonicalPath="/resources/invitation-generator"
+  heroTitle="Invitation Wording"
+  heroHighlight="Generator"
+  subtitle="Generate polished wording for Nikah, Mehndi, Walima, and Reception invitations in seconds."
+  howToUse={[
+    'Choose your wedding event (Nikah, Mehndi, Walima, Reception, or Engagement) and preferred tone.',
+    'Copy the wording straight to your clipboard or download it as a .txt file.',
+    'Replace the bracketed placeholders with your family names, date, time, and venue.',
+  ]}
+>
+  <InvitationGeneratorTool client:load />
+</ToolPageLayout>

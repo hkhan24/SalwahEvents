@@ -1,0 +1,22 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import RsvpTrackerTool from '@/components/tools/RsvpTrackerTool';
+---
+
+<ToolPageLayout
+  title="RSVP & Dietary Tracker"
+  metaTitle="Wedding RSVP & Dietary Requirements Tracker | Free CSV Tool | Salwah Events"
+  description="Track guest RSVPs, Halal, vegetarian, vegan, and allergy notes for your wedding and export a clean CSV sheet for your catering team."
+  canonicalPath="/resources/rsvp-dietary-tracker"
+  heroTitle="RSVP & Dietary"
+  heroHighlight="Tracker"
+  subtitle="Manage confirmed attendees, pending replies, and allergy notes in one clear dashboard."
+  maxWidth="7xl"
+  howToUse={[
+    'Add guests using the bottom row of the table and note any dietary requirements (vegetarian, vegan, nut-free, gluten-free).',
+    'Update RSVP statuses as replies come in — the live dashboard updates automatically.',
+    'Export your complete sheet to CSV to share directly with your venue and caterer.',
+  ]}
+>
+  <RsvpTrackerTool client:load />
+</ToolPageLayout>

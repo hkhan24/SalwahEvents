@@ -1,0 +1,80 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import headerBlog from '@/assets/images/header-blog.jpg';
+import { BLOG_POSTS } from '@/data/blog';
+import { buildBreadcrumbSchema, type BreadcrumbItem } from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Blog' },
+];
+---
+
+<BaseLayout
+  title="Asian Wedding Planning Blog | Tips, Menus & Venues London | Salwah Events"
+  description="Read expert Asian wedding planning guides from Salwah Events — Halal menu ideas, Pakistani Nikah checklists, and top East London & Essex wedding venues."
+  canonicalPath="/blog"
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <PageHero
+    eyebrow="Guides & Inspiration"
+    title="Wedding Planning"
+    highlight="Blog"
+    subtitle="Practical advice on Halal menus, Nikah timelines, and London Asian wedding venues from our experienced culinary and planning team."
+    image={headerBlog}
+    imageAlt="Salwah Events Asian wedding planning blog and guides"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="/contact#quote-form"
+    primaryCtaLabel="Get a Wedding Quote"
+  />
+
+  <section class="py-16 sm:py-20 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          BLOG_POSTS.map((post) => (
+            <article class="group luxury-card rounded-2xl overflow-hidden flex flex-col">
+              <a href={post.href} class="block aspect-[16/10] overflow-hidden bg-black">
+                <Picture
+                  src={post.image}
+                  alt={post.imageAlt}
+                  widths={[480, 800]}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  formats={['webp']} fallbackFormat="webp" quality={78}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </a>
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex items-center justify-between text-xs text-gray-400 mb-2">
+                  <time datetime={post.publishedIso}>{post.publishedDate}</time>
+                  <span>{post.readTime}</span>
+                </div>
+                <h2 class="font-serif text-xl font-bold text-white group-hover:text-salwah-gold transition">
+                  <a href={post.href}>{post.title}</a>
+                </h2>
+                <p class="mt-3 text-sm text-gray-300 leading-relaxed flex-1">{post.description}</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span class="rounded-full bg-salwah-gold/10 border border-salwah-gold/25 px-2.5 py-0.5 text-xs text-salwah-gold">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href={post.href} class="mt-5 inline-flex items-center text-sm font-bold text-salwah-gold">
+                  Read Article &rarr;
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

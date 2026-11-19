@@ -1,0 +1,42 @@
+---
+export interface QuickFact {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  heading?: string;
+  summary: string;
+  facts: QuickFact[];
+}
+
+const {
+  heading = 'At a Glance: Key Wedding Catering Facts',
+  summary,
+  facts,
+} = Astro.props;
+---
+
+<section
+  aria-label={heading}
+  class="rounded-2xl border border-salwah-gold/30 bg-[#0f1118] p-6 sm:p-8 shadow-xl"
+>
+  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-salwah-gold mb-2">
+    Quick Reference
+  </p>
+  <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">{heading}</h2>
+  <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-6">{summary}</p>
+
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {
+      facts.map((fact) => (
+        <li class="rounded-xl border border-white/10 bg-black/50 p-4">
+          <strong class="block text-xs uppercase tracking-wider text-salwah-gold mb-1">
+            {fact.label}
+          </strong>
+          <span class="text-sm sm:text-base text-gray-100 leading-snug">{fact.value}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

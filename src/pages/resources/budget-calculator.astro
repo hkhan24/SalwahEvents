@@ -1,0 +1,22 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import BudgetCalculatorTool from '@/components/tools/BudgetCalculatorTool';
+---
+
+<ToolPageLayout
+  title="Budget Calculator"
+  metaTitle="Asian Wedding Budget Calculator UK | Free CSV & PDF Tool | Salwah Events"
+  description="Free UK Asian wedding budget calculator. Factor in guest count, per-head Halal catering, venue hire, stage decor, VAT, and export to CSV or PDF."
+  canonicalPath="/resources/budget-calculator"
+  heroTitle="Wedding Budget"
+  heroHighlight="Calculator"
+  subtitle="Estimate per-head and fixed wedding expenses with instant VAT, totals, and CSV/PDF export."
+  maxWidth="7xl"
+  howToUse={[
+    'Enter your estimated guest count in the summary sidebar.',
+    'Add, edit, or toggle per-head items (like Halal catering) and fixed items (venue hire, stage decor, photography).',
+    'Adjust VAT or service charge percentages as needed and export your breakdown to CSV or PDF.',
+  ]}
+>
+  <BudgetCalculatorTool client:load />
+</ToolPageLayout>

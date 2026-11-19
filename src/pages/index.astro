@@ -1,0 +1,457 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TrustBadges from '@/components/TrustBadges.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import heroCouple from '@/assets/images/hero-couple.jpg';
+import serviceCatering from '@/assets/images/home-service-catering.jpg';
+import serviceStage from '@/assets/images/home-service-stage.jpg';
+import servicePlanning from '@/assets/images/home-service-planning.jpg';
+import menuBiryani from '@/assets/images/menu-biryani.png';
+import menuMains from '@/assets/images/menu-mains.png';
+import menuStarters from '@/assets/images/menu-starters.png';
+import headerVenues from '@/assets/images/header-venues.jpg';
+
+import { SITE } from '@/data/site';
+import { PACKAGES } from '@/data/packages';
+import { PARTNER_VENUE_NAMES } from '@/data/venues';
+import { TESTIMONIALS } from '@/data/testimonials';
+import { buildFaqSchema, buildServiceSchema, type FaqItem } from '@/lib/schema';
+
+const homeFaqs: FaqItem[] = [
+  {
+    question: 'How much does Asian wedding catering cost per person in London?',
+    answer:
+      'Salwah Events Halal Asian wedding catering packages start from £30 per person for our Silver Package (2 starters, 3 mains, pilau rice, naan, salad, dessert, crockery, and waiting staff), £45 per person for our popular Gold Package (with welcome mocktails and grilled starters), and from £17,500 all-inclusive for our Platinum catering, stage decor, and full event management package for 200 guests.',
+  },
+  {
+    question: 'Is all food at Salwah Events 100% HMC Certified Halal?',
+    answer:
+      'Yes. Every single dish we serve is prepared with 100% HMC Certified Halal meat and poultry in our dedicated London Halal kitchens. We also provide gourmet welcome mocktails, traditional Bengali borhani, freshly brewed karak chai, and artisan coffee.',
+  },
+  {
+    question: 'How many guests can Salwah Events cater for?',
+    answer:
+      'We cater for intimate Nikah and Mehndi gatherings starting from 50 guests right up to grand Asian wedding banquets and Walimas for 1,000+ guests across Greater London, Essex, and Kent.',
+  },
+  {
+    question: 'Which South Asian wedding cuisines do you specialise in?',
+    answer:
+      'Our culinary team prepares authentic Bengali (Bangladeshi), Pakistani, and Indian Halal wedding menus — including Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, Chicken Roast, Lamb Karahi, Chapli Kebabs, Nihari, Live Chaat Stations, Roshmalai, and Warm Gulab Jamun.',
+  },
+  {
+    question: 'Can we arrange a menu consultation or food sampling before booking?',
+    answer:
+      'Yes! Contact our team by phone, WhatsApp, or our quick quote form to book a complimentary menu consultation and arrange food sampling of our signature wedding dishes tailored to your guest count and budget.',
+  },
+];
+
+const cuisineCards = [
+  {
+    title: 'Bengali Wedding Catering',
+    href: '/bengali-wedding-catering-london',
+    blurb: 'Dhakai kacchi biryani, beef kala bhuna, chicken roast, traditional borthas, spiced borhani & roshmalai.',
+    image: menuBiryani,
+    alt: 'Traditional Bengali kacchi biryani wedding catering in London',
+  },
+  {
+    title: 'Pakistani Wedding Catering',
+    href: '/pakistani-wedding-catering-london',
+    blurb: 'Complete Nikah, Mehndi, Baraat & Walima feasts with lamb karahi, nihari, chapli kebabs & live chai.',
+    image: menuMains,
+    alt: 'Authentic Pakistani wedding catering curries and grills in London',
+  },
+  {
+    title: 'Indian Wedding Catering',
+    href: '/indian-wedding-catering-london',
+    blurb: 'Rich North & South Indian Halal dishes, live chaat counters, tandoori grills, and vegetarian/vegan spreads.',
+    image: menuStarters,
+    alt: 'Halal Indian wedding starters and tandoori catering in London',
+  },
+  {
+    title: 'Essex & Kent Halal Catering',
+    href: '/halal-wedding-catering-essex-kent',
+    blurb: 'Full mobile catering & venue styling across Romford, Ilford, Chigwell, Brentwood, Dartford & Kent estates.',
+    image: headerVenues,
+    alt: 'Halal Asian wedding catering across Essex and Kent venues',
+  },
+];
+
+const coreServices = [
+  {
+    title: 'Asian Wedding Catering',
+    href: '/services/asian-wedding-catering',
+    description:
+      '100% HMC Certified Halal Bengali, Pakistani, and Indian wedding banquets with uniformed waiting staff and plated or buffet dining.',
+    image: serviceCatering,
+    alt: 'Halal Asian wedding catering table service in London',
+  },
+  {
+    title: 'Wedding Stage Decoration',
+    href: '/services/wedding-stage-decoration',
+    description:
+      'Bespoke floral backdrops, Nikah & Mehndi stages, sweetheart seating, walkways, centrepieces, and mood lighting.',
+    image: serviceStage,
+    alt: 'Bespoke floral Asian wedding stage decoration in London',
+  },
+  {
+    title: 'Full Event Management',
+    href: '/services/event-management-planning',
+    description:
+      'End-to-end timelines, venue sourcing, supplier coordination, and dedicated on-the-day management for a calm celebration.',
+    image: servicePlanning,
+    alt: 'Luxury Asian wedding planning and on-the-day event management',
+  },
+];
+
+const quickFacts = [
+  { label: 'Starting Price', value: 'From £30 per person (Silver), £45pp (Gold), £17,500 all-inclusive (Platinum)' },
+  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Nikah, Mehndi, Baraat, Walima & Corporate)' },
+  { label: 'Halal Certification', value: '100% HMC Certified Halal Dedicated Kitchen' },
+  { label: 'Cuisines Offered', value: 'Bengali / Bangladeshi, Pakistani, Indian & Contemporary Fusion' },
+  { label: 'Service Styles', value: 'Grand Buffet, Family-Style Table Service, Plated Fine Dining & Live Stations' },
+  { label: 'Areas Covered', value: 'Greater London (East, North, West & South), Essex & Kent' },
+];
+
+const schemas = [
+  buildServiceSchema({
+    name: 'Halal Asian Wedding Catering & Event Services',
+    serviceType: 'Halal Wedding Catering, Stage Decoration & Event Management',
+    description:
+      'Luxury 100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian) and bespoke wedding stage decoration across Greater London, Essex, and Kent.',
+    url: '/',
+  }),
+  buildFaqSchema(homeFaqs),
+];
+---
+
+<BaseLayout
+  title="Asian Wedding Catering London | 100% HMC Halal & Decor | Salwah Events"
+  description="Luxury 100% HMC Certified Halal Asian wedding catering (Bengali, Pakistani & Indian) & bespoke stage decor in London, Essex & Kent. Packages from £30pp for 50–1,000+ guests."
+  canonicalPath="/"
+  schemas={schemas}
+>
+  <!-- Above-the-Fold Luxury Hero -->
+  <section class="relative overflow-hidden bg-salwah-black border-b border-salwah-gold/20">
+    <div class="absolute inset-0 z-0">
+      <Picture
+        src={heroCouple}
+        alt="South Asian wedding couple celebrating at a luxury London venue catered by Salwah Events"
+        widths={[640, 1280]}
+        sizes="100vw"
+        formats={['webp']} fallbackFormat="webp" quality={78}
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+        class="h-full w-full object-cover object-[50%_22%] opacity-50"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-salwah-black/75 via-salwah-black/65 to-salwah-black" />
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 text-left">
+          <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-salwah-gold mb-3">
+            London • Essex • Kent • Est. Family Specialists
+          </p>
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+            Luxury <span class="gold-gradient-text">HMC Halal Asian Wedding Catering</span> &amp; Stage Decor
+          </h1>
+          <p class="mt-5 text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl leading-relaxed">
+            Authentic Bengali, Pakistani, and Indian wedding banquets paired with bespoke floral stage
+            decoration — <strong>100% HMC Certified Halal</strong> and
+            tailored for <strong>50 to 1,000+ guests</strong> starting from <strong>£30 per person</strong>.
+          </p>
+
+          <div class="mt-6">
+            <TrustBadges align="left" />
+          </div>
+
+          <div class="mt-7 flex flex-col sm:flex-row gap-3">
+            <a
+              href="#quote-form"
+              class="inline-flex items-center justify-center rounded-xl bg-salwah-gold px-7 py-4 text-base font-bold text-black hover:bg-salwah-gold-light transition shadow-lg shadow-salwah-gold/25"
+            >
+              Get a Free Quote
+            </a>
+            <a
+              href="/packages"
+              class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/50 bg-black/60 px-6 py-4 text-base font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+            >
+              View Packages (From £30pp)
+            </a>
+            <a
+              href={SITE.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-xl bg-[#25D366] px-6 py-4 text-base font-bold text-black hover:brightness-105 transition"
+            >
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Homepage Hero"
+            heading="Request Your Free Quote"
+            subheading="Tell us your date & guest count — we'll reply fast with tailored Halal menus & pricing."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extractable GEO / AI Overview Quick Facts -->
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <QuickFactsBox
+        heading="Salwah Events and Catering — At a Glance"
+        summary="Salwah Events and Catering (Salwah Events Ltd) is a London-based 100% HMC Certified Halal Asian wedding caterer and event decorator serving Greater London, Essex, and Kent from our Edmonton kitchen (N18 1UB)."
+        facts={quickFacts}
+      />
+    </div>
+  </section>
+
+  <!-- Signature Services -->
+  <section class="py-16 sm:py-20 bg-salwah-surface border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-2">
+          Complete Wedding Solutions
+        </p>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          Our <span class="text-salwah-gold">Signature Services</span>
+        </h2>
+        <p class="mt-4 text-gray-300 text-base sm:text-lg">
+          One trusted team for unforgettable Halal food, breathtaking stage decor, and calm on-the-day coordination.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        {
+          coreServices.map((service) => (
+            <a href={service.href} class="group luxury-card rounded-2xl overflow-hidden flex flex-col">
+              <div class="aspect-[16/10] overflow-hidden bg-black">
+                <Picture
+                  src={service.image}
+                  alt={service.alt}
+                  widths={[480, 800]}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  formats={['webp']} fallbackFormat="webp" quality={78}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="p-6 flex flex-col flex-1">
+                <h3 class="font-serif text-2xl font-bold text-white group-hover:text-salwah-gold transition">
+                  {service.title}
+                </h3>
+                <p class="mt-3 text-sm sm:text-base text-gray-300 leading-relaxed flex-1">
+                  {service.description}
+                </p>
+                <span class="mt-5 inline-flex items-center text-sm font-bold text-salwah-gold">
+                  Explore Service &rarr;
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialist Cuisines & Regional Catering Hubs -->
+  <section class="py-16 sm:py-20 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-2">
+            Authentic Heritage Menus
+          </p>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Tailored to Your <span class="text-salwah-gold">Culture &amp; Region</span>
+          </h2>
+        </div>
+        <a
+          href="/menu"
+          class="inline-flex items-center text-sm font-bold text-salwah-gold hover:underline shrink-0"
+        >
+          Browse Full Halal Menu &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          cuisineCards.map((card) => (
+            <a href={card.href} class="group luxury-card rounded-2xl overflow-hidden flex flex-col">
+              <div class="aspect-[4/3] overflow-hidden bg-black">
+                <Picture
+                  src={card.image}
+                  alt={card.alt}
+                  widths={[480, 800]}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  formats={['webp']} fallbackFormat="webp" quality={78}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <h3 class="font-serif text-xl font-bold text-white group-hover:text-salwah-gold transition">
+                  {card.title}
+                </h3>
+                <p class="mt-2 text-sm text-gray-300 leading-relaxed flex-1">{card.blurb}</p>
+                <span class="mt-4 text-xs font-bold uppercase tracking-wider text-salwah-gold">
+                  View Menus &amp; Pricing &rarr;
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Transparent Packages Snapshot -->
+  <section class="py-16 sm:py-20 bg-salwah-surface border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-2">
+          Transparent Pricing
+        </p>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          Wedding Catering <span class="text-salwah-gold">Packages</span>
+        </h2>
+        <p class="mt-3 text-gray-300">
+          Every package is 100% HMC Certified Halal and customisable to your exact guest count and cuisine.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 items-stretch">
+        {
+          PACKAGES.map((pkg) => (
+            <div
+              class={`relative rounded-2xl p-7 flex flex-col ${
+                pkg.id === 'gold'
+                  ? 'package-gold'
+                  : pkg.id === 'platinum'
+                    ? 'package-platinum'
+                    : 'package-silver'
+              }`}
+            >
+              {pkg.popular && (
+                <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-salwah-gold px-4 py-1 text-xs font-bold uppercase tracking-wider text-black shadow">
+                  Most Popular
+                </span>
+              )}
+              <h3 class="font-serif text-2xl font-bold text-white">{pkg.name}</h3>
+              <div class="mt-3 flex items-baseline gap-2">
+                <span class="font-serif text-4xl font-bold text-salwah-gold">{pkg.price}</span>
+                <span class="text-sm text-gray-300">{pkg.unit}</span>
+              </div>
+              <p class="mt-3 text-sm text-gray-300">{pkg.tagline}</p>
+
+              <ul class="mt-6 space-y-2.5 text-sm text-gray-200 flex-1">
+                {pkg.features.map((feat) => (
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-salwah-gold font-bold mt-0.5" aria-hidden="true">&#10003;</span>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="/contact#quote-form"
+                class={`mt-7 inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-bold transition ${
+                  pkg.popular
+                    ? 'bg-salwah-gold text-black hover:bg-salwah-gold-light'
+                    : 'border border-salwah-gold/50 text-salwah-gold hover:bg-salwah-gold hover:text-black'
+                }`}
+              >
+                Enquire for {pkg.name}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/packages" class="text-sm font-bold text-salwah-gold hover:underline">
+          Compare All Package Inclusions &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Venues Strip -->
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-2">
+        Trusted Across Leading Banqueting Halls
+      </p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-8">
+        Preferred <span class="text-salwah-gold">Venue Partners</span>
+      </h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        {
+          PARTNER_VENUE_NAMES.map((venue) => (
+            <span class="rounded-xl border border-salwah-gold/30 bg-salwah-gold/10 px-5 py-3 text-sm sm:text-base font-semibold text-white">
+              {venue}
+            </span>
+          ))
+        }
+      </div>
+      <div class="mt-7">
+        <a href="/services/venues-locations" class="text-sm font-semibold text-salwah-gold hover:underline">
+          Explore Our Partner Venues in London, Essex &amp; Kent &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Reviews -->
+  <section class="py-16 sm:py-20 bg-salwah-surface border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-2">
+          5.0★ Google Rating
+        </p>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          Trusted by <span class="text-salwah-gold">Families Across the UK</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          TESTIMONIALS.map((review) => (
+            <blockquote class="luxury-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+              <div>
+                <div class="text-salwah-gold text-base tracking-widest mb-3" aria-label="5 out of 5 stars">
+                  &#9733;&#9733;&#9733;&#9733;&#9733;
+                </div>
+                <p class="text-gray-200 text-sm sm:text-base leading-relaxed italic">
+                  &ldquo;{review.text}&rdquo;
+                </p>
+              </div>
+              <footer class="mt-5 pt-4 border-t border-white/10">
+                <p class="font-semibold text-white">{review.name}</p>
+                <p class="text-xs text-salwah-gold">
+                  {review.event} &bull; {review.location}
+                </p>
+              </footer>
+            </blockquote>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={homeFaqs} />
+  <CtaBanner />
+</BaseLayout>

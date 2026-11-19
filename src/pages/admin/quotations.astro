@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import QuotationGeneratorIsland from '@/components/admin/QuotationGeneratorIsland';
+---
+
+<BaseLayout
+  title="Quotation Generator | Salwah Events Admin"
+  description="Internal quotation generator for Salwah Events Ltd."
+  canonicalPath="/admin/quotations"
+  noindex={true}
+  hideChrome={true}
+>
+  <QuotationGeneratorIsland client:load />
+</BaseLayout>

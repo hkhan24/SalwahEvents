@@ -1,0 +1,152 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import headerContact from '@/assets/images/header-contact.png';
+import { SITE } from '@/data/site';
+import { buildBreadcrumbSchema, buildFaqSchema, type BreadcrumbItem, type FaqItem } from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Contact Us' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'How quickly will Salwah Events respond to my quote enquiry?',
+    answer:
+      'We respond to website enquiries within a few hours during business hours (Mon–Sun, 9am–7pm). For immediate answers on date availability, call or WhatsApp 07359 337887.',
+  },
+  {
+    question: 'Where is Salwah Events and Catering located?',
+    answer:
+      'Our production kitchen and office are located at Unit 7 Landmark Commercial Centre, 7 Commercial Road, Edmonton, London, N18 1UB — serving Greater London, Essex, and Kent.',
+  },
+  {
+    question: 'Can we book a menu consultation and food sampling before securing our date?',
+    answer:
+      'Yes! Submit your event date, estimated guest count, and cuisine preferences using the form above and our team will schedule a tailored menu consultation and food sampling.',
+  },
+];
+---
+
+<BaseLayout
+  title="Contact Salwah Events | Free Halal Wedding Catering Quote London"
+  description="Contact Salwah Events and Catering for 100% HMC Halal Asian wedding catering, stage decor & event management in London, Essex & Kent. Call or WhatsApp 07359 337887."
+  canonicalPath="/contact"
+  schemas={[buildBreadcrumbSchema(breadcrumbs), buildFaqSchema(faqs)]}
+>
+  <PageHero
+    eyebrow="Fast Response • 7 Days a Week"
+    title="Contact"
+    highlight="Salwah Events"
+    subtitle="Get a tailored quote for 100% HMC Certified Halal Asian wedding catering, bespoke stage decor, or full event management across Greater London, Essex, and Kent."
+    image={headerContact}
+    imageAlt="Contact Salwah Events and Catering in Edmonton London"
+    breadcrumbs={breadcrumbs}
+    showCtas={false}
+  />
+
+  <section class="py-14 sm:py-20 bg-salwah-black" id="quote-form">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7">
+          <QuoteForm
+            client:load
+            variant="full"
+            sourcePage="Contact Page"
+            heading="Send Your Event Enquiry"
+            subheading="Tell us about your event date, guest count (50–1,000+), and preferred services. We will reply promptly."
+          />
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Direct Contact Cards -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 space-y-5">
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white">
+              Direct <span class="text-salwah-gold">Contact Details</span>
+            </h2>
+
+            <div class="space-y-4">
+              <a
+                href={SITE.phoneHref}
+                class="flex items-center gap-4 rounded-xl border border-salwah-gold/25 bg-black/50 p-4 hover:border-salwah-gold transition group"
+              >
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-salwah-gold/15 text-salwah-gold group-hover:bg-salwah-gold group-hover:text-black transition font-bold">
+                  Tel
+                </span>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-gray-400">Call Direct</p>
+                  <p class="text-lg font-bold text-white group-hover:text-salwah-gold">{SITE.phoneDisplay}</p>
+                </div>
+              </a>
+
+              <a
+                href={SITE.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-4 rounded-xl border border-[#25D366]/35 bg-[#25D366]/10 p-4 hover:bg-[#25D366]/20 transition group"
+              >
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-black font-bold text-sm">
+                  WA
+                </span>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-gray-300">WhatsApp (Fastest)</p>
+                  <p class="text-lg font-bold text-white">Chat on WhatsApp</p>
+                </div>
+              </a>
+
+              <a
+                href={SITE.emailHref}
+                class="flex items-center gap-4 rounded-xl border border-white/15 bg-black/50 p-4 hover:border-salwah-gold transition group"
+              >
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-salwah-gold/15 text-salwah-gold font-bold text-sm">
+                  @
+                </span>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-gray-400">Email</p>
+                  <p class="text-base font-semibold text-white group-hover:text-salwah-gold">{SITE.email}</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 text-sm text-gray-300 space-y-1.5">
+              <p class="font-semibold text-white">{SITE.businessName} ({SITE.legalName})</p>
+              <p>{SITE.address.full}</p>
+              <p class="text-xs text-salwah-gold">{SITE.openingHours.display}</p>
+            </div>
+          </div>
+
+          <!-- Quote Builder Link Card -->
+          <div class="luxury-card rounded-2xl p-6 space-y-3">
+            <h3 class="font-serif text-xl font-bold text-salwah-gold">Build a Custom Dish List First?</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Pick your Silver, Gold, or Platinum package and exact menu dishes with our free{' '}
+              <a href="/resources/quote-builder" class="text-salwah-gold font-semibold underline hover:no-underline">
+                Quote Builder tool
+              </a>, then email your generated PDF to {SITE.email}.
+            </p>
+          </div>
+
+          <!-- Lazy-Loaded Google Map -->
+          <div class="rounded-2xl overflow-hidden border border-salwah-gold/25 bg-[#11131a] h-72">
+            <iframe
+              src={SITE.mapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Salwah Events and Catering — Edmonton, London N18 1UB"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+</BaseLayout>

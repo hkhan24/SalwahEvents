@@ -1,0 +1,21 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import GuestEstimatorTool from '@/components/tools/GuestEstimatorTool';
+---
+
+<ToolPageLayout
+  title="Guest Count Estimator"
+  metaTitle="Wedding Guest Count Cost Estimator UK | Salwah Events"
+  description="Slide from 50 to 1,000 guests to see indicative UK Halal Asian wedding catering and stage decor cost ranges."
+  canonicalPath="/resources/guest-estimator"
+  heroTitle="Guest Count"
+  heroHighlight="Cost Estimator"
+  subtitle="See how guest list size from 50 to 1,000+ shapes your indicative catering and decor budget."
+  howToUse={[
+    'Drag the guest count slider from 50 up to 1,000 guests.',
+    'Compare indicative ranges for 100% HMC Halal catering and stage/venue styling.',
+    'Request a bespoke written quote via our Contact page once you have a target headcount.',
+  ]}
+>
+  <GuestEstimatorTool client:load />
+</ToolPageLayout>

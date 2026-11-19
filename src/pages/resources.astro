@@ -1,0 +1,78 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import headerResources from '@/assets/images/header-resources.png';
+import { RESOURCE_TOOLS } from '@/data/resources';
+import { buildBreadcrumbSchema, buildFaqSchema, type BreadcrumbItem, type FaqItem } from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Free Wedding Planning Tools' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Are these Asian wedding planning tools completely free?',
+    answer:
+      'Yes, 100% free with no account or sign-up required. We created them to help couples across London, Essex, and Kent budget, plan guest seating, and organise Nikah & Walima timelines with ease.',
+  },
+  {
+    question: 'Is my guest list or budget data saved on your servers?',
+    answer:
+      'No. Every calculation and PDF/CSV export runs locally inside your own browser, so your personal wedding details stay completely private.',
+  },
+  {
+    question: 'Can I send my Quote Builder PDF directly to Salwah Events?',
+    answer:
+      'Yes! Build your preferred Silver, Gold, or Platinum package and dish selection in the Quote Builder, download the PDF, and email it to info@salwahevents.com or WhatsApp 07359 337887.',
+  },
+];
+---
+
+<BaseLayout
+  title="14 Free Asian Wedding Planning Tools | Calculators & Templates | Salwah Events"
+  description="Use our 14 free browser-based Asian wedding planning tools: Quote Builder, Budget Calculator, Live Gold & Zakat Calculator, Seating Planner, Timeline Generator (.ics), RSVP Tracker & PDF Checklists."
+  canonicalPath="/resources"
+  schemas={[buildBreadcrumbSchema(breadcrumbs), buildFaqSchema(faqs)]}
+>
+  <PageHero
+    eyebrow="14 Free Browser Tools • No Sign-Up Required"
+    title="Free Wedding"
+    highlight="Planning Tools"
+    subtitle="Plan your Asian wedding budget, bridal gold & Zakat estimates, guest seating, dietary lists, Nikah invitations, and event timelines effortlessly — 100% private and free to use."
+    image={headerResources}
+    imageAlt="Free Asian wedding planning tools and calculators by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="/resources/quote-builder"
+    primaryCtaLabel="Open Quote Builder"
+  />
+
+  <section class="py-16 sm:py-20 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          RESOURCE_TOOLS.map((tool) => (
+            <a href={tool.href} class="group luxury-card rounded-2xl p-6 flex flex-col">
+              <span class="text-xs font-bold uppercase tracking-widest text-salwah-gold">
+                {tool.category}
+              </span>
+              <h2 class="mt-2 font-serif text-2xl font-bold text-white group-hover:text-salwah-gold transition">
+                {tool.title}
+              </h2>
+              <p class="mt-2.5 text-sm text-gray-300 leading-relaxed flex-1">
+                {tool.shortDescription}
+              </p>
+              <span class="mt-5 text-sm font-bold text-salwah-gold">Open Free Tool &rarr;</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner />
+</BaseLayout>

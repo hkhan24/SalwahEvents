@@ -1,0 +1,21 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import BudgetSplitterTool from '@/components/tools/BudgetSplitterTool';
+---
+
+<ToolPageLayout
+  title="Wedding Budget Splitter"
+  metaTitle="Wedding Budget Split Calculator | Free Family Tool | Salwah Events"
+  description="Calculate fair wedding cost splits between both families using our free percentage slider calculator."
+  canonicalPath="/resources/budget-splitter"
+  heroTitle="Wedding Budget"
+  heroHighlight="Splitter"
+  subtitle="Calculate transparent family contributions across any percentage split."
+  howToUse={[
+    'Enter your combined wedding budget in GBP (£).',
+    'Slide the percentage bar to compare 50/50, 60/40, or custom family contributions.',
+    'View exact GBP figures for each side instantly.',
+  ]}
+>
+  <BudgetSplitterTool client:load />
+</ToolPageLayout>

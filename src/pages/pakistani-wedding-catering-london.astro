@@ -1,0 +1,238 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import menuMains from '@/assets/images/menu-mains.png';
+import menuStarters from '@/assets/images/menu-starters.png';
+import blogNikah from '@/assets/images/blog-nikah-checklist.png';
+
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Asian Wedding Catering', href: '/services/asian-wedding-catering' },
+  { name: 'Pakistani Wedding Catering London' },
+];
+
+const quickFacts = [
+  { label: 'Starting Price', value: 'From £30 per person (Silver) • £45pp (Gold) • Platinum from £17,500' },
+  { label: 'Guest Capacity', value: '50 to 1,000+ guests across single or multi-day weddings' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen' },
+  { label: 'Events Catered', value: 'Nikah, Mehndi / Dholki, Baraat & Grand Walima Receptions' },
+  { label: 'Signature Pakistani Dishes', value: 'Lamb Karahi Gosht, Slow-Cooked Nihari, Peshawari Chapli Kebabs, Dum Biryani, Gajar Halwa & Kashmiri Chai' },
+  { label: 'Areas Covered', value: 'Greater London (North, East, West & South), Essex & Kent' },
+];
+
+const eventMenus = [
+  {
+    event: 'Nikah & Mehndi / Dholki',
+    dishes: [
+      'Chargrilled Lamb Seekh Kebabs & Peshawari Chapli Kebabs',
+      'Chicken Malai Tikka & Live Papri Chaat Station',
+      'Authentic Chicken Karahi & Chana Masala',
+      'Fresh Tandoori Naan & Fragrant Basmati Pilau',
+      'Gourmet Welcome Mocktails & Fresh Mint Coolers',
+      'Kashmiri Pink Chai, Cardamom Karak Chai & Mithai',
+    ],
+  },
+  {
+    event: 'Baraat & Walima Banquet',
+    dishes: [
+      'Slow-Cooked Lamb Nihari or Rich Lamb Karahi Gosht',
+      'Aromatic Sindhi / Hyderabadi-Style Lamb Dum Biryani',
+      'Chicken Tikka, Tandoori Wings & Fish Masala Starters',
+      'Creamy Makhni Daal, Fresh Raita & Kachumber Salad',
+      'Warm Gajar Halwa, Gulab Jamun with Ice Cream & Saffron Firni',
+      'Full Table Service or Multi-Line Staffed Grand Buffet',
+    ],
+  },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'How much does Pakistani wedding catering cost in London?',
+    answer:
+      'Our 100% HMC Halal Pakistani wedding catering starts from £30 per person (Silver Package) and £45 per person (Gold Package with grilled kebabs, 4 mains, 2 desserts, and welcome mocktails). Multi-event packages for Nikah, Mehndi, Baraat, and Walima can be tailored to your exact guest numbers.',
+  },
+  {
+    question: 'Can Salwah Events cater all multi-day Pakistani wedding events (Nikah, Mehndi, Baraat & Walima)?',
+    answer:
+      'Yes. We design distinct, non-repetitive menus across every function — from lively street-food chaat, chapli kebabs, and pink chai at your Mehndi to regal slow-cooked lamb karahi, dum biryani, nihari, and warm gajar halwa at your Baraat and Walima.',
+  },
+  {
+    question: 'Is every dish strictly 100% HMC Certified Halal?',
+    answer:
+      'Absolutely. We source 100% HMC Certified Halal meat and poultry only, prepared in our dedicated London Halal kitchen and paired with fresh mocktails and traditional Kashmiri pink chai.',
+  },
+  {
+    question: 'Do you also provide Pakistani Nikah partitions and Mehndi/Walima stage decor?',
+    answer:
+      'Yes! Our in-house decor team styles serene floral Nikah partitions and backdrops, colourful Mehndi stages, and opulent Walima stages — available standalone or bundled into our all-inclusive Platinum Package.',
+  },
+  {
+    question: 'Can we arrange food sampling and a menu consultation before booking?',
+    answer:
+      'Yes. Request a quote or WhatsApp 07359 337887 to book a menu consultation and food sampling session with our chefs in London.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Pakistani Wedding Catering London (Nikah, Mehndi, Baraat & Walima)',
+    serviceType: 'Pakistani Wedding Catering',
+    description:
+      '100% HMC Certified Halal Pakistani wedding catering in London for Nikah, Mehndi, Baraat, and Walima celebrations. Packages from £30pp for 50–1,000+ guests.',
+    url: '/pakistani-wedding-catering-london',
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Pakistani Wedding Catering London | Nikah, Mehndi, Baraat & Walima | Salwah Events"
+  description="Authentic 100% HMC Halal Pakistani wedding catering in London from £30pp. Bespoke Nikah, Mehndi, Baraat & Walima menus — lamb karahi, nihari, chapli kebabs, biryani & karak chai for 50–1,000+ guests."
+  canonicalPath="/pakistani-wedding-catering-london"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Nikah • Mehndi • Baraat • Walima • 100% HMC Halal"
+    title="Pakistani Wedding"
+    highlight="Catering in London"
+    subtitle="Rich, authentic Lahori, Karachite, and Peshawari wedding feasts — 100% HMC Certified Halal, served piping hot for 50 to 1,000+ guests across London, Essex & Kent from £30pp."
+    image={menuMains}
+    imageAlt="Authentic Pakistani Halal wedding catering dishes in London by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Get Pakistani Catering Quote"
+  />
+
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-10">
+          <QuickFactsBox
+            heading="Pakistani Wedding Catering London — Quick Facts"
+            summary="Salwah Events delivers full-service 100% HMC Certified Halal Pakistani wedding catering across London, Essex, and Kent — handling multi-day Nikah, Mehndi, Baraat, and Walima banquets with bespoke menus and stage decor."
+            facts={quickFacts}
+          />
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Authentic Pakistani Flavour Across Every Wedding Function</h2>
+            <p>
+              A Pakistani wedding spans unforgettable moments — from the quiet sacredness of the{' '}
+              <strong>Nikah</strong> and high-energy <strong>Mehndi</strong> to the grandeur of the{' '}
+              <strong>Baraat</strong> and warmth of the <strong>Walima</strong>. Each celebration
+              deserves its own culinary identity rather than the same menu repeated twice.
+            </p>
+            <p>
+              Our chefs roast whole spices in-house, slow-simmer rich karahis and nihari overnight,
+              and grill succulent seekh kebabs and chapli kebabs fresh — always{' '}
+              <strong>100% HMC Certified Halal</strong>,
+              finished with fragrant Kashmiri pink chai, karak chai, and handcrafted mocktails.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+              eventMenus.map((menu) => (
+                <div class="luxury-card rounded-2xl p-6">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-salwah-gold mb-1">
+                    Curated Menu
+                  </p>
+                  <h3 class="font-serif text-2xl font-bold text-white mb-4">{menu.event}</h3>
+                  <ul class="space-y-2.5 text-sm text-gray-200">
+                    {menu.dishes.map((dish) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-salwah-gold font-bold mt-0.5">&#10003;</span>
+                        <span>{dish}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={menuStarters}
+                alt="Halal Pakistani chargrilled tikka and kebab starters for London weddings"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={blogNikah}
+                alt="Pakistani Nikah ceremony catering and floral backdrop styling in London"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Seamless Nikah, Mehndi &amp; Walima Service at Top London Venues</h2>
+            <p>
+              We are experienced caterers at London's favourite Pakistani wedding venues — including{' '}
+              <strong>Ariana Banqueting Hall, Meridian Grand, The City Pavilion, The Willows,
+              Mayfair Venue, The Royal Regency, Osterley Park, and Syon Park</strong>. Planning your
+              Nikah? Read our{' '}
+              <a href="/blog/how-to-plan-a-pakistani-nikah-ceremony-a-checklist">
+                Pakistani Nikah Planning Checklist
+              </a>{' '}
+              or explore our{' '}
+              <a href="/services/wedding-stage-decoration">Nikah &amp; Walima stage decoration</a>.
+            </p>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-5 lg:sticky lg:top-28 space-y-6" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Pakistani Wedding Catering London LP"
+            defaultService="Both Catering & Stage Decor"
+            heading="Get Your Pakistani Wedding Quote"
+            subheading="Single event or full Nikah, Mehndi, Baraat & Walima multi-day packages from £30pp."
+          />
+
+          <div class="rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-3 text-sm text-gray-300">
+            <h3 class="font-serif text-lg font-bold text-salwah-gold">Helpful Planning Links</h3>
+            <ul class="space-y-2">
+              <li><a href="/menu" class="hover:text-salwah-gold transition">&rarr; View Full HMC Halal Menu</a></li>
+              <li><a href="/packages" class="hover:text-salwah-gold transition">&rarr; Compare Wedding Packages</a></li>
+              <li><a href="/blog/how-to-plan-a-pakistani-nikah-ceremony-a-checklist" class="hover:text-salwah-gold transition">&rarr; Pakistani Nikah Planning Checklist</a></li>
+              <li><a href="/resources/timeline-templates" class="hover:text-salwah-gold transition">&rarr; Free Nikah &amp; Walima Timeline PDFs</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner
+    title="Celebrate Your Nikah, Baraat or Walima"
+    highlight="With Unforgettable Flavour"
+    primaryHref="#quote-form"
+    primaryLabel="Book a Menu Consultation"
+  />
+</BaseLayout>

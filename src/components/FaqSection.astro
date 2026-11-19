@@ -1,0 +1,47 @@
+---
+import type { FaqItem } from '@/lib/schema';
+
+interface Props {
+  heading?: string;
+  highlight?: string;
+  faqs: FaqItem[];
+}
+
+const { heading = 'Frequently Asked', highlight = 'Questions', faqs } = Astro.props;
+---
+
+<section class="py-16 sm:py-20 bg-salwah-surface border-t border-white/5">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-2">FAQs</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+        {heading} <span class="text-salwah-gold">{highlight}</span>
+      </h2>
+    </div>
+
+    <div class="divide-y divide-salwah-gold/20 rounded-2xl border border-salwah-gold/20 bg-salwah-black/70 px-5 sm:px-8">
+      {
+        faqs.map((faq, idx) => (
+          <details class="group py-5" open={idx === 0}>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base sm:text-lg font-semibold text-white hover:text-salwah-gold transition">
+              <span>{faq.question}</span>
+              <svg
+                class="faq-chevron h-5 w-5 shrink-0 text-salwah-gold transition-transform duration-200"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <p class="mt-3 pr-6 text-sm sm:text-base text-gray-300 leading-relaxed">
+              {faq.answer}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

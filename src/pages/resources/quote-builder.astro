@@ -1,0 +1,22 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import QuoteBuilderTool from '@/components/tools/QuoteBuilderTool';
+---
+
+<ToolPageLayout
+  title="Quote Builder"
+  metaTitle="Custom Wedding Catering Quote Builder | Free PDF Tool | Salwah Events"
+  description="Build your custom Halal wedding package and menu quote online. Pick Silver, Gold, or Platinum and your preferred Bengali, Pakistani, or Indian dishes, then download a PDF."
+  canonicalPath="/resources/quote-builder"
+  heroTitle="Build Your Custom"
+  heroHighlight="Wedding Quote"
+  subtitle="Select your package and favourite 100% HMC Halal dishes, then download a clean PDF summary."
+  maxWidth="7xl"
+  howToUse={[
+    'Select Silver (£30pp), Gold (£45pp), or Platinum (from £17,500) as your base package.',
+    'Tick any starters, signature mains, biryanis, and desserts you would like to sample or serve.',
+    'Click "Download Quote Selection PDF" and share it via info@salwahevents.com or WhatsApp 07359 337887.',
+  ]}
+>
+  <QuoteBuilderTool client:load />
+</ToolPageLayout>

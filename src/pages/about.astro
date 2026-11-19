@@ -1,0 +1,158 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import headerAbout from '@/assets/images/header-about.png';
+import aboutTable from '@/assets/images/about-table.jpg';
+import aboutTeam from '@/assets/images/about-team.jpg';
+
+import { SITE } from '@/data/site';
+import { buildBreadcrumbSchema, type BreadcrumbItem } from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'About Us' },
+];
+
+const values = [
+  {
+    title: 'Uncompromising Halal Quality',
+    description:
+      'Every cut of meat and poultry is 100% HMC Certified Halal, sourced from vetted UK suppliers and cooked fresh in our dedicated Edmonton, London Halal kitchen.',
+  },
+  {
+    title: 'Cultural & Religious Understanding',
+    description:
+      'As a family-led team rooted in London, we deeply understand the traditions of Bengali, Pakistani, and Indian weddings — from Nikah modesty and Gaye Holud warmth to grand Walima hospitality.',
+  },
+  {
+    title: 'End-to-End Professionalism',
+    description:
+      'From transparent pricing starting at £30pp to punctual delivery, uniformed floor supervisors, and calm on-the-day execution, every detail is handled with precision.',
+  },
+];
+---
+
+<BaseLayout
+  title="About Salwah Events | HMC Halal Asian Wedding Specialists London"
+  description="Meet Salwah Events and Catering (Salwah Events Ltd) — family-led 100% HMC Certified Halal Asian wedding caterers, stage decorators, and event planners based in Edmonton, London serving Essex & Kent."
+  canonicalPath="/about"
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <PageHero
+    eyebrow="Family-Led Excellence • Edmonton, London"
+    title="Your Trusted Asian"
+    highlight="Event Partner"
+    subtitle="Creating unforgettable, 100% HMC Certified Halal weddings and events across Greater London, Essex, and Kent."
+    image={headerAbout}
+    imageAlt="About Salwah Events and Catering luxury Asian wedding specialists in London"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="/contact#quote-form"
+    primaryCtaLabel="Book a Consultation"
+  />
+
+  <section class="py-16 sm:py-20 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold">Our Story</p>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Built on <span class="text-salwah-gold">Halal Excellence &amp; Hospitality</span>
+          </h2>
+          <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            <strong>{SITE.businessName}</strong> was founded with a clear mission: to give UK
+            Muslim and South Asian families a luxury, reliable, and genuinely{' '}
+            <strong>100% HMC Certified Halal</strong> wedding catering and
+            event service that never compromises on taste, presentation, or cultural respect.
+          </p>
+          <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            Operating from our dedicated kitchen and headquarters at{' '}
+            <strong>{SITE.address.full}</strong>, our family-led team pours care into every Nikah,
+            Mehndi, Gaye Holud, Baraat, Walima, Aqiqah, and corporate gala — serving gatherings
+            from 50 to 1,000+ guests across Greater London, Essex, and Kent.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-4 text-xs text-gray-400">
+            <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
+              {SITE.legalName} • Co. No. {SITE.companiesHouseNo}
+            </span>
+            <span class="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
+              VAT Reg. No. {SITE.vatNo}
+            </span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-salwah-gold/25">
+          <Picture
+            src={aboutTable}
+            alt="Luxury wedding reception table setting styled by Salwah Events in London"
+            widths={[480, 800]}
+            sizes="(max-width: 1024px) 100vw, 48vw"
+            formats={['webp']} fallbackFormat="webp" quality={78}
+            loading="lazy"
+            class="w-full h-80 sm:h-96 object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <div>
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+            Our Core <span class="text-salwah-gold">Values</span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+          {
+            values.map((val, idx) => (
+              <div class="luxury-card rounded-2xl p-7">
+                <span class="font-serif text-3xl font-bold text-salwah-gold/40">0{idx + 1}</span>
+                <h3 class="mt-2 font-serif text-xl font-bold text-white">{val.title}</h3>
+                <p class="mt-3 text-sm sm:text-base text-gray-300 leading-relaxed">{val.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Professional Team -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="rounded-2xl overflow-hidden border border-salwah-gold/25 order-2 lg:order-1">
+          <Picture
+            src={aboutTeam}
+            alt="Salwah Events culinary chefs preparing authentic Halal wedding cuisine in London"
+            widths={[480, 800]}
+            sizes="(max-width: 1024px) 100vw, 48vw"
+            formats={['webp']} fallbackFormat="webp" quality={78}
+            loading="lazy"
+            class="w-full h-80 sm:h-96 object-cover"
+          />
+        </div>
+
+        <div class="space-y-5 order-1 lg:order-2">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold">Our People</p>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Chefs, Designers &amp; <span class="text-salwah-gold">Event Directors</span>
+          </h2>
+          <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            At the heart of Salwah Events is a specialist collective: regional South Asian chefs
+            trained in authentic Bengali, Pakistani, and Indian wedding cooking; floral and lighting
+            designers who transform blank halls into dreamscapes; and experienced floor supervisors
+            who keep 500+ guest dinners running right on schedule.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-3">
+            <a href="/services/asian-wedding-catering" class="rounded-xl bg-salwah-gold px-5 py-3 text-sm font-bold text-black hover:bg-salwah-gold-light transition">
+              Explore Catering
+            </a>
+            <a href="/services/wedding-stage-decoration" class="rounded-xl border border-salwah-gold/50 px-5 py-3 text-sm font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition">
+              Explore Stage Decor
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

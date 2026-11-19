@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AdminDashboardIsland from '@/components/admin/AdminDashboardIsland';
+---
+
+<BaseLayout
+  title="Admin Panel | Salwah Events"
+  description="Internal administration tools for Salwah Events Ltd."
+  canonicalPath="/admin"
+  noindex={true}
+>
+  <AdminDashboardIsland client:load />
+</BaseLayout>

@@ -1,0 +1,47 @@
+name: Build & Deploy Salwah Events to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-salwah-events
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static Astro site
+        env:
+          # STAGING FLAG:
+          # Keep 'true' while testing on https://calming-white-penguin-96.hostingersite.com
+          # Change to 'false' when cutting https://www.salwahevents.com live!
+          PUBLIC_STAGING_MODE: 'true'
+          SITE_URL: 'https://www.salwahevents.com'
+        run: npm run build && npm run verify
+
+      - name: Deploy dist/ to deploy branch (Hostinger auto-deploy)
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
+        with:
+          branch: deploy
+          folder: dist
+          clean: true
+          commit-message: 'Deploy compiled site from ${{ github.sha }}'

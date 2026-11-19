@@ -1,0 +1,118 @@
+---
+import { Picture } from 'astro:assets';
+import TrustBadges from '@/components/TrustBadges.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import type { BreadcrumbItem } from '@/lib/schema';
+import { SITE } from '@/data/site';
+
+interface Props {
+  title: string;
+  highlight?: string;
+  subtitle: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  showTrustBadges?: boolean;
+  showCtas?: boolean;
+  primaryCtaHref?: string;
+  primaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  secondaryCtaLabel?: string;
+  eyebrow?: string;
+}
+
+const {
+  title,
+  highlight,
+  subtitle,
+  image,
+  imageAlt = 'Salwah Events and Catering luxury Asian wedding service in London',
+  breadcrumbs,
+  showTrustBadges = true,
+  showCtas = true,
+  primaryCtaHref = '#quote-form',
+  primaryCtaLabel = 'Get Free Quote',
+  secondaryCtaHref = SITE.whatsappHref,
+  secondaryCtaLabel = 'WhatsApp Us',
+  eyebrow,
+} = Astro.props;
+
+const isExternalSecondary = secondaryCtaHref.startsWith('http');
+---
+
+<section class="relative overflow-hidden bg-salwah-black border-b border-salwah-gold/20">
+  {
+    image && (
+      <div class="absolute inset-0 z-0">
+        <Picture
+          src={image}
+          alt={imageAlt}
+          widths={[640, 1280]}
+          sizes="100vw"
+          formats={['webp']} fallbackFormat="webp" quality={78}
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync"
+          class="h-full w-full object-cover object-center opacity-45"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-salwah-black/80 via-salwah-black/75 to-salwah-black" />
+      </div>
+    )
+  }
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-14 sm:pt-14 sm:pb-20">
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <div class="mb-6">
+        <Breadcrumbs items={breadcrumbs} />
+      </div>
+    )}
+
+    <div class="max-w-4xl">
+      {eyebrow && (
+        <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-3">
+          {eyebrow}
+        </p>
+      )}
+
+      <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+        {title}{' '}
+        {highlight && <span class="gold-gradient-text">{highlight}</span>}
+      </h1>
+
+      <p class="mt-4 sm:mt-5 text-base sm:text-lg lg:text-xl text-gray-200 max-w-3xl leading-relaxed">
+        {subtitle}
+      </p>
+
+      {showTrustBadges && (
+        <div class="mt-6">
+          <TrustBadges align="left" compact />
+        </div>
+      )}
+
+      {showCtas && (
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a
+            href={primaryCtaHref}
+            class="inline-flex items-center justify-center rounded-xl bg-salwah-gold px-6 py-3.5 text-base font-bold text-black hover:bg-salwah-gold-light transition shadow-lg shadow-salwah-gold/20"
+          >
+            {primaryCtaLabel}
+          </a>
+          <a
+            href={secondaryCtaHref}
+            target={isExternalSecondary ? '_blank' : undefined}
+            rel={isExternalSecondary ? 'noopener noreferrer' : undefined}
+            class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/50 bg-black/60 px-6 py-3.5 text-base font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+          >
+            {secondaryCtaLabel}
+          </a>
+          <a
+            href={SITE.phoneHref}
+            class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-black/60 px-5 py-3.5 text-base font-semibold text-white hover:border-salwah-gold hover:text-salwah-gold transition"
+          >
+            Call {SITE.phoneDisplay}
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

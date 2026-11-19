@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import headerResources from '@/assets/images/header-resources.png';
+import { buildBreadcrumbSchema, type BreadcrumbItem } from '@/lib/schema';
+
+export interface Props {
+  title: string;
+  metaTitle: string;
+  description: string;
+  canonicalPath: string;
+  heroTitle: string;
+  heroHighlight: string;
+  subtitle: string;
+  howToUse: string[];
+  maxWidth?: '4xl' | '7xl';
+  extraSchemas?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  metaTitle,
+  description,
+  canonicalPath,
+  heroTitle,
+  heroHighlight,
+  subtitle,
+  howToUse,
+  maxWidth = '4xl',
+  extraSchemas = [],
+} = Astro.props;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Resources', href: '/resources' },
+  { name: title },
+];
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={description}
+  canonicalPath={canonicalPath}
+  schemas={[buildBreadcrumbSchema(breadcrumbs), ...extraSchemas]}
+>
+  <PageHero
+    eyebrow="Free Wedding Planning Tool • No Sign-Up Required"
+    title={heroTitle}
+    highlight={heroHighlight}
+    subtitle={subtitle}
+    image={headerResources}
+    imageAlt={`${title} free wedding planning tool by Salwah Events`}
+    breadcrumbs={breadcrumbs}
+    showTrustBadges={false}
+    showCtas={false}
+  />
+
+  <section class="py-12 sm:py-16 bg-salwah-black">
+    <div class={`${maxWidth === '7xl' ? 'max-w-7xl' : 'max-w-4xl'} mx-auto px-4 sm:px-6 lg:px-8 space-y-12`}>
+      <slot />
+
+      <div class="rounded-2xl border border-salwah-gold/20 bg-[#10121a] p-6 sm:p-8">
+        <h2 class="font-serif text-2xl font-bold text-salwah-gold mb-4">How to Use This Tool</h2>
+        <ul class="list-disc list-inside space-y-2 text-sm sm:text-base text-gray-300">
+          {howToUse.map((tip) => <li>{tip}</li>)}
+        </ul>
+        <div class="mt-6 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10 text-sm">
+          <a href="/resources" class="font-semibold text-salwah-gold hover:underline">
+            &larr; Back to All 14 Free Planning Tools
+          </a>
+          <a href="/contact#quote-form" class="font-semibold text-white hover:text-salwah-gold transition">
+            Need a Real Catering Quote? Contact Us &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

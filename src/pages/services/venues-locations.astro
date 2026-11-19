@@ -1,0 +1,114 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import headerVenues from '@/assets/images/header-venues.jpg';
+import { PARTNER_VENUES } from '@/data/venues';
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services' },
+  { name: 'Venues & Locations' },
+];
+
+const regions = ['East London', 'North London', 'West London', 'Essex & Kent'] as const;
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Are you experienced caterers at East and North London Asian wedding venues?',
+    answer:
+      'Yes! Salwah Events regularly delivers HMC Halal catering and stage decoration at major London venues including Meridian Grand, The City Pavilion, The Willows, Mayfair Venue, The Royal Regency, Ariana Banqueting Hall, Palm Tree, and Oasis.',
+  },
+  {
+    question: 'Can you help us choose and book a wedding venue?',
+    answer:
+      'Yes. As part of our event management and consultation service, we help shortlist venues suited to your guest count (50–1,000+), dry-hire policy, parking needs, and budget across London, Essex, and Kent.',
+  },
+  {
+    question: 'Can you cater at a venue that is not listed on this page?',
+    answer:
+      'Absolutely! We cater at hundreds of dry-hire halls, hotel ballrooms, country estates, mosques, community centres, and private marquees across Greater London, Essex, and Kent.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Asian Wedding Venues & Locations in London, Essex & Kent',
+    serviceType: 'Wedding Venue Catering & Styling',
+    description:
+      'Trusted Halal Asian wedding caterers at leading London, Essex & Kent venues including The City Pavilion, Meridian Grand, The Willows, Mayfair Venue, Royal Regency, and dry-hire estates.',
+    url: '/services/venues-locations',
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Asian Wedding Venues London, Essex & Kent | Partner Venues | Salwah Events"
+  description="Explore top Asian wedding venues across East, North & West London, Essex & Kent where Salwah Events delivers 100% HMC Halal catering & bespoke stage decoration."
+  canonicalPath="/services/venues-locations"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="London, Essex & Kent Venue Network"
+    title="Partner Venues"
+    highlight="& Locations"
+    subtitle="From grand East and North London banqueting halls to dry-hire country estates in Essex and Kent — discover venues where our catering and decor teams deliver seamless weddings."
+    image={headerVenues}
+    imageAlt="Grand Asian wedding ballroom venue in London catered by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Enquire About Your Venue"
+  />
+
+  <section class="py-14 sm:py-20 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      {
+        regions.map((region) => {
+          const items = PARTNER_VENUES.filter((v) => v.region === region);
+          return (
+            <div>
+              <h2 class="font-serif text-2xl sm:text-3xl font-bold text-salwah-gold pb-3 mb-6 border-b border-salwah-gold/30">
+                {region}
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {items.map((venue) => (
+                  <div class="luxury-card rounded-2xl p-6 flex flex-col">
+                    <h3 class="font-serif text-xl font-bold text-white">{venue.name}</h3>
+                    <p class="mt-1 text-xs font-semibold text-salwah-gold">{venue.area}</p>
+                    <p class="mt-1 text-xs text-gray-400">Capacity: {venue.capacity}</p>
+                    <p class="mt-3 text-sm text-gray-300 leading-relaxed flex-1">{venue.blurb}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+
+      <div id="quote-form" class="max-w-3xl mx-auto pt-4">
+        <QuoteForm
+          client:visible
+          variant="compact"
+          sourcePage="Venues & Locations Page"
+          heading="Already Have a Venue — Or Still Choosing?"
+          subheading="Tell us your venue name (or preferred area) and guest count for tailored catering & decor pricing."
+        />
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner />
+</BaseLayout>

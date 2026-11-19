@@ -1,0 +1,109 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import heroImg from '@/assets/images/blog-indian-menu.png';
+import thaliImg from '@/assets/images/blog-thali.jpg';
+import fusionImg from '@/assets/images/blog-fusion.jpg';
+
+import { buildBlogPostingSchema, buildBreadcrumbSchema, type BreadcrumbItem } from '@/lib/schema';
+
+const url = '/blog/top-5-menu-ideas-for-an-indian-wedding-in-london';
+const title = 'Top 5 Menu Ideas for an Indian Wedding in London';
+const description =
+  'Explore our top 5 Halal Indian wedding menu ideas in London — from traditional thalis and live chaat stations to grand buffets and regional menus.';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Indian Wedding Menu Ideas' },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildBlogPostingSchema({ title, description, url, publishedIso: '2025-08-29' }),
+];
+---
+
+<BaseLayout
+  title={`${title} | Salwah Events`}
+  description={description}
+  canonicalPath={url}
+  ogType="article"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Published August 29, 2025 • 5 Min Read"
+    title="Top 5 Menu Ideas for an"
+    highlight="Indian Wedding in London"
+    subtitle="From classic slow-cooked curries and live chaat stations to regional thalis — curated 100% HMC Halal inspiration for unforgettable London receptions."
+    image={heroImg}
+    imageAlt="Spread of authentic Halal Indian wedding dishes in London"
+    breadcrumbs={breadcrumbs}
+    showTrustBadges={false}
+    showCtas={false}
+  />
+
+  <article class="py-14 sm:py-20 bg-salwah-black">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-invert prose-lg prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold text-gray-300">
+      <p class="lead text-gray-200">
+        The heart of any Indian wedding celebration is the food — a feast for the senses and a warm
+        expression of hospitality. As specialists in{' '}
+        <a href="/indian-wedding-catering-london">100% HMC Halal Indian wedding catering in London</a>,
+        here are five timeless and modern menu concepts that consistently delight 50 to 1,000+ guests.
+      </p>
+
+      <h2>1. The Traditional Thali Experience</h2>
+      <p>
+        For an intimate, culturally authentic dining experience, consider a traditional thali. Each
+        guest receives a generous platter with small bowls filled with <strong>daal, sabzi, paneer,
+        raita, pickles, freshly baked breads, and warm mithai</strong> — offering remarkable variety
+        in a single sitting.
+      </p>
+      <div class="not-prose my-8 rounded-2xl overflow-hidden border border-salwah-gold/20">
+        <Picture src={thaliImg} alt="Traditional Indian wedding thali platter with curries and breads" widths={[480, 800]} formats={['webp']} fallbackFormat="webp" quality={78} loading="lazy" class="w-full h-72 object-cover" />
+      </div>
+
+      <h2>2. Interactive Live Food &amp; Chaat Stations</h2>
+      <p>
+        Bring theatre and energy to your Mehndi or reception with live food counters: chefs
+        preparing crisp <strong>papri chaat &amp; pani puri</strong>, sizzling{' '}
+        <strong>tandoori malai tikka &amp; seekh kebabs</strong>, and a freshly poured{' '}
+        <strong>cardamom karak chai &amp; fresh fruit mocktail station</strong> that keeps guests
+        mingling before the main banquet.
+      </p>
+
+      <h2>3. The Grand Multi-Line Buffet</h2>
+      <p>
+        The grand buffet remains the most versatile choice for large 300–1,000+ guest receptions with
+        mixed dietary preferences. Organising parallel staffed lines with balanced HMC Halal meat
+        mains, dedicated vegetarian paneer and daal dishes, Hyderabadi biryani, and fresh naan ensures
+        minimal queueing and piping-hot food. Compare tiers on our{' '}
+        <a href="/packages">Wedding Catering Packages</a> page (starting from £30pp).
+      </p>
+
+      <h2>4. Modern Indo-Western Fusion Canap&eacute;s</h2>
+      <p>
+        Delight younger guests during welcome mocktails with playful fusion bites — mini spiced
+        lamb sliders, chilli paneer skewers, crispy chicken 65 bites, and artisan milk cake or
+        strawberry cheesecake alongside warm gulab jamun and ice cream.
+      </p>
+      <div class="not-prose my-8 rounded-2xl overflow-hidden border border-salwah-gold/20">
+        <Picture src={fusionImg} alt="Contemporary Indo-Western wedding canapes served in London" widths={[480, 800]} formats={['webp']} fallbackFormat="webp" quality={78} loading="lazy" class="w-full h-72 object-cover" />
+      </div>
+
+      <h2>5. Regional Heritage Showcase</h2>
+      <p>
+        Tell your family's personal story through a regional menu — pairing Hyderabadi dum biryani
+        and rich North Indian makhni gravies with Bengali or Pakistani favourites if you are uniting
+        two South Asian heritages. Browse our complete dish list on the{' '}
+        <a href="/menu">Halal Wedding Menu</a> page or book a complimentary{' '}
+        <a href="/contact#quote-form">menu consultation and food sampling</a> with our London chefs.
+      </p>
+    </div>
+  </article>
+
+  <CtaBanner title="Ready to Sample" highlight="Our Wedding Menus?" primaryHref="/contact#quote-form" primaryLabel="Book Menu Consultation" />
+</BaseLayout>

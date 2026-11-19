@@ -1,0 +1,21 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import TimelineGeneratorTool from '@/components/tools/TimelineGeneratorTool';
+---
+
+<ToolPageLayout
+  title="Timeline Generator (.ics)"
+  metaTitle="Wedding Day Timeline Generator (.ics Calendar) | Salwah Events"
+  description="Build a custom wedding day run-sheet and download an .ics calendar file compatible with Apple Calendar, Google Calendar, and Outlook."
+  canonicalPath="/resources/timeline-ics"
+  heroTitle="Wedding Timeline"
+  heroHighlight="Generator (.ics)"
+  subtitle="Create a custom ceremony & dinner schedule and import it straight into your phone calendar."
+  howToUse={[
+    'Select your wedding date and guest arrival time.',
+    'Adjust durations for mingle time, family portraits, and the dinner reception.',
+    'Download the .ics file and open it in Google Calendar, Apple Calendar, or Outlook.',
+  ]}
+>
+  <TimelineGeneratorTool client:load />
+</ToolPageLayout>

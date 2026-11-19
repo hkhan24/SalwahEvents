@@ -1,0 +1,246 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import menuBiryani from '@/assets/images/menu-biryani.png';
+import menuMains from '@/assets/images/menu-mains.png';
+import menuDesserts from '@/assets/images/menu-desserts.png';
+
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Asian Wedding Catering', href: '/services/asian-wedding-catering' },
+  { name: 'Bengali Wedding Catering London' },
+];
+
+const quickFacts = [
+  { label: 'Starting Price', value: 'From £30 per person (Silver) • £45pp (Gold) • Platinum from £17,500' },
+  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Gaye Holud, Akhd / Nikah, Biye & Walima)' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen' },
+  { label: 'Signature Bengali Dishes', value: 'Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, Shahi Chicken Roast, Borthas, Spiced Borhani & Roshmalai' },
+  { label: 'Service Styles', value: 'Traditional Family-Style Table Service, Grand Multi-Line Buffet & Plated Dining' },
+  { label: 'Areas Covered', value: 'East London (Tower Hamlets, Newham, Redbridge, Ilford, Romford), Greater London, Essex & Kent' },
+];
+
+const sampleMenus = [
+  {
+    event: 'Gaye Holud / Mehndi Feast',
+    dishes: [
+      'Traditional Bengali Bortha Platter (Aloo, Begun, Tomato & Coriander)',
+      'Fragrant Bhuna Khichuri & Beef Bhuna',
+      'Spiced Chicken Tikka & Crispy Vegetable Samosas',
+      'Papri Chaat & Live Street-Food Counter',
+      'Chilled Bengali Spiced Borhani & Cardamom Karak Chai',
+      'Mishti Doi & Warm Gulab Jamun',
+    ],
+  },
+  {
+    event: 'Grand Biye / Walima Banquet',
+    dishes: [
+      'Dhakai Lamb Kacchi Biryani cooked on slow dum with saffron & potatoes',
+      'Chittagong-Style Beef Kala Bhuna & Creamy Beef Rezala',
+      'Traditional Shahi Chicken Roast (whole spiced quarters in rich gravy)',
+      'Fish Masala & King Prawn Jalfrezi',
+      'Fragrant Pilau Rice, Fresh Tandoori Naan & House Salad',
+      'Roshmalai, Saffron Firni & Kalajam with Vanilla Ice Cream',
+    ],
+  },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'How much does Bengali wedding catering cost per head in London?',
+    answer:
+      'Salwah Events Bengali wedding catering packages start from £30 per person for our Silver Package and £45 per person for our Gold Package (including grilled starters, traditional mains, welcome mocktails/borhani, crockery, and waiting staff). All-inclusive Platinum catering and stage decoration starts from £17,500 for 200 guests.',
+  },
+  {
+    question: 'Do you serve authentic Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, and Borhani?',
+    answer:
+      'Yes! Our Bangladeshi wedding chefs specialise in traditional slow-cooked Dhakai Lamb Kacchi Biryani, dark-spiced Chittagong Beef Kala Bhuna, Beef Rezala, Shahi Chicken Roast, fresh borthas, chilled spiced borhani, roshmalai, and mishti doi.',
+  },
+  {
+    question: 'Is your Bangladeshi wedding catering 100% HMC Certified Halal?',
+    answer:
+      'Yes, 100%. All meat and poultry is strictly HMC Certified Halal, cooked fresh in our dedicated London Halal kitchens alongside chilled Bengali borhani, mango lassi, gourmet fruit mocktails, and freshly brewed karak chai.',
+  },
+  {
+    question: 'Which East London and Greater London venues do you cater Bengali weddings at?',
+    answer:
+      'We regularly cater Bengali weddings across East and North London — including The Royal Regency (Manor Park), The City Pavilion (Romford), The Willows (Hainault), Mayfair Venue (Chadwell Heath), Meridian Grand (Edmonton), Palm Tree, Oasis, and local community halls across Tower Hamlets, Newham, Redbridge, and Ilford.',
+  },
+  {
+    question: 'Can we book food sampling and a menu consultation before our wedding?',
+    answer:
+      'Yes. Contact us by phone, WhatsApp, or our quick quote form to schedule a complimentary menu consultation and sample our Bengali wedding dishes with your family before finalising your menu.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Bengali & Bangladeshi Wedding Catering London',
+    serviceType: 'Bengali Wedding Catering',
+    description:
+      '100% HMC Certified Halal Bengali and Bangladeshi wedding catering in East & Greater London. Signature kacchi biryani, beef kala bhuna, chicken roast, borthas, borhani & roshmalai from £30pp for 50–1,000+ guests.',
+    url: '/bengali-wedding-catering-london',
+    areaServed: ['East London', 'Greater London', 'Tower Hamlets', 'Newham', 'Redbridge', 'Essex', 'Kent'],
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Bengali Wedding Catering London | HMC Halal Kacchi Biryani & Menus | Salwah Events"
+  description="Authentic 100% HMC Halal Bengali & Bangladeshi wedding catering in East & Greater London from £30pp. Kacchi biryani, beef kala bhuna, chicken roast, borthas, borhani & roshmalai for 50–1,000+ guests."
+  canonicalPath="/bengali-wedding-catering-london"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Authentic Bangladeshi & Sylheti Heritage • 100% HMC Halal"
+    title="Bengali Wedding"
+    highlight="Catering in London"
+    subtitle="From fragrant Dhakai Lamb Kacchi Biryani, Beef Kala Bhuna, and Shahi Chicken Roast to traditional Borthas, Spiced Borhani, and Roshmalai — 100% HMC Halal Bangladeshi wedding feasts from £30pp across East & Greater London."
+    image={menuBiryani}
+    imageAlt="Authentic Bengali Lamb Kacchi Biryani wedding catering in London by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Get Bengali Catering Quote"
+  />
+
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-10">
+          <QuickFactsBox
+            heading="Bengali Wedding Catering London — Quick Facts"
+            summary="Salwah Events and Catering provides bespoke 100% HMC Certified Halal Bengali and Bangladeshi wedding catering across East London, Greater London, Essex, and Kent — crafted by specialist chefs for 50 to 1,000+ guests."
+            facts={quickFacts}
+          />
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Honouring Every Course of a Traditional Bangladeshi Wedding</h2>
+            <p>
+              In a Bengali household, guests judge a wedding by the aroma of the biryani, the depth
+              of the roast, and the warmth of the hospitality. At <strong>Salwah Events and Catering</strong>,
+              our Bangladeshi culinary specialists prepare every dish fresh using whole toasted
+              spices, aged basmati rice, and <strong>100% HMC Certified Halal</strong> cuts — never
+              watered-down restaurant shortcuts.
+            </p>
+            <p>
+              Whether you are hosting an intimate 60-guest <strong>Gaye Holud</strong> with classic
+              borthas and bhuna khichuri, an elegant <strong>Akhd / Nikah</strong> lunch, or a grand
+              800-guest <strong>Biye or Walima</strong> in East London, our menus balance heritage
+              favourites for elders with crowd-pleasing grilled starters and desserts for younger
+              generations.
+            </p>
+          </div>
+
+          <!-- Sample Bengali Wedding Menus -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+              sampleMenus.map((menu) => (
+                <div class="luxury-card rounded-2xl p-6">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-salwah-gold mb-1">
+                    Sample Menu
+                  </p>
+                  <h3 class="font-serif text-2xl font-bold text-white mb-4">{menu.event}</h3>
+                  <ul class="space-y-2.5 text-sm text-gray-200">
+                    {menu.dishes.map((dish) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-salwah-gold font-bold mt-0.5">&#10003;</span>
+                        <span>{dish}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={menuMains}
+                alt="Slow-cooked Bengali beef kala bhuna and chicken roast wedding catering"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={menuDesserts}
+                alt="Traditional Bengali wedding desserts including roshmalai and gulab jamun"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>East London &amp; Greater London Venue Expertise</h2>
+            <p>
+              Based at our Edmonton, London kitchen (N18 1UB), we deliver piping-hot Bengali wedding
+              banquets across <strong>Tower Hamlets, Newham, Redbridge, Ilford, Barking, Romford,
+              Hackney, Enfield, and Waltham Forest</strong>, as well as{' '}
+              <a href="/halal-wedding-catering-essex-kent">Essex &amp; Kent</a>. We work regularly at
+              flagship Bangladeshi wedding venues including{' '}
+              <strong>The Royal Regency, The City Pavilion, The Willows, Mayfair Venue, Meridian
+              Grand, Palm Tree, and Oasis</strong>.
+            </p>
+            <p>
+              Pair your catering with our vibrant{' '}
+              <a href="/services/wedding-stage-decoration">Gaye Holud &amp; Walima stage decoration</a>{' '}
+              or explore our <a href="/packages">all-inclusive wedding packages</a> for seamless
+              coordination under one roof.
+            </p>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-5 lg:sticky lg:top-28 space-y-6" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Bengali Wedding Catering London LP"
+            defaultService="Halal Wedding Catering"
+            heading="Sample Our Bengali Wedding Menus"
+            subheading="Tell us your date & guest count for bespoke kacchi biryani, roast & borhani pricing."
+          />
+
+          <div class="rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-3 text-sm text-gray-300">
+            <h3 class="font-serif text-lg font-bold text-salwah-gold">Related Wedding Services</h3>
+            <ul class="space-y-2">
+              <li><a href="/menu" class="hover:text-salwah-gold transition">&rarr; Browse Full Halal Wedding Menu</a></li>
+              <li><a href="/packages" class="hover:text-salwah-gold transition">&rarr; Compare Silver (£30pp), Gold (£45pp) &amp; Platinum</a></li>
+              <li><a href="/services/wedding-stage-decoration" class="hover:text-salwah-gold transition">&rarr; Gaye Holud, Nikah &amp; Walima Stage Decor</a></li>
+              <li><a href="/blog/best-wedding-venues-in-east-london-for-asian-weddings" class="hover:text-salwah-gold transition">&rarr; Best East London Asian Wedding Venues</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner
+    title="Planning a Bengali Wedding"
+    highlight="in East or Greater London?"
+    primaryHref="#quote-form"
+    primaryLabel="Book a Menu Consultation"
+  />
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE } from '@/data/site';
+---
+
+<BaseLayout
+  title="Page Not Found | Salwah Events and Catering"
+  description="The page you were looking for could not be found. Explore Salwah Events Halal wedding catering menus, packages, and services across London, Essex, and Kent."
+  noindex={true}
+>
+  <section class="py-24 px-4 text-center max-w-2xl mx-auto">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-3">404 Error</p>
+    <h1 class="font-serif text-4xl sm:text-5xl font-bold text-white mb-4">Page Not Found</h1>
+    <p class="text-gray-300 mb-8">
+      Sorry, we couldn't find that page. Explore our Halal wedding catering packages or get in touch directly.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="/" class="rounded-xl bg-salwah-gold px-6 py-3 font-bold text-black hover:bg-salwah-gold-light transition">
+        Back to Home
+      </a>
+      <a href="/services/asian-wedding-catering" class="rounded-xl border border-salwah-gold/40 px-6 py-3 font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition">
+        Wedding Catering
+      </a>
+      <a href={SITE.phoneHref} class="rounded-xl border border-white/20 px-6 py-3 font-semibold text-white hover:border-salwah-gold hover:text-salwah-gold transition">
+        Call {SITE.phoneDisplay}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

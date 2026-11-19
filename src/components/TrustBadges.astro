@@ -1,0 +1,39 @@
+---
+import { SITE } from '@/data/site';
+
+interface Props {
+  compact?: boolean;
+  align?: 'center' | 'left';
+}
+
+const { compact = false, align = 'center' } = Astro.props;
+
+const badges = [
+  { label: SITE.facts.halalShort, accent: true },
+  { label: SITE.facts.startingPriceShort, accent: false },
+  { label: SITE.facts.serviceAreas, accent: false },
+  { label: SITE.facts.googleRating, accent: true },
+];
+---
+
+<div
+  class={`flex flex-wrap gap-2 sm:gap-3 ${align === 'center' ? 'justify-center' : 'justify-start'}`}
+  aria-label="Key Trust Highlights"
+>
+  {
+    badges.map((badge) => (
+      <span
+        class={`inline-flex items-center gap-1.5 rounded-full border backdrop-blur-sm font-medium ${
+          compact ? 'px-3 py-1 text-xs' : 'px-3.5 py-1.5 text-xs sm:text-sm'
+        } ${
+          badge.accent
+            ? 'border-salwah-gold/50 bg-salwah-gold/15 text-salwah-gold'
+            : 'border-white/20 bg-black/60 text-white'
+        }`}
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-salwah-gold shrink-0" aria-hidden="true" />
+        {badge.label}
+      </span>
+    ))
+  }
+</div>

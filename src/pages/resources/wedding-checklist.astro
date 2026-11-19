@@ -1,0 +1,20 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import WeddingChecklistTool from '@/components/tools/WeddingChecklistTool';
+---
+
+<ToolPageLayout
+  title="Wedding Planning Checklist"
+  metaTitle="Asian Wedding Planning Checklist (Free PDF) | Salwah Events"
+  description="Stay organised with our interactive Asian wedding checklist covering venue, HMC Halal catering, Nikah notice, stage decor, and printable PDF download."
+  canonicalPath="/resources/wedding-checklist"
+  heroTitle="Wedding Planning"
+  heroHighlight="Checklist"
+  subtitle="Track essential milestones from booking your venue and Halal caterer to final run-sheets."
+  howToUse={[
+    'Tick off completed wedding tasks to see your live progress percentage.',
+    'Click "Download Checklist PDF" to print or share an offline copy with your family.',
+  ]}
+>
+  <WeddingChecklistTool client:load />
+</ToolPageLayout>

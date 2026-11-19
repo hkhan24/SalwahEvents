@@ -1,0 +1,22 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import VendorScorecardTool from '@/components/tools/VendorScorecardTool';
+---
+
+<ToolPageLayout
+  title="Vendor Scorecard"
+  metaTitle="Wedding Supplier Comparison Scorecard | Free Tool | Salwah Events"
+  description="Compare wedding caterers, decorators, and venues objectively using weighted scores for food quality, reliability, communication, and quote price."
+  canonicalPath="/resources/vendor-scorecard"
+  heroTitle="Wedding Vendor"
+  heroHighlight="Scorecard"
+  subtitle="Rate and compare wedding suppliers side by side using custom priority weightings."
+  maxWidth="7xl"
+  howToUse={[
+    'Add each shortlisted supplier along with their 1–5 scores and quoted price.',
+    'Adjust the category weights on the right (ensuring they add up to 1.00).',
+    'Suppliers automatically rank from highest weighted score down — export to CSV to review with family.',
+  ]}
+>
+  <VendorScorecardTool client:load />
+</ToolPageLayout>

@@ -1,19 +1,84 @@
+# ==============================================================================
+# Salwah Events & Catering — Hostinger LiteSpeed / Apache Configuration
+# ==============================================================================
+DirectoryIndex index.html
+DirectorySlash Off
+Options -MultiViews -Indexes
+ErrorDocument 404 /404.html
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.html [L]
+
+  # 1. Force HTTPS on all hosts (production and staging)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,QSA]
+
+  # 2. Enforce canonical www ONLY on salwahevents.com (never breaks Hostinger staging URL)
+  RewriteCond %{HTTP_HOST} ^salwahevents\.com$ [NC]
+  RewriteRule ^ https://www.salwahevents.com%{REQUEST_URI} [R=301,L,QSA]
+
+  # 3. SEO 301 Redirect: consolidate /wedding-stage-decor-london onto flagship Google Ads Sitelink
+  RewriteRule ^wedding-stage-decor-london/?$ /services/wedding-stage-decoration [R=301,L,QSA]
+
+  # 4. Redirect /index.html -> /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L,QSA]
+
+  # 5. Redirect explicit .html requests to clean extensionless URLs (except 404.html)
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+  RewriteCond %{REQUEST_URI} !^/404\.html$ [NC]
+  RewriteRule ^ /%1 [R=301,L,QSA]
+
+  # 6. Strip trailing slash when a matching .html page exists -> canonical extensionless URL
+  RewriteCond %{REQUEST_URI} ^/(.+)/$
+  RewriteCond %{DOCUMENT_ROOT}/%1.html -f
+  RewriteRule ^(.+)/$ /$1 [R=301,L,QSA]
+
+  # 7. Serve extensionless URLs directly with HTTP 200 (preserving Google Ads gclid/utm params)
+  # Works even when a directory of the same name exists (e.g. /services, /blog, /resources, /admin)
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L,QSA]
+</IfModule>
+
+# ==============================================================================
+# Caching & Compression (95-100 Mobile PageSpeed)
+# ==============================================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml image/svg+xml font/woff2
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header set X-Powered-By "Hostinger Horizons"
+  # Security Headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 
-  # Cache everything on CDN by default
-  Header set Cache-Control "public, s-maxage=604800, max-age=0"
-  
-  # Cache in browser all assets
-  <If "%{REQUEST_URI} =~ m#^/assets/.*$#">
-    Header set Cache-Control "public, max-age=604800"
-  </If>
+  # HTML: revalidate on every visit so updates go live immediately
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # Static hashed assets, fonts & optimized images: immutable 1-year cache (LiteSpeed + Apache safe)
+  <FilesMatch "\.(js|css|webp|avif|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>

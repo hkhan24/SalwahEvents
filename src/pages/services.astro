@@ -1,0 +1,146 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import headerServices from '@/assets/images/header-services.png';
+import cardCatering from '@/assets/images/service-catering-card.jpg';
+import cardStage from '@/assets/images/service-stage-card.jpg';
+import cardPlanning from '@/assets/images/service-planning-card.jpg';
+import cardVenues from '@/assets/images/service-venues-card.jpg';
+
+import { buildBreadcrumbSchema, type BreadcrumbItem } from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Services' },
+];
+
+const services = [
+  {
+    title: 'Asian Wedding Catering',
+    href: '/services/asian-wedding-catering',
+    badge: 'From £30pp',
+    description:
+      '100% HMC Certified Halal Bengali, Pakistani, and Indian wedding catering with uniformed waiting staff for 50–1,000+ guests.',
+    image: cardCatering,
+    alt: 'Halal Asian wedding catering service in London',
+  },
+  {
+    title: 'Wedding Stage Decoration',
+    href: '/services/wedding-stage-decoration',
+    badge: 'Bespoke Design',
+    description:
+      'Bespoke floral walls, Nikah partitions, colourful Mehndi stages, Walima backdrops, Mandaps, mood lighting, and full ballroom table centrepieces.',
+    image: cardStage,
+    alt: 'Bespoke Asian wedding stage decoration in London',
+  },
+  {
+    title: 'Event Management & Planning',
+    href: '/services/event-management-planning',
+    badge: 'End-to-End',
+    description:
+      'Complete timelines, supplier coordination, budget planning, and dedicated on-the-day management so you and your family enjoy every moment.',
+    image: cardPlanning,
+    alt: 'Full Asian wedding event management and planning London',
+  },
+  {
+    title: 'Partner Venues & Locations',
+    href: '/services/venues-locations',
+    badge: 'London, Essex & Kent',
+    description:
+      'Discover our trusted banqueting hall and dry-hire estate partners including The City Pavilion, Meridian Grand, The Willows, and Mayfair Venue.',
+    image: cardVenues,
+    alt: 'Luxury Asian wedding venues across London, Essex and Kent',
+  },
+];
+
+const regionalLinks = [
+  { label: 'Bengali Wedding Catering London', href: '/bengali-wedding-catering-london' },
+  { label: 'Pakistani Wedding Catering London', href: '/pakistani-wedding-catering-london' },
+  { label: 'Indian Wedding Catering London', href: '/indian-wedding-catering-london' },
+  { label: 'Halal Wedding Catering Essex & Kent', href: '/halal-wedding-catering-essex-kent' },
+];
+---
+
+<BaseLayout
+  title="Asian Wedding Services London | Halal Catering, Stage Decor & Planning | Salwah Events"
+  description="Complete 100% HMC Halal Asian wedding services in London, Essex & Kent: authentic catering from £30pp, bespoke stage decoration, full event management, and partner venues."
+  canonicalPath="/services"
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <PageHero
+    eyebrow="Complete Wedding & Event Solutions"
+    title="Our Premium"
+    highlight="Event Services"
+    subtitle="From 100% HMC Certified Halal wedding banquets and bespoke stage decoration to full event management across Greater London, Essex, and Kent."
+    image={headerServices}
+    imageAlt="Salwah Events Asian wedding catering and decor services in London"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="/contact#quote-form"
+    primaryCtaLabel="Get a Custom Quote"
+  />
+
+  <section class="py-16 sm:py-20 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          services.map((service) => (
+            <a href={service.href} class="group luxury-card rounded-2xl overflow-hidden flex flex-col">
+              <div class="aspect-[16/9] overflow-hidden bg-black">
+                <Picture
+                  src={service.image}
+                  alt={service.alt}
+                  widths={[480, 800]}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  formats={['webp']} fallbackFormat="webp" quality={78}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="p-7 flex flex-col flex-1">
+                <span class="text-xs font-bold uppercase tracking-widest text-salwah-gold">
+                  {service.badge}
+                </span>
+                <h2 class="mt-1.5 font-serif text-2xl sm:text-3xl font-bold text-white group-hover:text-salwah-gold transition">
+                  {service.title}
+                </h2>
+                <p class="mt-3 text-sm sm:text-base text-gray-300 leading-relaxed flex-1">
+                  {service.description}
+                </p>
+                <span class="mt-5 inline-flex items-center text-sm font-bold text-salwah-gold">
+                  Explore Service &rarr;
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Specialist Cuisine & Regional Pages -->
+      <div class="rounded-2xl border border-salwah-gold/25 bg-[#0e1017] p-7 sm:p-10 text-center">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">
+          Looking for a Specialist <span class="text-salwah-gold">Cuisine or Region?</span>
+        </h2>
+        <p class="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto mb-6">
+          Explore our dedicated catering guides with sample menus, guest capacities, and transparent pricing:
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {
+            regionalLinks.map((item) => (
+              <a
+                href={item.href}
+                class="rounded-xl border border-salwah-gold/40 bg-black/60 px-5 py-3 text-sm font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import SeatingPlannerTool from '@/components/tools/SeatingPlannerTool';
+---
+
+<ToolPageLayout
+  title="Seating Planner"
+  metaTitle="Free Wedding Seating Plan Tool (CSV Export) | Salwah Events"
+  description="Organise your Asian wedding guest list, create tables, assign seats, and export your reception seating plan to CSV."
+  canonicalPath="/resources/seating-planner"
+  heroTitle="Wedding Seating"
+  heroHighlight="Planner"
+  subtitle="Paste your guest list, assign families to banquet tables, and export a ready-to-print CSV."
+  maxWidth="7xl"
+  howToUse={[
+    'Paste guest names (one per line) and click "Load Guest List".',
+    'Create tables, set seat capacities (typically 10 per round table), and assign guests via each table dropdown.',
+    'Export your final table assignments as a CSV file for your event manager and place-card printer.',
+  ]}
+>
+  <SeatingPlannerTool client:load />
+</ToolPageLayout>

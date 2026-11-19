@@ -1,0 +1,21 @@
+---
+import { SITE } from '@/data/site';
+const target = '/services/wedding-stage-decoration';
+const canonical = `${SITE.siteUrl}${target}`;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting to Wedding Stage Decoration London | Salwah Events</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={canonical} />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+  </head>
+  <body style="background:#050507;color:#f6df91;font-family:sans-serif;padding:2rem;text-align:center;">
+    <p>
+      Redirecting to <a href={target} style="color:#f6df91;">Wedding Stage Decoration London</a>...
+    </p>
+  </body>
+</html>

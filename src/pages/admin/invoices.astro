@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import InvoiceGeneratorIsland from '@/components/admin/InvoiceGeneratorIsland';
+---
+
+<BaseLayout
+  title="Invoice Generator | Salwah Events Admin"
+  description="Internal invoice generator for Salwah Events Ltd."
+  canonicalPath="/admin/invoices"
+  noindex={true}
+  hideChrome={true}
+>
+  <InvoiceGeneratorIsland client:load />
+</BaseLayout>

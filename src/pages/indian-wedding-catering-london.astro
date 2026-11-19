@@ -1,0 +1,228 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import menuStarters from '@/assets/images/menu-starters.png';
+import menuVegetables from '@/assets/images/menu-vegetables.jpg';
+import blogThali from '@/assets/images/blog-thali.jpg';
+
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Asian Wedding Catering', href: '/services/asian-wedding-catering' },
+  { name: 'Indian Wedding Catering London' },
+];
+
+const quickFacts = [
+  { label: 'Starting Price', value: 'From £30 per person (Silver) • £45pp (Gold) • Platinum from £17,500' },
+  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Sangeet, Mehndi, Ceremony & Grand Reception)' },
+  { label: 'Dietary & Halal Standard', value: '100% HMC Certified Halal with Dedicated Vegetarian & Vegan Menus' },
+  { label: 'Signature Indian Dishes', value: 'Chicken Butter Makhni, Malai Tikka, Hyderabadi Biryani, Chilli Paneer, Live Chaat & Gulab Jamun' },
+  { label: 'Service Styles', value: 'Live Tandoor & Chaat Stations, Grand Buffet, Family-Style & Plated Service' },
+  { label: 'Areas Covered', value: 'Greater London (North, East, West & South), Essex & Kent' },
+];
+
+const highlights = [
+  {
+    title: 'Non-Vegetarian HMC Halal Classics',
+    dishes: [
+      'Chicken Malai Tikka, Chicken 65 & Tandoori Wings',
+      'Creamy Chicken Butter Makhni & Chicken Tikka Jalfrezi',
+      'Slow-Cooked Lamb Bhuna & Fragrant Hyderabadi Lamb Biryani',
+      'Spiced Fish Masala & King Prawn Jalfrezi',
+    ],
+  },
+  {
+    title: 'Vibrant Vegetarian, Vegan & Live Chaat',
+    dishes: [
+      'Live Papri Chaat, Samosa Chaat & Chilli Paneer',
+      'Paneer Butter Makhni, Saag Paneer & Bhindi Dupiaza',
+      'Slow-Simmered Makhni Daal, Tarka Daal & Punjabi Chana Masala',
+      'Warm Gulab Jamun, Gajar Halwa, Pistachio Baklava & Fresh Mocktails',
+    ],
+  },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'How much does Indian wedding catering cost per head in London?',
+    answer:
+      'Salwah Events Indian wedding catering starts from £30 per person (Silver Package with 2 starters, 3 mains, rice, naan, dessert, crockery, and staff) and £45 per person (Gold Package with grilled starters, 4 premium mains, 2 desserts, and welcome mocktails).',
+  },
+  {
+    question: 'Do you cater for mixed vegetarian, vegan, and Halal Indian weddings?',
+    answer:
+      'Yes! All meat and poultry is 100% HMC Certified Halal, and we maintain strict separation for our dedicated vegetarian and vegan Indian dishes (paneer makhni, saag aloo, bhindi dupiaza, tarka daal, vegetable samosas, and live chaat) so every guest dines with confidence.',
+  },
+  {
+    question: 'Can you provide live chaat counters, tandoor stations, and mocktail receptions?',
+    answer:
+      'Yes. We offer interactive live chaat stations, freshly grilled tandoori starters, gourmet fruit welcome mocktails, mango lassi, and masala/karak chai counters tailored to your guest count.',
+  },
+  {
+    question: 'Do you also style Mandaps and Indian wedding reception stages in London?',
+    answer:
+      'Yes. Our decor specialists create custom Mandaps, floral reception backdrops, walkways, lighting, and table centrepieces across Greater London, Essex, and Kent — available standalone or inside our all-inclusive Platinum Package.',
+  },
+  {
+    question: 'How do we arrange a menu consultation and food sampling?',
+    answer:
+      'Complete the quick quote form on this page or call/WhatsApp 07359 337887 with your event date and approximate guest count to arrange a bespoke menu consultation and food sampling.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Indian Wedding Catering London (100% HMC Halal & Vegetarian)',
+    serviceType: 'Indian Wedding Catering',
+    description:
+      'Bespoke 100% HMC Certified Halal Indian wedding catering in London, Essex & Kent. Rich North & South Indian curries, live chaat & tandoori grills, and vegetarian/vegan menus from £30pp for 50–1,000+ guests.',
+    url: '/indian-wedding-catering-london',
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Indian Wedding Catering London | Halal & Vegetarian From £30pp | Salwah Events"
+  description="Luxury 100% HMC Halal & vegetarian Indian wedding catering in London from £30pp. Live chaat stations, tandoori grills, Hyderabadi biryani, butter chicken makhni & bespoke mocktails for 50–1,000+ guests."
+  canonicalPath="/indian-wedding-catering-london"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="North & South Indian Flavours • 100% HMC Halal & Dedicated Veg"
+    title="Indian Wedding"
+    highlight="Catering in London"
+    subtitle="From live chaat counters and succulent tandoori starters to velvety butter chicken makhni, Hyderabadi biryani, and vibrant vegetarian feasts — 100% HMC Halal Indian wedding catering from £30pp for 50 to 1,000+ guests."
+    image={menuStarters}
+    imageAlt="Indian wedding catering tandoori starters and curries in London by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Get Indian Catering Quote"
+  />
+
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-10">
+          <QuickFactsBox
+            heading="Indian Wedding Catering London — Quick Facts"
+            summary="Salwah Events provides full-service Indian wedding catering across London, Essex, and Kent — combining 100% HMC Certified Halal non-vegetarian dishes with rich, dedicated vegetarian and vegan spreads."
+            facts={quickFacts}
+          />
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Elevated Indian Wedding Cuisine for Modern London Celebrations</h2>
+            <p>
+              Great Indian wedding catering celebrates colour, aroma, and generosity. Our chefs
+              craft bespoke multi-course menus tailored to your family's regional palate — from
+              Punjabi tandoori grills and velvety makhni gravies to aromatic Hyderabadi biryanis
+              and crisp street-food chaat.
+            </p>
+            <p>
+              Every service is <strong>100% HMC Certified Halal</strong>, featuring refreshing
+              handcrafted fruit mocktails, mango &amp; passionfruit lassi, freshly brewed cardamom
+              chai, and artisan coffee to complement warm mithai and desserts.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+              highlights.map((block) => (
+                <div class="luxury-card rounded-2xl p-6">
+                  <h3 class="font-serif text-xl font-bold text-salwah-gold mb-4">{block.title}</h3>
+                  <ul class="space-y-2.5 text-sm text-gray-200">
+                    {block.dishes.map((dish) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-salwah-gold font-bold mt-0.5">&#10003;</span>
+                        <span>{dish}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={blogThali}
+                alt="Traditional Indian wedding thali and vegetarian specialties in London"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={menuVegetables}
+                alt="Fresh vegetarian Indian wedding dishes including saag paneer and bhindi dupiaza"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Complete Catering, Mandap &amp; Stage Decor Coordination</h2>
+            <p>
+              Simplify your wedding logistics by combining Indian catering with our bespoke{' '}
+              <a href="/services/wedding-stage-decoration">Mandap and reception stage decoration</a>{' '}
+              and <a href="/services/event-management-planning">on-the-day event management</a>.
+              Looking for menu inspiration? Explore our guide on the{' '}
+              <a href="/blog/top-5-menu-ideas-for-an-indian-wedding-in-london">
+                Top 5 Menu Ideas for an Indian Wedding in London
+              </a>.
+            </p>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-5 lg:sticky lg:top-28 space-y-6" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Indian Wedding Catering London LP"
+            defaultService="Halal Wedding Catering"
+            heading="Sample Our Indian Wedding Menus"
+            subheading="Share your wedding date & guest count for bespoke Halal & vegetarian menu pricing."
+          />
+
+          <div class="rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-3 text-sm text-gray-300">
+            <h3 class="font-serif text-lg font-bold text-salwah-gold">Explore Further</h3>
+            <ul class="space-y-2">
+              <li><a href="/menu" class="hover:text-salwah-gold transition">&rarr; Browse Full Wedding Menu</a></li>
+              <li><a href="/packages" class="hover:text-salwah-gold transition">&rarr; Silver, Gold &amp; Platinum Packages</a></li>
+              <li><a href="/blog/top-5-menu-ideas-for-an-indian-wedding-in-london" class="hover:text-salwah-gold transition">&rarr; Top 5 Indian Wedding Menu Ideas</a></li>
+              <li><a href="/services/venues-locations" class="hover:text-salwah-gold transition">&rarr; London Partner Venues</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner
+    title="Design Your Indian Wedding"
+    highlight="Menu With Our Chefs"
+    primaryHref="#quote-form"
+    primaryLabel="Book a Menu Consultation"
+  />
+</BaseLayout>

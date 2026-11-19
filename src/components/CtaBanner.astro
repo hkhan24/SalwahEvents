@@ -1,0 +1,55 @@
+---
+import { SITE } from '@/data/site';
+
+interface Props {
+  title?: string;
+  highlight?: string;
+  subtitle?: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+}
+
+const {
+  title = 'Sample Our Wedding Menus &',
+  highlight = 'Get a Custom Proposal',
+  subtitle = 'Book a no-obligation menu consultation with our chefs in London. 100% HMC Certified Halal catering from £30pp for 50 to 1,000+ guests.',
+  primaryHref = '/contact#quote-form',
+  primaryLabel = 'Book a Menu Consultation',
+} = Astro.props;
+---
+
+<section class="py-16 sm:py-20 bg-gradient-to-br from-[#1d1709] via-[#0d0e14] to-salwah-black border-t border-salwah-gold/25">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-salwah-gold mb-3">
+      London • Essex • Kent
+    </p>
+    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+      {title} <span class="text-salwah-gold">{highlight}</span>
+    </h2>
+    <p class="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+      {subtitle}
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+      <a
+        href={primaryHref}
+        class="inline-flex items-center justify-center rounded-xl bg-salwah-gold px-7 py-4 text-base font-bold text-black hover:bg-salwah-gold-light transition shadow-lg shadow-salwah-gold/20"
+      >
+        {primaryLabel}
+      </a>
+      <a
+        href={SITE.whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-xl bg-[#25D366] px-7 py-4 text-base font-bold text-black hover:brightness-105 transition"
+      >
+        WhatsApp {SITE.phoneDisplay}
+      </a>
+      <a
+        href={SITE.phoneHref}
+        class="inline-flex items-center justify-center rounded-xl border border-salwah-gold/40 px-7 py-4 text-base font-semibold text-salwah-gold hover:bg-salwah-gold hover:text-black transition"
+      >
+        Call Now
+      </a>
+    </div>
+  </div>
+</section>

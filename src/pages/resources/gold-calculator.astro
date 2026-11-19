@@ -1,0 +1,80 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import GoldCalculatorTool from '@/components/tools/GoldCalculatorTool';
+import FaqSection from '@/components/FaqSection.astro';
+import { buildFaqSchema, type FaqItem } from '@/lib/schema';
+
+const faqs: FaqItem[] = [
+  {
+    question: 'How is the live gold price per gram, tola, and bori calculated?',
+    answer:
+      'Our calculator pulls the live global XAU spot price in USD per troy ounce and converts it into GBP, USD, EUR, AED, BDT, INR, or PKR using daily foreign exchange rates, then scales by your selected purity (14k to 24k).',
+  },
+  {
+    question: 'What purity is typical for Bengali, Pakistani, and Indian bridal gold jewellery?',
+    answer:
+      'Most traditional South Asian wedding jewellery sets in the UK are crafted in 22k gold (91.7% pure) or 21k gold (87.5% pure), while investment bars and coins are typically 24k (99.9%+ pure).',
+  },
+  {
+    question: 'How does the Zakat Nisab threshold work for wedding gold?',
+    answer:
+      'The classical gold Nisab threshold is 87.48 grams (7.5 tolas) of pure 24k gold under the Hanafi school, or 85 grams under the majority scholarly view. Toggle "Show Zakat Implications" inside either calculator to see pure-gold equivalent weight and an estimated 2.5% Zakat guide.',
+  },
+  {
+    question: 'Does this gold price include jewellery making charges or UK retail markups?',
+    answer:
+      'No — the figures shown reflect raw bullion spot market value. High-street Asian jewellers in London (such as Green Street, Southall, or Hatton Garden) typically add craftsmanship/making charges and VAT where applicable.',
+  },
+];
+---
+
+<ToolPageLayout
+  title="Gold Calculator"
+  metaTitle="Live Gold Price & Zakat Calculator (UK) | Gram, Tola, Bori & Karat | Salwah Events"
+  description="Free live UK bridal gold price & Zakat calculator. Convert 24k, 22k, 21k & 18k gold between grams, troy ounces, tola, bori (BD), masha & ratti in GBP, BDT, PKR, INR & AED."
+  canonicalPath="/resources/gold-calculator"
+  heroTitle="Live Gold"
+  heroHighlight="Calculator"
+  subtitle="Live gold prices in GBP, BDT, PKR, INR, AED, USD & EUR — convert grams, tola, bori, masha & ratti by karat and estimate bridal gold Zakat."
+  maxWidth="7xl"
+  extraSchemas={[buildFaqSchema(faqs)]}
+  howToUse={[
+    'Choose your preferred currency (GBP, USD, EUR, AED, BDT, INR, or PKR) and click Refresh Rates at any time for the latest live spot price.',
+    'Slide or tap the Karat Purity control (14k to 24k) — e.g. 22k for traditional South Asian bridal jewellery — to update every rate and conversion instantly.',
+    'Use "What Can My Budget Buy?" to see how many grams, troy ounces, tola, or bori your jewellery budget covers at spot value.',
+    'Use "Value of Your Current Gold" to convert existing bridal sets across all six weight units and toggle "Show Zakat Implications" for a 2.5% Nisab estimate.',
+  ]}
+>
+  <GoldCalculatorTool client:load />
+
+  <div class="rounded-2xl border border-white/10 bg-[#101219] p-6 sm:p-8 space-y-4 text-sm text-gray-300 leading-relaxed">
+    <h2 class="font-serif text-2xl font-bold text-salwah-gold">
+      Understanding South Asian Wedding Gold Weights
+    </h2>
+    <p>
+      Gold jewellery plays a treasured role in Bengali, Pakistani, and Indian weddings — from bridal
+      necklaces and bangles to mahr gifts. Across the UK and South Asia, jewellers quote weights in
+      grams, troy ounces, tolas, bori, masha, and ratti:
+    </p>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-gray-200">
+      <li class="flex items-center gap-2">
+        <span class="h-1.5 w-1.5 rounded-full bg-salwah-gold shrink-0" />
+        <span><strong>1 Troy Ounce (oz t)</strong> = 31.1035 grams</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="h-1.5 w-1.5 rounded-full bg-salwah-gold shrink-0" />
+        <span><strong>1 Tola</strong> = 11.6638 grams</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="h-1.5 w-1.5 rounded-full bg-salwah-gold shrink-0" />
+        <span><strong>1 Masha</strong> = 1/12 Tola (0.9720 grams)</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="h-1.5 w-1.5 rounded-full bg-salwah-gold shrink-0" />
+        <span><strong>1 Ratti</strong> = 1/96 Tola (0.1215 grams)</span>
+      </li>
+    </ul>
+  </div>
+
+  <FaqSection faqs={faqs} heading="Gold Price &amp; Zakat FAQs" />
+</ToolPageLayout>

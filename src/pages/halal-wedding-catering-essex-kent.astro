@@ -1,0 +1,216 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import headerVenues from '@/assets/images/header-venues.jpg';
+import cateringBuffet from '@/assets/images/catering-buffet.jpg';
+import galleryStage from '@/assets/images/gallery-stage-floral.jpg';
+
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Asian Wedding Catering', href: '/services/asian-wedding-catering' },
+  { name: 'Halal Wedding Catering Essex & Kent' },
+];
+
+const quickFacts = [
+  { label: 'Starting Price', value: 'From £30 per person (Silver) • £45pp (Gold) • Platinum from £17,500' },
+  { label: 'Guest Capacity', value: '50 to 1,000+ guests (Dry-Hire Estates, Marquees & Banqueting Halls)' },
+  { label: 'Halal Standard', value: '100% HMC Certified Halal Dedicated London Kitchen' },
+  { label: 'Essex Towns Covered', value: 'Romford, Ilford, Chigwell, Loughton, Brentwood, Chelmsford, Basildon & Southend' },
+  { label: 'Kent Towns Covered', value: 'Dartford, Gravesend, Bexley, Sevenoaks, Maidstone, Tunbridge Wells & Medway' },
+  { label: 'Full Mobile Setup', value: 'Refrigerated transport, on-site finishing kitchens, crockery, glassware & uniformed staff' },
+];
+
+const regions = [
+  {
+    county: 'Essex Halal Wedding Catering',
+    areas: ['Romford & Chadwell Heath', 'Ilford, Hainault & Barkingside', 'Chigwell, Loughton & Woodford', 'Brentwood, Chelmsford & Epping', 'Basildon, Thurrock & Southend'],
+    detail:
+      'Just minutes along the A406/M11/A12 corridor from our Edmonton London kitchen, our team delivers hot, freshly finished Bengali, Pakistani, and Indian banquets to Essex country estates, golf clubs, marquees, and landmark halls like The City Pavilion, The Willows, and Mayfair Venue.',
+  },
+  {
+    county: 'Kent Halal Wedding Catering',
+    areas: ['Dartford & Bluewater Area', 'Gravesend & Northfleet', 'Bexley, Sidcup & Orpington', 'Sevenoaks & Tonbridge', 'Maidstone, Rochester & Canterbury'],
+    detail:
+      'Hosting a dry-hire manor house, barn, or marquee wedding in Kent? We bring complete mobile finishing equipment, chafing stations, full crockery & cutlery, fresh mocktail & karak chai stations, plus optional luxury stage decor so you never juggle separate regional vendors.',
+  },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Do you travel to dry-hire estates and marquee venues in Essex and Kent?',
+    answer:
+      'Yes! We regularly cater at dry-hire country houses, hotel ballrooms, community halls, and garden marquees across Essex and Kent. Our logistics team brings temperature-controlled transport, on-site finishing equipment, crockery, cutlery, glassware, and uniformed staff.',
+  },
+  {
+    question: 'How much does Halal wedding catering cost in Essex and Kent?',
+    answer:
+      'Packages start from £30 per person (Silver) and £45 per person (Gold, including grilled starters and gourmet welcome mocktails), scaling smoothly for 50 to 1,000+ guests. All-inclusive Platinum catering and wedding stage decoration starts from £17,500 for 200 guests.',
+  },
+  {
+    question: 'Is all food served in Essex and Kent 100% HMC Certified Halal?',
+    answer:
+      'Yes, 100%. Every dish is prepared from HMC Certified Halal ingredients in our dedicated London Halal kitchen, and we also offer luxury fruit mocktails, Bengali borhani, karak chai, and artisan coffee.',
+  },
+  {
+    question: 'Can you provide both Bengali/Pakistani/Indian catering AND stage decor in Essex or Kent?',
+    answer:
+      'Yes — combining catering and bespoke stage decoration with Salwah Events means one load-in schedule, one dedicated event manager, and cohesive venue styling for Nikah, Mehndi, Baraat, and Walima events.',
+  },
+  {
+    question: 'How far in advance should we book Halal wedding catering in Essex or Kent?',
+    answer:
+      'Peak summer and weekend dates fill 6–12 months ahead, though we can often accommodate intimate Nikah or last-minute bookings within a few weeks. Check your date now via our quote form or WhatsApp 07359 337887.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Halal Wedding Catering Essex & Kent',
+    serviceType: 'Halal Asian Wedding Catering Essex & Kent',
+    description:
+      '100% HMC Certified Halal Bengali, Pakistani, and Indian wedding catering & stage decor across Essex and Kent (Romford, Ilford, Chigwell, Brentwood, Chelmsford, Dartford, Gravesend & Maidstone) from £30pp for 50–1,000+ guests.',
+    url: '/halal-wedding-catering-essex-kent',
+    areaServed: ['Essex', 'Kent', 'Romford', 'Ilford', 'Chigwell', 'Brentwood', 'Chelmsford', 'Dartford', 'Gravesend', 'Maidstone'],
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Halal Wedding Catering Essex & Kent | 100% HMC Halal From £30pp | Salwah Events"
+  description="Trusted 100% HMC Certified Halal Asian wedding catering in Essex & Kent from £30pp. Bengali, Pakistani & Indian menus + stage decor for dry-hire venues, marquees & halls (50–1,000+ guests)."
+  canonicalPath="/halal-wedding-catering-essex-kent"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Essex & Kent Dry-Hire, Marquee & Ballroom Specialists"
+    title="Halal Wedding Catering"
+    highlight="in Essex & Kent"
+    subtitle="Bringing London's finest 100% HMC Certified Halal Bengali, Pakistani, and Indian wedding banquets directly to country estates, marquees, and banqueting halls across Essex & Kent — from £30pp for 50 to 1,000+ guests."
+    image={headerVenues}
+    imageAlt="Luxury dry-hire wedding venue in Essex and Kent catered by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Check Essex & Kent Availability"
+  />
+
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-10">
+          <QuickFactsBox
+            heading="Essex & Kent Halal Wedding Catering — Quick Facts"
+            summary="Salwah Events delivers full-service 100% HMC Certified Halal Asian wedding catering and stage decoration across Essex and Kent — complete with mobile finishing kitchens, crockery, glassware, and uniformed staff."
+            facts={quickFacts}
+          />
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+              regions.map((reg) => (
+                <div class="luxury-card rounded-2xl p-6 space-y-4">
+                  <h2 class="font-serif text-2xl font-bold text-salwah-gold">{reg.county}</h2>
+                  <p class="text-sm text-gray-300 leading-relaxed">{reg.detail}</p>
+                  <ul class="space-y-1.5 text-sm text-gray-200 pt-2 border-t border-white/10">
+                    {reg.areas.map((area) => (
+                      <li class="flex items-center gap-2">
+                        <span class="h-1.5 w-1.5 rounded-full bg-salwah-gold shrink-0" />
+                        <span>{area}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={cateringBuffet}
+                alt="Full Halal Asian wedding buffet setup in Essex and Kent"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+              <Picture
+                src={galleryStage}
+                alt="Bespoke wedding stage decoration installed at Essex and Kent venues"
+                widths={[480, 800]}
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Built for Dry-Hire Country Houses &amp; Marquee Weddings</h2>
+            <p>
+              Essex and Kent boast some of the South East's most breathtaking dry-hire manor houses,
+              barns, and lakeside estates — many of which have limited on-site kitchen facilities.
+              Salwah Events solves every logistical challenge with commercial insulated hot-boxes,
+              on-site finishing units, full fine crockery &amp; glassware hire, waste clearance, and
+              experienced floor supervisors who liaise directly with your venue coordinator.
+            </p>
+            <p>
+              Choose from our{' '}
+              <a href="/bengali-wedding-catering-london">Bengali</a>,{' '}
+              <a href="/pakistani-wedding-catering-london">Pakistani</a>, or{' '}
+              <a href="/indian-wedding-catering-london">Indian</a> Halal wedding menus, and add
+              bespoke <a href="/services/wedding-stage-decoration">stage decoration</a> or{' '}
+              <a href="/services/event-management-planning">full event planning</a> for total peace
+              of mind.
+            </p>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-5 lg:sticky lg:top-28 space-y-6" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Halal Catering Essex & Kent LP"
+            defaultService="Both Catering & Stage Decor"
+            heading="Get an Essex or Kent Quote"
+            subheading="Tell us your venue postcode, date & guest count — we'll send full pricing & menu options."
+          />
+
+          <div class="rounded-2xl border border-salwah-gold/20 bg-[#101219] p-6 space-y-3 text-sm text-gray-300">
+            <h3 class="font-serif text-lg font-bold text-salwah-gold">Popular Links</h3>
+            <ul class="space-y-2">
+              <li><a href="/services/asian-wedding-catering" class="hover:text-salwah-gold transition">&rarr; Asian Wedding Catering Overview</a></li>
+              <li><a href="/packages" class="hover:text-salwah-gold transition">&rarr; Packages Starting From £30pp</a></li>
+              <li><a href="/menu" class="hover:text-salwah-gold transition">&rarr; Full Halal Catering Menu</a></li>
+              <li><a href="/services/venues-locations" class="hover:text-salwah-gold transition">&rarr; Partner Venues Directory</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner
+    title="Hosting a Halal Wedding"
+    highlight="in Essex or Kent?"
+    primaryHref="#quote-form"
+    primaryLabel="Request Your Free Quote"
+  />
+</BaseLayout>

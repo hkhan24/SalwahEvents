@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-salwah-black: #050507;
+  --color-salwah-surface: #0e1015;
+  --color-salwah-card: #141720;
+  --color-salwah-gold: #f6df91;
+  --color-salwah-gold-light: #fbf0c4;
+  --color-salwah-gold-dark: #c9a74b;
+  --color-salwah-white: #ffffff;
+
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #050507;
+    color: #f8fafc;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: #050507;
+    color: #f8fafc;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Luxury accents & utilities */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fbf0c4 0%, #f6df91 45%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(246, 223, 145, 0.55) 50%, transparent 100%);
+}
+
+.luxury-card {
+  background: linear-gradient(160deg, rgba(24, 27, 37, 0.92) 0%, rgba(12, 14, 19, 0.96) 100%);
+  border: 1px solid rgba(246, 223, 145, 0.18);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.luxury-card:hover {
+  border-color: rgba(246, 223, 145, 0.45);
+  box-shadow: 0 20px 40px -20px rgba(246, 223, 145, 0.18);
+}
+
+.package-silver {
+  background: linear-gradient(155deg, #1b1d24 0%, #101218 100%);
+  border: 1px solid rgba(203, 213, 225, 0.25);
+}
+
+.package-gold {
+  background: linear-gradient(155deg, #2b220a 0%, #141108 100%);
+  border: 2px solid #f6df91;
+  box-shadow: 0 24px 60px -20px rgba(246, 223, 145, 0.28);
+}
+
+.package-platinum {
+  background: linear-gradient(155deg, #211c11 0%, #0d0c09 100%);
+  border: 1px solid rgba(201, 167, 75, 0.45);
+}
+
+/* Native <details> FAQ styling */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* Hide scrollbars cleanly where horizontal swipe is used on mobile */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe space above sticky mobile conversion bar */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.75rem;
+  }
+}

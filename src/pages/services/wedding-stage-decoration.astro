@@ -1,0 +1,246 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import QuickFactsBox from '@/components/QuickFactsBox.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+import QuoteForm from '@/components/QuoteForm';
+
+import headerStage from '@/assets/images/header-stage-decor.png';
+import stageDetail from '@/assets/images/stage-floral-detail.jpg';
+import galleryStage from '@/assets/images/gallery-stage-floral.jpg';
+import galleryBanquet from '@/assets/images/header-asian-catering.png';
+import galleryTable from '@/assets/images/gallery-wedding-table.jpg';
+
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildServiceSchema,
+  type BreadcrumbItem,
+  type FaqItem,
+} from '@/lib/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services' },
+  { name: 'Wedding Stage Decoration' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Do you create bespoke wedding stage designs in London, Essex, and Kent?',
+    answer:
+      'Yes. Every wedding stage decoration we build is tailored to your colour palette, venue dimensions, and cultural ceremony — whether you envision a lush ivory floral wall, modern gold geometric arch, colourful Mehndi stage, serene Nikah backdrop, or luxury Walima setup.',
+  },
+  {
+    question: 'What is included in your wedding stage decoration service?',
+    answer:
+      'Our stage packages include the custom backdrop structure, fresh or luxury silk floral installations, couple seating (sweetheart sofa or throne chairs), stage flooring/carpeting, dramatic uplighting and spotlights, plus optional matching walkway pillars, entrance arches, and guest table centrepieces.',
+  },
+  {
+    question: 'Can we bundle wedding stage decoration with Halal catering?',
+    answer:
+      'Yes! Bundling catering and stage decoration with Salwah Events saves venue coordination stress and unlocks better combined pricing. Our Platinum Package (from £17,500 for 200 guests) includes full Gold-tier HMC Halal catering, bespoke luxury stage decor, table centrepieces, lighting, and dedicated event management.',
+  },
+  {
+    question: 'Do you style traditional Nikah, Mehndi, Gaye Holud, and Mandap ceremonies?',
+    answer:
+      'Absolutely. We design culturally respectful Nikah partitions and floral backdrops, vibrant marigold and jewel-toned Mehndi / Gaye Holud stages with jhoola swings, grand Walima reception stages, and bespoke Mandaps.',
+  },
+  {
+    question: 'Which London venues do you set up wedding stages at?',
+    answer:
+      'Our decor crew installs regularly across East, North, West, and South London, Essex, and Kent — including Meridian Grand, The City Pavilion, The Willows, Mayfair Venue, The Royal Regency, Ariana Banqueting Hall, Palm Tree, Oasis, and private marquees.',
+  },
+];
+
+const quickFacts = [
+  { label: 'Event Types Styled', value: 'Nikah Backdrops, Mehndi / Gaye Holud, Walima Stages, Mandaps & Receptions' },
+  { label: 'Floral Options', value: 'Fresh luxury blooms, premium silk florals, or bespoke hybrid installations' },
+  { label: 'All-Inclusive Option', value: 'Included in our Platinum Catering + Decor Package (from £17,500)' },
+  { label: 'Venue Capacity', value: 'Intimate 50-guest home/hall setups to 1,000+ guest grand ballrooms' },
+  { label: 'Full Room Styling', value: 'Walkways, entrance arches, table centrepieces, charger plates & lighting' },
+  { label: 'Areas Covered', value: 'Greater London, Essex & Kent (Full delivery, rigging & takedown included)' },
+];
+
+const decorStyles = [
+  {
+    title: 'Grand Walima & Reception Stages',
+    description:
+      'Statement floral walls, ivory and gold scalloped backdrops, chandelier accents, and plush sweetheart sofas engineered for flawless wedding photography.',
+    image: galleryStage,
+    alt: 'Luxury floral Walima wedding stage decor in London',
+  },
+  {
+    title: 'Nikah, Mehndi & Banquet Room Styling',
+    description:
+      'Dignified floral Nikah partitions, vibrant Mehndi and Gaye Holud backdrops, and cohesive candlelit banquet room transformations tailored to your venue.',
+    image: galleryBanquet,
+    alt: 'Candlelit Asian wedding banquet room styling and decor in London',
+  },
+  {
+    title: 'Full Ballroom & Table Centrepieces',
+    description:
+      'Coordinated gold candelabras, tall floral risers, glass charger plates, mirrored aisles, and warm pin-spot lighting from entrance to top table.',
+    image: galleryTable,
+    alt: 'Candlelit wedding reception table centrepieces and floral styling in London',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({
+    name: 'Wedding Stage Decoration & Asian Wedding Decor London',
+    serviceType: 'Wedding Stage Decoration & Venue Styling',
+    description:
+      'Bespoke Asian wedding stage decoration in London, Essex, and Kent. Custom floral backdrops, Nikah, Mehndi, Walima & Mandap styling, lighting, walkways, and table centrepieces.',
+    url: '/services/wedding-stage-decoration',
+    priceSpecification: 'Bespoke stage decor quotes or all-inclusive Platinum catering + decor from £17,500.',
+  }),
+  buildFaqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Wedding Stage Decoration London | Bespoke Asian Wedding Decor | Salwah Events"
+  description="Bespoke Asian wedding stage decoration in London, Essex & Kent. Luxury floral backdrops, Nikah & Mehndi stages, Walima decor, lighting & table centrepieces. Combine with HMC Halal catering for seamless events."
+  canonicalPath="/services/wedding-stage-decoration"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Luxury Asian Wedding Decor • London, Essex & Kent"
+    title="Wedding Stage"
+    highlight="Decoration London"
+    subtitle="Bespoke floral backdrops, serene Nikah setups, vibrant Mehndi stages, and grand Walima ballroom transformations — designed, installed, and coordinated seamlessly alongside our Halal catering team."
+    image={headerStage}
+    imageAlt="Luxury bespoke wedding stage decoration in London by Salwah Events"
+    breadcrumbs={breadcrumbs}
+    primaryCtaHref="#quote-form"
+    primaryCtaLabel="Get a Stage Decor Quote"
+  />
+
+  <section class="py-14 sm:py-16 bg-salwah-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-8">
+          <QuickFactsBox
+            heading="London Wedding Stage Decor — At a Glance"
+            summary="Salwah Events designs and installs bespoke Asian wedding stage decoration across Greater London, Essex, and Kent — handling concept moodboards, florals, custom lighting, venue setup, and post-event takedown."
+            facts={quickFacts}
+          />
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Bespoke Backdrops Designed Around Your Venue</h2>
+            <p>
+              The wedding stage is the visual centrepiece of your entire celebration — framing every
+              family portrait, couple entrance, and cherished speech. Rather than offering tired
+              cookie-cutter templates, our designers measure your chosen venue and craft a{' '}
+              <strong>bespoke wedding stage decoration</strong> matched to your outfits, florals,
+              and room proportions.
+            </p>
+            <p>
+              Whether you prefer crisp ivory roses with warm brushed gold arches, rich velvet drapery
+              with crystal chandeliers, or vibrant marigolds and brass lanterns for a Mehndi or
+              Gaye Holud evening, every piece is delivered, rigged safely, and inspected well before
+              your first guest arrives.
+            </p>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden border border-salwah-gold/20">
+            <Picture
+              src={stageDetail}
+              alt="Floral wedding stage decoration with ambient lighting and sweetheart sofa in London"
+              widths={[480, 800]}
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              formats={['webp']} fallbackFormat="webp" quality={78}
+              loading="lazy"
+              class="w-full h-72 sm:h-80 object-cover"
+            />
+          </div>
+
+          <div class="prose prose-invert prose-lg max-w-none prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold">
+            <h2>Lighting, Walkways &amp; Cohesive Room Styling</h2>
+            <p>
+              Great decor relies on great lighting. We pair architectural <strong>LED uplighting</strong>,
+              warm spotlights on the couple, and subtle fairy-light canopies so your photographer
+              captures rich, flattering tones throughout dinner and rukhsati.
+            </p>
+            <ul>
+              <li>
+                <strong>Couple Seating &amp; Sweetheart Tables:</strong> Luxury tufted sofas, carved
+                gold chairs, and candlelit top-table floral runners.
+              </li>
+              <li>
+                <strong>Entrance &amp; Walkway Framing:</strong> Mirrored or ivory carpeted aisles,
+                elevated floral plinths, and personalised welcome signage.
+              </li>
+              <li>
+                <strong>One-Team Catering + Decor Advantage:</strong> Pair stage styling with our{' '}
+                <a href="/services/asian-wedding-catering">100% HMC Halal Asian wedding catering</a>{' '}
+                or <a href="/packages">all-inclusive Platinum Package</a> for one point of contact
+                and streamlined venue access.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-5 lg:sticky lg:top-28" id="quote-form">
+          <QuoteForm
+            client:visible
+            variant="compact"
+            sourcePage="Wedding Stage Decoration LP"
+            defaultService="Wedding Stage Decor"
+            heading="Design Your Dream Stage"
+            subheading="Share your event date, venue & theme for a bespoke London stage decor quote."
+          />
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decor Style Showcase -->
+  <section class="py-16 bg-salwah-surface border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">
+          Signature <span class="text-salwah-gold">Decor Collections</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        {
+          decorStyles.map((style) => (
+            <div class="luxury-card rounded-2xl overflow-hidden flex flex-col">
+              <Picture
+                src={style.image}
+                alt={style.alt}
+                widths={[480, 800]}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                formats={['webp']} fallbackFormat="webp" quality={78}
+                loading="lazy"
+                class="h-56 w-full object-cover"
+              />
+              <div class="p-6">
+                <h3 class="font-serif text-xl font-bold text-white">{style.title}</h3>
+                <p class="mt-2.5 text-sm text-gray-300 leading-relaxed">{style.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="text-center mt-8">
+        <a href="/gallery" class="text-sm font-bold text-salwah-gold hover:underline">
+          View More Stage Setups in Our Gallery &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} />
+  <CtaBanner
+    title="Ready to Transform"
+    highlight="Your Wedding Venue?"
+    primaryHref="#quote-form"
+    primaryLabel="Request a Decor Proposal"
+  />
+</BaseLayout>

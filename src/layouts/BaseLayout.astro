@@ -1,0 +1,181 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/playfair-display/600.css';
+import '@fontsource/playfair-display/700.css';
+import '@/styles/global.css';
+
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import MobileStickyBar from '@/components/MobileStickyBar.astro';
+import CookieBanner from '@/components/CookieBanner.astro';
+import { SITE } from '@/data/site';
+import { buildLocalBusinessSchema } from '@/lib/schema';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  schemas?: Record<string, unknown>[];
+  hideChrome?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  ogImage = `${SITE.siteUrl}/og-default.jpg`,
+  ogType = 'website',
+  noindex = false,
+  schemas = [],
+  hideChrome = false,
+} = Astro.props;
+
+const cleanPath = canonicalPath === '/' ? '' : canonicalPath.replace(/\/$/, '');
+const canonicalUrl = `${SITE.siteUrl}${cleanPath}`;
+const shouldNoIndex = SITE.isStaging || noindex;
+const allSchemas = [buildLocalBusinessSchema(), ...schemas];
+const gtmId = SITE.tracking.gtmId;
+const adsId = SITE.tracking.googleAdsId;
+const callWhatsappSendTo = SITE.tracking.callWhatsappSendTo;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta
+      name="robots"
+      content={shouldNoIndex
+        ? 'noindex, nofollow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+    <meta name="theme-color" content="#050507" />
+
+    <!-- Gold Salwah Calligraphy Medallion Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={SITE.businessName} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Google Tag Manager -->
+    <script is:inline define:vars={{ gtmId }}>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', gtmId);
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Ads Global Site Tag (AW-18462398776) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${adsId}`}></script>
+    <script is:inline define:vars={{ adsId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', adsId);
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    {
+      allSchemas.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
+  </head>
+
+  <body class="min-h-screen bg-salwah-black text-salwah-white flex flex-col">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded-lg focus:bg-salwah-gold focus:px-4 focus:py-2 focus:text-black focus:font-semibold"
+    >
+      Skip to main content
+    </a>
+
+    {!hideChrome && <Navbar currentPath={canonicalPath} />}
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    {!hideChrome && <Footer />}
+    {!hideChrome && <MobileStickyBar />}
+    {!hideChrome && <CookieBanner />}
+
+    <!-- Global Conversion 2 Listener: Phone (tel:) & WhatsApp (wa.me / whatsapp.com) Clicks -->
+    <script is:inline define:vars={{ callWhatsappSendTo }}>
+      document.addEventListener(
+        'click',
+        function (event) {
+          var target = event.target;
+          if (!target || !target.closest) return;
+          var anchor = target.closest('a[href]');
+          if (!anchor) return;
+          var href = (anchor.getAttribute('href') || '').trim().toLowerCase();
+          var isTel = href.startsWith('tel:');
+          var isWhatsApp = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1;
+
+          if (isTel || isWhatsApp) {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'conversion', {
+                send_to: callWhatsappSendTo,
+              });
+            }
+            if (Array.isArray(window.dataLayer)) {
+              window.dataLayer.push({
+                event: isTel ? 'salwah_phone_click' : 'salwah_whatsapp_click',
+                link_href: href,
+              });
+            }
+          }
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

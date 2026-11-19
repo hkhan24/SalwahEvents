@@ -1,0 +1,132 @@
+import { useMemo, useState } from 'react';
+import { Copy, Download } from 'lucide-react';
+import { SITE } from '@/data/site';
+
+const TEMPLATES: Record<string, Record<string, string>> = {
+  Reception: {
+    Formal:
+      "The families of [Couple's Names] request the pleasure of your company at the wedding reception of their beloved children.\nPlease join us to celebrate this joyous occasion.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Traditional:
+      'With the blessings of the Almighty, we invite you to share in our happiness at the Walima reception of our son/daughter [Name] with [Spouse Name]. Your presence and prayers are the most precious gift.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]',
+    Modern:
+      "Let's celebrate love! You are warmly invited to the wedding reception of [Couple's Names]. Join us for an unforgettable evening of fine Halal dining and celebration.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Warm:
+      "Dine, celebrate, and make memories with us! Join the families of [Couple's Names] as we celebrate their marriage together.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+  },
+  Nikah: {
+    Formal:
+      "Mr. & Mrs. [Parents' Names] request the honour of your presence at the Nikah ceremony of [Bride's Name] and [Groom's Name].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Traditional:
+      "In the name of Allah, the Most Gracious, the Most Merciful. We cordially invite you to witness the blessed Nikah ceremony of [Couple's Names]. Your prayers and presence are warmly requested.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Modern:
+      "Two hearts, one lifelong commitment. Please join us for the Nikah ceremony of [Couple's Names] as they begin their new chapter together.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Warm:
+      "Alhamdulillah — we're making it official! Come witness [Couple's Names] say 'Qubool Hai' and celebrate with us over dinner and chai.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+  },
+  Mehndi: {
+    Formal:
+      'You are cordially invited to a vibrant Mehndi & Gaye Holud evening celebrating the upcoming wedding of [Name].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]',
+    Traditional:
+      'An evening of henna, vibrant colours, traditional sweets, and joyful celebration. Please join us for the Mehndi ceremony in honour of [Name].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]',
+    Modern:
+      'Let the wedding festivities begin! We would love for you to join us at the Mehndi evening for [Name].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]',
+    Warm:
+      "Bring your brightest colours! It's time to celebrate [Name]'s Mehndi evening with henna, great food, and family joy.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+  },
+  Walima: {
+    Formal:
+      "The family of [Groom's Name] requests the pleasure of your company at the Walima celebration hosted in honour of his marriage to [Bride's Name].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Traditional:
+      "To celebrate the blessed marriage of our son [Groom's Name] to [Bride's Name], we warmly invite you to join us for a Walima banquet. We seek your du'as for the couple.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Modern:
+      "Celebrating a beautiful new beginning. We would be honoured to welcome you to the Walima dinner of [Couple's Names].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Warm:
+      "The Nikah is complete — now let's feast together! Join us for the Walima celebration of [Couple's Names].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+  },
+  Engagement: {
+    Formal:
+      "You are warmly invited to celebrate the engagement of [Couple's Names] as they begin their journey towards marriage.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Traditional:
+      "With gratitude to Allah, we invite you to share in our joy at the engagement gathering of [Couple's Names].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Modern:
+      "Exciting news! Please join our families to celebrate the engagement of [Couple's Names].\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+    Warm:
+      "Come celebrate with us as [Couple's Names] get engaged! Good food, chai, and family warmth await.\n\nDate: [Date]\nTime: [Time]\nVenue: [Venue Address]",
+  },
+};
+
+export default function InvitationGeneratorTool() {
+  const [eventType, setEventType] = useState('Nikah');
+  const [tone, setTone] = useState('Traditional');
+  const [notice, setNotice] = useState('');
+
+  const text = useMemo(() => TEMPLATES[eventType][tone], [eventType, tone]);
+
+  const copy = async () => {
+    await navigator.clipboard.writeText(text);
+    setNotice('Invitation wording copied to clipboard!');
+  };
+
+  const download = () => {
+    const content = `${text}\n\nGenerated by ${SITE.legalName} | ${SITE.phoneDisplay} | ${SITE.email}`;
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `invitation_${eventType.toLowerCase()}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setNotice('Downloaded invitation .txt file!');
+  };
+
+  return (
+    <div className="rounded-2xl border border-salwah-gold/25 bg-[#12151e] p-6 sm:p-8 space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="ig-event" className="block text-xs font-semibold uppercase tracking-wider text-salwah-gold mb-1.5">
+            Event Type
+          </label>
+          <select
+            id="ig-event"
+            value={eventType}
+            onChange={(e) => setEventType(e.target.value)}
+            className="w-full rounded-lg border border-salwah-gold/30 bg-black/60 px-3.5 py-3 text-white"
+          >
+            {Object.keys(TEMPLATES).map((k) => (
+              <option key={k} value={k} className="bg-[#12151e]">{k}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="ig-tone" className="block text-xs font-semibold uppercase tracking-wider text-salwah-gold mb-1.5">
+            Tone
+          </label>
+          <select
+            id="ig-tone"
+            value={tone}
+            onChange={(e) => setTone(e.target.value)}
+            className="w-full rounded-lg border border-salwah-gold/30 bg-black/60 px-3.5 py-3 text-white"
+          >
+            {Object.keys(TEMPLATES[eventType]).map((t) => (
+              <option key={t} value={t} className="bg-[#12151e]">{t}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-salwah-gold/20 bg-black/60 p-6 min-h-[180px]">
+        <p className="font-serif text-lg text-white whitespace-pre-wrap leading-relaxed">{text}</p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button type="button" onClick={copy} className="inline-flex items-center justify-center gap-2 rounded-xl bg-salwah-gold py-3.5 font-bold text-black hover:bg-salwah-gold-light transition cursor-pointer">
+          <Copy className="h-4 w-4" /> Copy Wording
+        </button>
+        <button type="button" onClick={download} className="inline-flex items-center justify-center gap-2 rounded-xl border border-salwah-gold/50 py-3.5 font-bold text-salwah-gold hover:bg-salwah-gold hover:text-black transition cursor-pointer">
+          <Download className="h-4 w-4" /> Download .txt
+        </button>
+      </div>
+      {notice && <p className="text-center text-sm text-salwah-gold">{notice}</p>}
+    </div>
+  );
+}

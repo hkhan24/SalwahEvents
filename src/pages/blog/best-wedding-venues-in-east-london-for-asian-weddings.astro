@@ -1,0 +1,107 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBanner from '@/components/CtaBanner.astro';
+
+import heroImg from '@/assets/images/blog-east-london-venues.png';
+import ballroomImg from '@/assets/images/blog-ballroom.jpg';
+import { buildBlogPostingSchema, buildBreadcrumbSchema, type BreadcrumbItem } from '@/lib/schema';
+
+const url = '/blog/best-wedding-venues-in-east-london-for-asian-weddings';
+const title = 'Best Wedding Venues in East London for Asian Weddings';
+const description =
+  'Explore top East London and Essex-border venues for Bengali, Pakistani, and Indian weddings: The City Pavilion, The Willows, Mayfair Venue, The Royal Regency & Meridian Grand.';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'East London Asian Wedding Venues' },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  buildBlogPostingSchema({ title, description, url, publishedIso: '2025-08-29' }),
+];
+---
+
+<BaseLayout
+  title={`${title} | Salwah Events`}
+  description={description}
+  canonicalPath={url}
+  ogType="article"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Published August 29, 2025 • 5 Min Read"
+    title="Best Wedding Venues in"
+    highlight="East London for Asian Weddings"
+    subtitle="Capacity, kitchen logistics, and decor tips for East London and Essex-border banqueting halls hosting 150 to 1,000+ guests."
+    image={heroImg}
+    imageAlt="East London wedding hall decorated for a luxury Asian wedding"
+    breadcrumbs={breadcrumbs}
+    showTrustBadges={false}
+    showCtas={false}
+  />
+
+  <article class="py-14 sm:py-20 bg-salwah-black">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-invert prose-lg prose-headings:font-serif prose-headings:text-salwah-gold prose-a:text-salwah-gold text-gray-300">
+      <p class="lead text-gray-200">
+        East London and the nearby Essex border are the heartbeat of British Bangladeshi,
+        Pakistani, and Indian wedding celebrations. Having delivered hundreds of{' '}
+        <a href="/bengali-wedding-catering-london">Bengali</a> and{' '}
+        <a href="/services/asian-wedding-catering">Asian wedding banquets</a> across the capital,
+        here are our top venue picks and what to check before signing a dry-hire contract.
+      </p>
+
+      <h2>1. The City Pavilion (Romford)</h2>
+      <p>
+        Purpose-built for grand-scale Asian weddings, The City Pavilion's Millennium Suite welcomes
+        up to <strong>1,200 guests</strong> beneath towering ceilings and crystal chandeliers. Its
+        spacious back-of-house kitchens make large multi-course Halal dining effortless.
+      </p>
+      <div class="not-prose my-8 rounded-2xl overflow-hidden border border-salwah-gold/20">
+        <Picture src={ballroomImg} alt="Grand chandelier ballroom setup for a large Asian wedding reception" widths={[480, 800]} formats={['webp']} fallbackFormat="webp" quality={78} loading="lazy" class="w-full h-72 object-cover" />
+      </div>
+
+      <h2>2. The Willows (Hainault, Ilford)</h2>
+      <p>
+        Offering generous parking and multiple flexible suites (150–650 guests), The Willows is a
+        superb blank canvas for custom{' '}
+        <a href="/services/wedding-stage-decoration">wedding stage decoration</a>, Mehndi nights,
+        and seamless same-day Nikah &amp; Walima timelines.
+      </p>
+
+      <h2>3. The Royal Regency (Manor Park)</h2>
+      <p>
+        An iconic East London landmark with heritage charm and sweeping staircases, ideal for
+        traditional Bangladeshi and Pakistani weddings of 200 to 1,000+ guests right in the heart
+        of Newham.
+      </p>
+
+      <h2>4. Mayfair Venue (Chadwell Heath)</h2>
+      <p>
+        Sleek, contemporary, and fitted with built-in architectural lighting and audio systems,
+        Mayfair Venue suits couples seeking a glamorous, modern Walima atmosphere with streamlined
+        supplier setup.
+      </p>
+
+      <h2>5. Meridian Grand (Edmonton, North London N18)</h2>
+      <p>
+        Easily reached via the A406 from East London and Essex — and just minutes from Salwah
+        Events' own Edmonton production kitchen — Meridian Grand offers opulent marble lobbies and
+        chandelier ballrooms for 200–900 guests.
+      </p>
+
+      <h2>4 Venue Checks Before You Book</h2>
+      <ul>
+        <li><strong>External Catering Policy:</strong> Verify whether the hall permits approved external HMC Halal caterers and what kitchen finishing facilities are included.</li>
+        <li><strong>Segregation &amp; Prayer Space:</strong> If hosting a segregated Nikah or Walima, confirm partition options and quiet prayer rooms.</li>
+        <li><strong>Load-In Windows:</strong> Ensure your <a href="/services/wedding-stage-decoration">stage decorator</a> has adequate setup time prior to guest arrival.</li>
+        <li><strong>Guest Parking &amp; Transport:</strong> Check on-site parking capacity for elderly family members travelling from across London, <a href="/halal-wedding-catering-essex-kent">Essex, and Kent</a>.</li>
+      </ul>
+    </div>
+  </article>
+
+  <CtaBanner title="Found Your East London Venue?" highlight="Let's Handle Catering & Decor" primaryHref="/contact#quote-form" primaryLabel="Get a Venue Catering Quote" />
+</BaseLayout>

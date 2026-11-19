@@ -1,0 +1,21 @@
+---
+import ToolPageLayout from '@/layouts/ToolPageLayout.astro';
+import TimelineTemplatesTool from '@/components/tools/TimelineTemplatesTool';
+---
+
+<ToolPageLayout
+  title="Wedding Day Timeline Templates"
+  metaTitle="Free Asian Wedding Day Timeline Templates (PDF) | Salwah Events"
+  description="Download free PDF wedding day run-sheets for Same-Day Nikah & Walima, Multi-Day Mehndi/Nikah/Walima weddings, and Evening Receptions."
+  canonicalPath="/resources/timeline-templates"
+  heroTitle="Wedding Day"
+  heroHighlight="Timeline Templates"
+  subtitle="Download ready-to-share PDF schedules crafted for Nikah, Mehndi, and Walima celebrations."
+  howToUse={[
+    'Review the sample schedules for Same-Day Nikah & Walima, Multi-Day Weddings, or Evening Receptions.',
+    'Click "Download PDF" on any template to save a clean printable run-sheet.',
+    'Share the schedule with your venue, photographer, and catering supervisor to keep timings aligned.',
+  ]}
+>
+  <TimelineTemplatesTool client:load />
+</ToolPageLayout>
