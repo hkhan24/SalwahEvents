@@ -76,7 +76,7 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     image: headerAsianCatering,
     category: 'weddings',
     title: 'Grand Candlelit Banquet Service',
-    alt: 'Uniformed Halal catering staff serving warm copper chafing dishes inside a grand London wedding ballroom.',
+    alt: 'Uniformed Halal catering staff serving piping-hot copper bowls of biryani and curry to wedding guests inside a grand London ballroom.',
   },
   {
     id: 9,

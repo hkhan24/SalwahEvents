@@ -2,7 +2,7 @@ import blogIndianMenu from '@/assets/images/blog-indian-menu.png';
 import blogNikahChecklist from '@/assets/images/blog-nikah-checklist.png';
 import blogEastLondonVenues from '@/assets/images/blog-east-london-venues.png';
 import headerAsianCatering from '@/assets/images/header-asian-catering.png';
-import headerMenu from '@/assets/images/header-menu.png';
+import headerAbout from '@/assets/images/header-about.png';
 
 export interface BlogPostMeta {
   slug: string;
@@ -29,7 +29,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     tags: ['Pricing Guide', 'Budgeting'],
     readTime: '6 min read',
     image: headerAsianCatering,
-    imageAlt: 'Grand London Asian wedding banquet buffet with copper chafing dishes.',
+    imageAlt: 'Uniformed catering servers presenting piping-hot copper bowls of biryani and curry to guests at a candlelit London Asian wedding banquet.',
   },
   {
     slug: 'hmc-halal-wedding-catering-guide-london',
@@ -41,7 +41,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     publishedIso: '2026-02-18',
     tags: ['HMC Halal', 'Catering Guide'],
     readTime: '5 min read',
-    image: headerMenu,
+    image: headerAbout,
     imageAlt: 'Salwah Events chefs preparing 100% HMC Certified Halal wedding dishes in London.',
   },
   {
