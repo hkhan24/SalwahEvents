@@ -6,7 +6,7 @@ export const SITE = {
   vatNo: '497422947',
   siteUrl: 'https://www.salwahevents.com',
   stagingUrl: 'https://calming-white-penguin-96.hostingersite.com',
-  isStaging: (import.meta.env.PUBLIC_STAGING_MODE ?? 'true') === 'true',
+  isStaging: (import.meta.env.PUBLIC_STAGING_MODE ?? 'false') === 'true',
 
   // Verified Business Profile & Live Site NAP
   address: {

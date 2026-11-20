@@ -32,9 +32,8 @@ jobs:
       - name: Build static Astro site
         env:
           # STAGING FLAG:
-          # Keep 'true' while testing on https://calming-white-penguin-96.hostingersite.com
-          # Change to 'false' when cutting https://www.salwahevents.com live!
-          PUBLIC_STAGING_MODE: 'true'
+          # Set to 'false' for live production indexing on https://www.salwahevents.com
+          PUBLIC_STAGING_MODE: 'false'
           SITE_URL: 'https://www.salwahevents.com'
         run: npm run build && npm run verify
 
